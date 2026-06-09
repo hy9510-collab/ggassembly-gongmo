@@ -24,10 +24,14 @@ jobs:
           python-version: "3.12"
 
       - name: 의존성 설치
-        run: pip install requests beautifulsoup4
+        run: pip install playwright requests beautifulsoup4
+
+      - name: Playwright 브라우저 설치
+        run: python -m playwright install --with-deps chromium
 
       - name: 스크래퍼 실행
         run: python scraper.py
+        continue-on-error: true   # 일부 사이트 실패해도 워크플로우 계속
 
       - name: 변경 여부 확인
         id: diff
