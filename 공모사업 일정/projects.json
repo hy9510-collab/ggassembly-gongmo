@@ -80,7 +80,16 @@
         "src": "auto"
       }
     ],
-    "anjeun": [],
+    "anjeun": [
+      {
+        "name": "「소방안전복합청사 명칭」 공모",
+        "period": "",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110888862&page=1&menuId=4434&bcIdx=0",
+        "src": "auto"
+      }
+    ],
     "munhwa": [
       {
         "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
@@ -104,6 +113,14 @@
         "org": "경기문화재단",
         "dept": "문화예술본부",
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21306",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 경기상상캠퍼스 신규 입주단체 모집 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21305",
         "src": "auto"
       },
       {
