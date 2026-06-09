@@ -2,170 +2,13 @@
   "updated": "2026-06-09",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
-    "uiwoon": [
-      {
-        "name": "국민이 참여하는「현장형 국민대화 의제발굴」공모 홍보",
-        "period": "2026.04.08 ~ 2026.05.03",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110895461&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      }
-    ],
-    "gihoek": [
-      {
-        "name": "2025년 하반기 경기 살리기 통큰 세일 영상 공모전",
-        "period": "2025.11.17 ~ 2025.11.27",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892439&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "「2026년 평택시의회 정책 아이디어 공모전」 공고문",
-        "period": "",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110896425&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "2026 성남시 공공데이터 활용 시각화 경진대회",
-        "period": "2026.04.20 ~ 2026.05.13",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110894724&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "「2026년 연천군 테마형 아이디어」 공모전",
-        "period": "2026.01.05 ~ 2026.01.23",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110893647&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "「제1회 모두의 아이디어 」 공모전",
-        "period": "2026.01.08 ~ 2026.04.15",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110893646&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      }
-    ],
-    "gyeongje": [
-      {
-        "name": "2026 경기도 신규 및 우수 노인일자리 아이디어 공모...",
-        "period": "2026.02.23 ~ 2026.03.13",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894179&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "2025년 「경기도 반려동물 창업 공모전」 참가자 모집",
-        "period": "2025.07.07 ~ 2025.09.12",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110890948&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "노인일자리 사진 및 수기 공모 (불어라, 청춘바람)",
-        "period": "2025.09.01 ~ 2025.09.22",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110890944&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      }
-    ],
+    "uiwoon": [],
+    "gihoek": [],
+    "gyeongje": [],
     "anjeun": [],
-    "munhwa": [
-      {
-        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
-        "period": "2025.10.27 ~ 2025.11.10",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "\"제1회 경기도어린이박물관 창작 그림책 공모전\" 당선작 발간 출판사 선정 공모",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21322",
-        "src": "auto"
-      },
-      {
-        "name": "경기문화재단 공모 제 2026-47호 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21306",
-        "src": "auto"
-      },
-      {
-        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto"
-      },
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모(연장)",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21307",
-        "src": "auto"
-      },
-      {
-        "name": "2026「예술로 가로지르기 Season2: 세계로」참여자 모집 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21299",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 K-Art 청년 창작자 지원 추가 선정 결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21296",
-        "src": "auto"
-      }
-    ],
+    "munhwa": [],
     "nonghae": [],
-    "bokji": [
-      {
-        "name": "장애인학대 예방의 날 기념 숏폼 영상 공모전",
-        "period": "2026.04.13 ~ 2026.05.04",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110895478&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "2025 경기도 장애인 인권정책 공모전",
-        "period": "2025.10.16 ~ 2025.10.29",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110891671&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      }
-    ],
+    "bokji": [],
     "gunseol": [],
     "dosi": [
       {
@@ -178,14 +21,6 @@
       }
     ],
     "mirae": [
-      {
-        "name": "전남광주통합특별시 출범 목포형 미래성장 정책제안 공모전",
-        "period": "2026.04.27 ~ 2026.05.22",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110895825&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      },
       {
         "name": "2026년 안산정보산업진흥센터(경기TP안산창업보육센터) 제2차 신규 입주자 모집 공고",
         "period": "",
@@ -219,24 +54,7 @@
         "src": "auto"
       }
     ],
-    "yeoseong": [
-      {
-        "name": "2026년 경기도 여성인물(활동가) 추천 (공모기간연장...",
-        "period": "2026.03.13 ~ 2026.04.30",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894742&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "여성활동 플랫폼 홍보 영상 공모전",
-        "period": "2025.04.14 ~ 2025.05.16",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110888924&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
-      }
-    ],
+    "yeoseong": [],
     "gyoyuk1": [],
     "gyoyuk2": []
   }
