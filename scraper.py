@@ -1,9 +1,6 @@
 """
-경기도 통합공모 포털 스크래퍼
-https://www.gg.go.kr/gongmo/main.do
-
-GitHub Actions에서 매일 실행되며, 공모사업 목록을 가져와
-'공모사업 일정/projects.json'을 갱신합니다.
+경기도의회 상임위원회별 공모사업 자동 수집 스크래퍼
+GitHub Actions에서 매일 실행 → 공모사업 일정/projects.json 갱신
 """
 
 import json
@@ -24,212 +21,354 @@ HEADERS = {
         "Chrome/124.0 Safari/537.36"
     ),
     "Accept-Language": "ko-KR,ko;q=0.9",
-    "Referer": "https://www.gg.go.kr/",
 }
-
-# ──────────────────────────────────────────────────────────────
-# 소관기관 → 상임위 매핑  (기관명 포함 키워드 → committee id)
-# ──────────────────────────────────────────────────────────────
-ORG_MAP = {
-    # 기획재정
-    "기획조정실": "gihoek", "공정발전": "gihoek", "평화협력": "gihoek",
-    "감사위원회": "gihoek", "경기연구원": "gihoek",
-    # 경제노동
-    "노동국": "gyeongje", "경제실": "gyeongje", "사회혁신경제": "gyeongje",
-    "신용보증": "gyeongje", "킨텍스": "gyeongje", "경제자유구역": "gyeongje",
-    "일자리재단": "gyeongje", "시장상권": "gyeongje", "사회적경제": "gyeongje",
-    # 안전행정
-    "안전관리실": "anjeun", "자치행정": "anjeun", "소방": "anjeun",
-    "자원봉사": "anjeun", "자치경찰": "anjeun",
-    # 문화체육관광
-    "문화체육": "munhwa", "관광공사": "munhwa", "문화재단": "munhwa",
-    "아트센터": "munhwa", "도자재단": "munhwa", "콘텐츠진흥": "munhwa",
-    "체육회": "munhwa", "장애인체육": "munhwa", "DMZ": "munhwa",
-    "남한산성": "munhwa",
-    # 농정해양
-    "농수산": "nonghae", "축산": "nonghae", "농업기술원": "nonghae",
-    "산림": "nonghae", "해양수산": "nonghae", "평택항만": "nonghae",
-    # 보건복지
-    "복지국": "bokji", "보건건강": "bokji", "복지재단": "bokji",
-    "사회서비스원": "bokji", "의료원": "bokji", "보건환경": "bokji",
-    # 건설교통
-    "건설국": "gunseol", "교통국": "gunseol", "철도항만물류": "gunseol",
-    "교통연수원": "gunseol", "교통공사": "gunseol",
-    # 도시환경
-    "도시주택": "dosi", "도시개발": "dosi", "기후환경": "dosi",
-    "수자원": "dosi", "주택도시공사": "dosi", "GH": "dosi",
-    "환경에너지진흥": "dosi",
-    # 미래과학
-    "AI국": "mirae", "미래성장": "mirae", "국제협력": "mirae",
-    "차세대융합": "mirae", "테크노파크": "mirae", "경제과학진흥원": "mirae",
-    # 여성가족
-    "여성가족국": "yeoseong", "미래평생교육": "yeoseong", "이민사회": "yeoseong",
-    "여성가족재단": "yeoseong", "여성비전": "yeoseong", "미래세대재단": "yeoseong",
-    "평생교육진흥원": "yeoseong", "도서관": "yeoseong",
-    # 의회운영
-    "의회 사무처": "uiwoon", "비서실": "uiwoon", "홍보기획관": "uiwoon",
-    "중앙협력": "uiwoon",
-    # 교육 (기획/행정)
-    "교육청": "gyoyuk1", "교육연구원": "gyoyuk1",
-    "디지털인재국": "gyoyuk2", "지역교육과": "gyoyuk2",
-    "행정국": "gyoyuk2", "지방공무원인사": "gyoyuk2",
-}
-
-BOARD_URL = "https://www.gg.go.kr/gongmo/main.do"
 
 SESSION = requests.Session()
 SESSION.headers.update(HEADERS)
 
+TODAY_STR = date.today().strftime("%Y-%m-%d")
+THIS_YEAR = date.today().year
+
 
 # ──────────────────────────────────────────────────────────────
-# 경기도 통합공모 포털 파싱
+# 날짜 유틸
 # ──────────────────────────────────────────────────────────────
-def fetch_gg_gongmo(page: int = 1) -> list[dict]:
-    """경기도 통합공모 포털에서 공모 목록을 가져옵니다."""
-    url = "https://www.gg.go.kr/gongmo/main.do"
-    params = {"pageIndex": page, "searchCondition": "", "searchKeyword": ""}
-    try:
-        r = SESSION.get(url, params=params, timeout=15)
-        r.raise_for_status()
-    except Exception as e:
-        print(f"[경기도 통합공모] 요청 실패: {e}", file=sys.stderr)
-        return []
-
-    soup = BeautifulSoup(r.text, "html.parser")
-    items = []
-
-    # 공모 목록 테이블 행 찾기 (실제 HTML 구조에 따라 조정 필요)
-    rows = soup.select("table.board_list tbody tr") or soup.select(".list_wrap li")
-    for row in rows:
-        try:
-            title_el = row.select_one("td.subject a, .tit a, a.title")
-            if not title_el:
-                continue
-            name = title_el.get_text(strip=True)
-            # 기간 파싱 (예: "2026.06.01 ~ 2026.07.31" 형태)
-            period_el = row.select_one("td.date, .period, td:nth-child(4)")
-            period_raw = period_el.get_text(strip=True) if period_el else ""
-            period = normalize_period(period_raw)
-            if not period:
-                continue
-
-            # 기관/부서
-            org_el = row.select_one("td.org, .dept, td:nth-child(3)")
-            org_raw = org_el.get_text(strip=True) if org_el else "경기도청"
-            org, dept = split_org_dept(org_raw)
-
-            # 링크
-            href = title_el.get("href", "")
-            if href and not href.startswith("http"):
-                href = "https://www.gg.go.kr" + href
-
-            committee_id = classify(org, dept)
-
-            items.append({
-                "name": name,
-                "period": period,
-                "org": org,
-                "dept": dept,
-                "boardUrl": href or BOARD_URL,
-                "_committee": committee_id,
-            })
-        except Exception:
-            continue
-
-    return items
-
-
 def normalize_period(raw: str) -> str:
     """날짜 문자열을 'YYYY.MM.DD ~ YYYY.MM.DD' 형식으로 정규화."""
-    # 숫자+점+숫자 패턴 2개 추출
     dates = re.findall(r"\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2}", raw)
     if len(dates) >= 2:
         d1 = re.sub(r"[-/]", ".", dates[0])
         d2 = re.sub(r"[-/]", ".", dates[1])
-        # 월일 2자리 패딩
-        parts1 = d1.split(".")
-        parts2 = d2.split(".")
-        if len(parts1) == 3 and len(parts2) == 3:
-            d1 = f"{parts1[0]}.{parts1[1].zfill(2)}.{parts1[2].zfill(2)}"
-            d2 = f"{parts2[0]}.{parts2[1].zfill(2)}.{parts2[2].zfill(2)}"
-            return f"{d1} ~ {d2}"
+        p1 = d1.split(".")
+        p2 = d2.split(".")
+        if len(p1) == 3 and len(p2) == 3:
+            return (f"{p1[0]}.{p1[1].zfill(2)}.{p1[2].zfill(2)} ~ "
+                    f"{p2[0]}.{p2[1].zfill(2)}.{p2[2].zfill(2)}")
     return ""
 
 
-def split_org_dept(raw: str) -> tuple[str, str]:
-    """'기관명 / 부서명' 또는 '기관명(부서명)' 형태를 분리."""
-    for sep in [" / ", " - ", "(", "/"]:
-        if sep in raw:
-            parts = raw.split(sep, 1)
-            org = parts[0].strip().rstrip("(")
-            dept = parts[1].strip().rstrip(")")
-            return org, dept
-    return raw.strip(), ""
+def abs_url(base: str, href: str) -> str:
+    """상대 URL → 절대 URL 변환."""
+    if not href:
+        return ""
+    if href.startswith("http"):
+        return href
+    from urllib.parse import urljoin
+    return urljoin(base, href)
 
 
-def classify(org: str, dept: str) -> str:
-    """기관/부서명으로 상임위 id를 추정합니다."""
-    combined = org + " " + dept
-    for keyword, cid in ORG_MAP.items():
-        if keyword in combined:
-            return cid
-    # 경기도교육청 계열
-    if "교육청" in combined:
-        return "gyoyuk1"
-    # 기본값: 기획재정
-    return "gihoek"
-
-
-# ──────────────────────────────────────────────────────────────
-# 경기도교육청 공모 파싱
-# ──────────────────────────────────────────────────────────────
-def fetch_goe_gongmo() -> list[dict]:
-    """경기도교육청 공모 게시판에서 목록을 가져옵니다."""
-    url = "https://www.goe.go.kr/goe/bbs/board/list.do"
-    params = {"bbsId": "BBSMSTR_000000000011"}  # 공모 게시판 ID (실제 확인 필요)
+def safe_get(url: str, **kwargs) -> requests.Response | None:
     try:
-        r = SESSION.get(url, params=params, timeout=15)
+        r = SESSION.get(url, timeout=15, **kwargs)
         r.raise_for_status()
+        return r
     except Exception as e:
-        print(f"[경기도교육청] 요청 실패: {e}", file=sys.stderr)
-        return []
+        print(f"  [오류] {url} → {e}", file=sys.stderr)
+        return None
 
+
+# ──────────────────────────────────────────────────────────────
+# 기관별 파서 정의
+# board_id : 상임위 id
+# url      : 게시판 URL
+# parser   : 함수(response) → list of dict
+# ──────────────────────────────────────────────────────────────
+
+# 공통 helper: 일반 테이블형 게시판 파싱
+def parse_table_board(r: requests.Response, base_url: str,
+                      title_sel: str, date_sel: str,
+                      link_sel: str, period_in_detail: bool = False) -> list[dict]:
     soup = BeautifulSoup(r.text, "html.parser")
     items = []
-
     rows = soup.select("table tbody tr")
     for row in rows:
-        try:
-            title_el = row.select_one("td.subject a, a.title")
-            if not title_el:
-                continue
-            name = title_el.get_text(strip=True)
-            period_el = row.select_one("td.date")
-            period_raw = period_el.get_text(strip=True) if period_el else ""
-            period = normalize_period(period_raw)
-            if not period:
-                continue
+        title_el = row.select_one(title_sel) if title_sel else None
+        link_el  = row.select_one(link_sel)  if link_sel  else title_el
+        date_el  = row.select_one(date_sel)  if date_sel  else None
 
-            dept_el = row.select_one("td.dept")
-            dept = dept_el.get_text(strip=True) if dept_el else ""
-            committee_id = classify("경기도교육청", dept)
-
-            items.append({
-                "name": name,
-                "period": period,
-                "org": "경기도교육청",
-                "dept": dept,
-                "boardUrl": "https://www.goe.go.kr",
-                "_committee": committee_id,
-            })
-        except Exception:
+        if not title_el:
+            continue
+        name = title_el.get_text(strip=True)
+        if not name or name in ("제목", "번호", ""):
             continue
 
+        href = ""
+        if link_el:
+            href = abs_url(base_url, link_el.get("href", ""))
+
+        period = ""
+        if date_el:
+            period = normalize_period(date_el.get_text(strip=True))
+
+        items.append({"name": name, "period": period, "boardUrl": href or base_url})
     return items
 
 
+# ── 경기문화재단 ──────────────────────────────────────────────
+def fetch_ggcf() -> list[dict]:
+    url = "https://www.ggcf.kr/boards/businessNotices/articles"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    for a in soup.select("ul.board-list li a, table tbody tr td.subject a, .list-title a, a[href*='/articles/']"):
+        name = a.get_text(strip=True)
+        if not name or len(name) < 5:
+            continue
+        href = abs_url(url, a.get("href", ""))
+        # 상세 페이지에서 기간 추출
+        period = ""
+        detail = safe_get(href) if href else None
+        if detail:
+            d_soup = BeautifulSoup(detail.text, "html.parser")
+            text = d_soup.get_text(" ")
+            period = normalize_period(text)
+        items.append({
+            "name": name, "period": period,
+            "org": "경기문화재단", "dept": "문화예술본부",
+            "boardUrl": href or url,
+            "_committee": "munhwa"
+        })
+        if len(items) >= 10:
+            break
+    return items
+
+
+# ── 경기도사회서비스원 ────────────────────────────────────────
+def fetch_ggss() -> list[dict]:
+    url = "https://www.ggss.or.kr/bbs/?bid=notice"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    for row in soup.select("table tbody tr"):
+        a = row.select_one("td.subject a, td a")
+        if not a:
+            continue
+        name = a.get_text(strip=True)
+        if not name or len(name) < 4:
+            continue
+        href = abs_url(url, a.get("href", ""))
+        date_tds = row.select("td")
+        period = ""
+        for td in date_tds:
+            p = normalize_period(td.get_text())
+            if p:
+                period = p
+                break
+        items.append({
+            "name": name, "period": period,
+            "org": "경기도사회서비스원", "dept": "서비스지원팀",
+            "boardUrl": href or url,
+            "_committee": "bokji"
+        })
+        if len(items) >= 5:
+            break
+    return items
+
+
+# ── 경기연구원 ────────────────────────────────────────────────
+def fetch_gri() -> list[dict]:
+    url = "https://www.gri.re.kr/web/contents/notice.do"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    for row in soup.select("table tbody tr"):
+        a = row.select_one("td.tit a, td a")
+        if not a:
+            continue
+        name = a.get_text(strip=True)
+        if not name or len(name) < 4:
+            continue
+        href = abs_url(url, a.get("href", ""))
+        tds = row.select("td")
+        period = ""
+        for td in tds:
+            p = normalize_period(td.get_text())
+            if p:
+                period = p
+                break
+        items.append({
+            "name": name, "period": period,
+            "org": "경기연구원", "dept": "연구기획실",
+            "boardUrl": href or url,
+            "_committee": "gihoek"
+        })
+        if len(items) >= 5:
+            break
+    return items
+
+
+# ── 경기도교육연구원 ──────────────────────────────────────────
+def fetch_gie() -> list[dict]:
+    url = "https://www.gie.re.kr/board/noticeList.do"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    for row in soup.select("table tbody tr"):
+        a = row.select_one("td a")
+        if not a:
+            continue
+        name = a.get_text(strip=True)
+        if not name or len(name) < 4:
+            continue
+        href = abs_url(url, a.get("href", ""))
+        tds = row.select("td")
+        period = ""
+        for td in tds:
+            p = normalize_period(td.get_text())
+            if p:
+                period = p
+                break
+        items.append({
+            "name": name, "period": period,
+            "org": "경기도교육연구원", "dept": "연구기획부",
+            "boardUrl": href or url,
+            "_committee": "gyoyuk1"
+        })
+        if len(items) >= 5:
+            break
+    return items
+
+
+# ── 경기도경제과학진흥원 ──────────────────────────────────────
+def fetch_egbiz() -> list[dict]:
+    url = "https://egbiz.or.kr/sp/supportPrjCatList.do"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    # 목록의 각 링크 찾기
+    for a in soup.select("a[href*='supportPrjDetail'], a[href*='Detail'], .list-item a, table tbody tr td a"):
+        name = a.get_text(strip=True)
+        if not name or len(name) < 4:
+            continue
+        href = abs_url(url, a.get("href", ""))
+        # 상위 tr에서 기간 찾기
+        tr = a.find_parent("tr")
+        period = ""
+        if tr:
+            period = normalize_period(tr.get_text())
+        items.append({
+            "name": name, "period": period,
+            "org": "경기도경제과학진흥원", "dept": "기업성장팀",
+            "boardUrl": href or url,
+            "_committee": "mirae"
+        })
+        if len(items) >= 5:
+            break
+    return items
+
+
+# ── 경기도농업기술원 ──────────────────────────────────────────
+def fetch_nongup() -> list[dict]:
+    url = "https://www.nongup.gg.go.kr"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    # 공모/공고 링크 찾기
+    for a in soup.select("a"):
+        text = a.get_text(strip=True)
+        if "공모" in text and len(text) > 6:
+            href = abs_url(url, a.get("href", ""))
+            items.append({
+                "name": text, "period": "",
+                "org": "경기도농업기술원", "dept": "기술보급과",
+                "boardUrl": href or url,
+                "_committee": "nonghae"
+            })
+        if len(items) >= 3:
+            break
+    return items
+
+
+# ── 경기테크노파크 ────────────────────────────────────────────
+def fetch_gtp() -> list[dict]:
+    url = "https://www.gtp.or.kr"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    for a in soup.select("a"):
+        text = a.get_text(strip=True)
+        if ("공모" in text or "모집" in text) and len(text) > 6:
+            href = abs_url(url, a.get("href", ""))
+            items.append({
+                "name": text, "period": "",
+                "org": "경기테크노파크", "dept": "기업지원팀",
+                "boardUrl": href or url,
+                "_committee": "mirae"
+            })
+        if len(items) >= 3:
+            break
+    return items
+
+
+# ── 경기평생교육진흥원 ────────────────────────────────────────
+def fetch_gill() -> list[dict]:
+    url = "https://www.gill.or.kr"
+    r = safe_get(url)
+    if not r:
+        return []
+    soup = BeautifulSoup(r.text, "html.parser")
+    items = []
+    for a in soup.select("a"):
+        text = a.get_text(strip=True)
+        if ("공모" in text or "모집" in text) and len(text) > 6:
+            href = abs_url(url, a.get("href", ""))
+            items.append({
+                "name": text, "period": "",
+                "org": "경기도평생교육진흥원", "dept": "평생교육지원팀",
+                "boardUrl": href or url,
+                "_committee": "yeoseong"
+            })
+        if len(items) >= 3:
+            break
+    return items
+
+
+# ── 경기복지재단 ──────────────────────────────────────────────
+def fetch_ggwf() -> list[dict]:
+    # 여러 가능한 게시판 URL 시도
+    candidates = [
+        "https://www.ggwf.or.kr/board/list.do?menuId=",
+        "https://www.ggwf.or.kr",
+    ]
+    for url in candidates:
+        r = safe_get(url)
+        if not r:
+            continue
+        soup = BeautifulSoup(r.text, "html.parser")
+        items = []
+        for a in soup.select("a"):
+            text = a.get_text(strip=True)
+            if ("공모" in text or "모집" in text) and len(text) > 6:
+                href = abs_url(url, a.get("href", ""))
+                items.append({
+                    "name": text, "period": "",
+                    "org": "경기복지재단", "dept": "복지정책본부",
+                    "boardUrl": href or url,
+                    "_committee": "bokji"
+                })
+            if len(items) >= 3:
+                break
+        if items:
+            return items
+    return []
+
+
 # ──────────────────────────────────────────────────────────────
-# 기존 JSON 로드 → 병합 → 저장
+# 기존 JSON 로드 / 병합 / 저장
 # ──────────────────────────────────────────────────────────────
 def load_existing() -> dict:
     if OUTPUT.exists():
@@ -238,12 +377,11 @@ def load_existing() -> dict:
     return {"projects": {}}
 
 
-def merge_projects(existing: dict, scraped: list[dict]) -> dict:
+def merge(existing: dict, scraped: list[dict]) -> dict:
     """
-    스크래핑 결과를 상임위별로 분류하여 기존 데이터와 병합합니다.
-    - 같은 공모사업명이 이미 있으면 기간/URL 업데이트
-    - 새 항목은 추가
-    - 스크래핑에 없는 기존 항목은 유지 (수동 입력분 보호)
+    스크래핑 결과를 상임위별로 분류하여 병합합니다.
+    - 새 항목 추가 / 기존 항목 기간·URL 갱신
+    - 수동 입력 항목은 삭제하지 않음
     """
     result = {k: list(v) for k, v in existing.get("projects", {}).items()}
 
@@ -252,58 +390,64 @@ def merge_projects(existing: dict, scraped: list[dict]) -> dict:
         if cid not in result:
             result[cid] = []
 
-        # 중복 확인 (공모명 동일)
         existing_names = {p["name"] for p in result[cid]}
         if item["name"] not in existing_names:
-            result[cid].append(item)
+            # boardUrl이 유효한 경우만 추가
+            if item.get("boardUrl") and item.get("name"):
+                result[cid].append(item)
         else:
-            # 기간·URL 갱신
             for p in result[cid]:
                 if p["name"] == item["name"]:
-                    p["period"] = item["period"]
-                    if item["boardUrl"] != BOARD_URL:
+                    if item.get("period"):
+                        p["period"] = item["period"]
+                    if item.get("boardUrl") and "main.do" not in item["boardUrl"]:
                         p["boardUrl"] = item["boardUrl"]
                     break
 
     return result
 
 
-def save(projects: dict, updated: str) -> None:
+def save(projects: dict) -> None:
     payload = {
-        "updated": updated,
-        "source": "경기도 통합공모 포털 (https://www.gg.go.kr/gongmo/main.do) 외",
+        "updated": TODAY_STR,
+        "source": "각 기관 공모 게시판 자동 수집",
         "projects": projects,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    print(f"[완료] {OUTPUT} 저장 ({updated})")
+    print(f"[완료] {OUTPUT} 저장 완료 ({TODAY_STR})")
 
 
 # ──────────────────────────────────────────────────────────────
-def main() -> None:
-    today = date.today().strftime("%Y-%m-%d")
-    print(f"스크래핑 시작: {today}")
+FETCHERS = [
+    ("경기문화재단",         fetch_ggcf),
+    ("경기도사회서비스원",   fetch_ggss),
+    ("경기연구원",           fetch_gri),
+    ("경기도교육연구원",     fetch_gie),
+    ("경기도경제과학진흥원", fetch_egbiz),
+    ("경기도농업기술원",     fetch_nongup),
+    ("경기테크노파크",       fetch_gtp),
+    ("경기평생교육진흥원",   fetch_gill),
+    ("경기복지재단",         fetch_ggwf),
+]
 
+
+def main() -> None:
+    print(f"스크래핑 시작: {TODAY_STR}")
     existing = load_existing()
     scraped: list[dict] = []
 
-    # 경기도 통합공모 1~3페이지
-    for page in range(1, 4):
-        items = fetch_gg_gongmo(page)
-        print(f"  경기도 통합공모 p{page}: {len(items)}건")
+    for name, fn in FETCHERS:
+        print(f"  [{name}] 수집 중...")
+        items = fn()
+        print(f"    → {len(items)}건 수집")
         scraped.extend(items)
-        if len(items) == 0:
-            break
 
-    # 경기도교육청
-    edu_items = fetch_goe_gongmo()
-    print(f"  경기도교육청: {len(edu_items)}건")
-    scraped.extend(edu_items)
-
-    merged = merge_projects(existing, scraped)
-    save(merged, today)
-    print(f"총 {sum(len(v) for v in merged.values())}건 유지/갱신")
+    merged = merge(existing, scraped)
+    save(merged)
+    total = sum(len(v) for v in merged.values())
+    print(f"총 {total}건 유지/갱신")
 
 
 if __name__ == "__main__":

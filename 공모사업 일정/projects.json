@@ -23,10 +23,12 @@
       {"name":"2026 자원봉사 우수사례 공모",  "period":"2026.03.10 ~ 2026.04.25","org":"경기자원봉사센터","dept":"사업팀",    "boardUrl":"https://www.ggvol.or.kr"}
     ],
     "munhwa": [
-      {"name":"경기도 문화예술 창작지원 공모","period":"2026.06.01 ~ 2026.07.25","org":"경기문화재단",    "dept":"문화예술본부","boardUrl":"https://www.ggcf.kr/boards/businessNotices/articles"},
-      {"name":"콘텐츠 스타트업 육성 공모",   "period":"2026.07.01 ~ 2026.08.01","org":"경기콘텐츠진흥원","dept":"콘텐츠지원팀","boardUrl":"https://www.gcon.or.kr"},
-      {"name":"경기관광 우수상품 공모",       "period":"2026.08.01 ~ 2026.09.15","org":"경기관광공사",    "dept":"관광마케팅팀","boardUrl":"https://www.gto.or.kr"},
-      {"name":"2026 한국도자 공모전",         "period":"2026.02.01 ~ 2026.04.30","org":"한국도자재단",    "dept":"사업기획팀",  "boardUrl":"https://www.kocef.org"}
+      {"name":"제1회 경기도어린이박물관 창작 그림책 공모전 당선작 발간 출판사 선정 공모","period":"2026.06.04 ~ 2026.06.30","org":"경기문화재단","dept":"문화예술본부","boardUrl":"https://www.ggcf.kr/boards/businessNotices/articles/21322"},
+      {"name":"경기문화재단 공모 제2026-47호 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트>","period":"2026.05.27 ~ 2026.06.30","org":"경기문화재단","dept":"문화예술본부","boardUrl":"https://www.ggcf.kr/boards/businessNotices/articles/21306"},
+      {"name":"2026년 경기상상캠퍼스 신규 입주단체 모집 공고","period":"2026.05.27 ~ 2026.07.10","org":"경기문화재단","dept":"문화예술본부","boardUrl":"https://www.ggcf.kr/boards/businessNotices/articles/21305"},
+      {"name":"「그대만 있다면」 2026년 경기창작캠퍼스 창작발표 지원사업","period":"2026.05.13 ~ 2026.06.30","org":"경기문화재단","dept":"문화예술본부","boardUrl":"https://www.ggcf.kr/boards/businessNotices/articles/21220"},
+      {"name":"콘텐츠 스타트업 육성 공모","period":"2026.07.01 ~ 2026.08.01","org":"경기콘텐츠진흥원","dept":"콘텐츠지원팀","boardUrl":"https://www.gcon.or.kr"},
+      {"name":"경기관광 우수상품 공모","period":"2026.08.01 ~ 2026.09.15","org":"경기관광공사","dept":"관광마케팅팀","boardUrl":"https://www.gto.or.kr"}
     ],
     "nonghae": [
       {"name":"청년농업인 스마트팜 창업 지원 공모","period":"2026.06.10 ~ 2026.07.25","org":"경기도농업기술원",   "dept":"기술보급과",  "boardUrl":"https://www.nongup.gg.go.kr"},
