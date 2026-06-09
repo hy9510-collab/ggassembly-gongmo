@@ -40,6 +40,19 @@ DETAIL_HINTS = ("articleno", "article=", "seq=", "idx=", "nttid", "bidx=",
                 "mode=view", "subact=view", "boardview", "/view", "?no=",
                 "bsidx", "ntt_id", "/articles/")
 
+# 경기도 31개 시·군 (통합공모 포털 게시글의 경기 여부 판단용)
+GG_CITIES = ("수원", "성남", "고양", "용인", "부천", "안산", "안양", "남양주",
+             "화성", "평택", "의정부", "시흥", "파주", "광명", "김포", "군포",
+             "이천", "양주", "오산", "구리", "안성", "포천", "의왕", "하남",
+             "여주", "동두천", "과천", "양평", "가평", "연천")
+# 경기 외 광역지자체·대표도시 — 제목에 있고 '경기'·경기 시군명이 없으면 제외.
+# '광주'는 경기 광주시와 모호하므로 '광주광역시'만 사용.
+NON_GG_REGIONS = ("서울", "부산", "대구", "대전", "울산", "인천", "광주광역시",
+                  "강원", "충북", "충남", "충청", "전북", "전남", "전라",
+                  "경북", "경남", "경상", "제주", "목포", "여수", "순천",
+                  "청주", "천안", "아산", "전주", "익산", "포항", "경주",
+                  "구미", "창원", "김해", "진주", "원주", "춘천", "강릉")
+
 
 # ──────────────────────────────────────────────────────────────
 # 수집 대상 정의
@@ -192,6 +205,20 @@ def is_detail_href(href: str) -> bool:
     return any(hint in h for hint in DETAIL_HINTS)
 
 
+def is_gyeonggi(title: str) -> bool:
+    """통합공모 포털 게시글이 경기도 관련인지 판단.
+    '경기' 또는 경기 시·군명이 있으면 포함, 타 지역명만 있으면 제외,
+    지역 표기가 전혀 없으면 (경기 통합공모 포털 글이므로) 포함한다."""
+    t = title or ""
+    if "경기" in t:
+        return True
+    if any(c in t for c in GG_CITIES):
+        return True
+    if any(r in t for r in NON_GG_REGIONS):
+        return False
+    return True
+
+
 # ──────────────────────────────────────────────────────────────
 # Playwright 추출
 # ──────────────────────────────────────────────────────────────
@@ -256,6 +283,9 @@ def extract_from_page(page, target: dict) -> list[dict]:
         # 상임위 결정
         cid = target["id"]
         if cid == "_portal":
+            # 통합공모 포털엔 타 시·도 공모도 올라옴 → 경기 건만 수집
+            if not is_gyeonggi(name):
+                continue
             cid = classify_portal(name)
 
         items.append({
