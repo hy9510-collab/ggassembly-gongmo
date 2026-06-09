@@ -323,12 +323,15 @@ def merge(existing: dict, scraped: list[dict]) -> dict:
     for cid, plist in existing.get("projects", {}).items():
         result[cid] = [p for p in plist if p.get("src") != "auto"]
 
-    # 2) 이번에 수집한 auto 항목 추가 (중복 제거)
+    # 2) 이번에 수집한 auto 항목 추가 (제목·URL 중복 제거)
     for item in scraped:
         cid = item.pop("_committee", "gihoek")
         result.setdefault(cid, [])
         names = {p["name"] for p in result[cid]}
-        if item.get("name") and item.get("boardUrl") and item["name"] not in names:
+        urls = {p.get("boardUrl") for p in result[cid]}
+        if (item.get("name") and item.get("boardUrl")
+                and item["name"] not in names
+                and item["boardUrl"] not in urls):
             result[cid].append(item)
 
     return result
