@@ -162,7 +162,14 @@ def clean_title(raw: str) -> str:
         return ""
     kw_lines = [ln for ln in lines if any(k in ln for k in KEYWORDS)]
     pool = kw_lines if kw_lines else lines
-    return max(pool, key=len)
+    name = max(pool, key=len)
+    # 제목 뒤에 본문이 이어붙은 경우(…에서는/…드립니다 …) 본문 앞에서 끊는다
+    for marker in ("에서는", "드립니다", "바랍니다", "하였습니다", "되었습니다", "하고 있"):
+        i = name.find(marker)
+        if i > 10:
+            name = name[:i].strip()
+            break
+    return name
 
 
 def looks_like_title(text: str) -> bool:
