@@ -345,13 +345,25 @@ def load_existing() -> dict:
 
 def merge(existing: dict, scraped: list[dict]) -> dict:
     """
-    자동 수집분(src='auto')은 매 실행마다 교체(self-cleaning),
-    수동 입력분(src 없음)은 그대로 보존한다.
+    자동 수집분(src='auto')은 매 실행마다 교체(self-cleaning).
+    단, 특정 기관 게시판이 이번 실행에서 0건이면(일시 장애·타임아웃 등)
+    그 기관의 기존 auto 항목은 보존한다 → 포털 장애 시 데이터 전멸 방지.
+    수동 입력분(src 없음)은 항상 보존.
     """
-    # 1) 기존에서 수동 입력분만 남김 (이전 auto 항목 제거)
+    existing_projects = existing.get("projects", {})
+    # 이번 실행에서 결과가 나온 기관(org) 집합
+    fresh_orgs = {item.get("org") for item in scraped if item.get("org")}
+
+    # 1) 기존 항목 정리:
+    #    - 수동 입력분(src 없음)은 항상 보존
+    #    - 이번에 결과가 없는 기관의 auto 항목도 보존(장애 대비)
+    #    - 이번에 새로 받은 기관의 auto 항목은 버리고 아래서 최신본으로 교체
     result = {}
-    for cid, plist in existing.get("projects", {}).items():
-        result[cid] = [p for p in plist if p.get("src") != "auto"]
+    for cid, plist in existing_projects.items():
+        result[cid] = [
+            p for p in plist
+            if p.get("src") != "auto" or p.get("org") not in fresh_orgs
+        ]
 
     # 2) 이번에 수집한 auto 항목 추가 (제목·URL 중복 제거)
     for item in scraped:
