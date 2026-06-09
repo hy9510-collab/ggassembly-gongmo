@@ -1,0 +1,7 @@
+# 임시 파일
+C:\serve-temp\
+serve.cmd
+__pycache__/
+*.pyc
+*.pyo
+.env

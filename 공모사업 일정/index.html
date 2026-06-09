@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>경기도의회 상임위원회별 공모사업 현황</title>
+  <style>
+    :root {
+      --gd:#3a7d44;--gm:#5a9e6f;--gl:#e8f5ec;--gb:#b2d8bc;
+      --bg:#f5f7f5;--tx:#444;--wh:#fff;--sh:0 2px 8px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;}
+
+    header{background:var(--gd);color:var(--wh);padding:20px 32px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .badge{background:var(--gm);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;}
+    header h1{font-size:21px;font-weight:700;}
+    header p{font-size:13px;opacity:.8;margin-top:3px;}
+    .today-box{background:rgba(255,255,255,.15);border-radius:10px;padding:10px 18px;text-align:center;flex-shrink:0;margin-left:auto;}
+    .today-box .tl{font-size:11px;opacity:.8;}
+    .today-box .td{font-size:18px;font-weight:700;margin-top:2px;}
+
+    .toolbar{background:var(--wh);border-bottom:1px solid var(--gb);padding:12px 32px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+    .toolbar input{flex:1;min-width:180px;padding:8px 14px;border:1px solid #ccc;border-radius:6px;font-size:14px;outline:none;}
+    .toolbar input:focus{border-color:var(--gm);}
+    .fbtn{padding:6px 14px;border:1px solid var(--gb);border-radius:20px;background:var(--wh);font-size:13px;cursor:pointer;transition:all .15s;}
+    .fbtn:hover,.fbtn.active{background:var(--gd);color:var(--wh);border-color:var(--gd);}
+    .fbtn.cl{border-color:#bbb;color:#777;}
+    .fbtn.cl.active{background:#777;border-color:#777;color:#fff;}
+    .org-btn{padding:7px 16px;border:2px solid var(--gd);border-radius:20px;background:var(--wh);color:var(--gd);font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
+    .org-btn:hover{background:var(--gd);color:var(--wh);}
+
+    main{padding:22px 32px;}
+    .summary{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:12px;margin-bottom:24px;}
+    .sc{background:var(--wh);border-radius:10px;padding:14px 16px;box-shadow:var(--sh);text-align:center;}
+    .sc .num{font-size:26px;font-weight:700;color:var(--gd);}
+    .sc .lbl{font-size:12px;color:#888;margin-top:3px;}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:20px;}
+    .card{background:var(--wh);border-radius:12px;box-shadow:var(--sh);overflow:hidden;}
+    .card.hidden{display:none;}
+    .ch{background:var(--gd);color:var(--wh);padding:13px 20px;display:flex;align-items:center;justify-content:space-between;}
+    .ch h2{font-size:15px;font-weight:700;}
+    .ch .cb{background:rgba(255,255,255,.2);border-radius:12px;padding:2px 10px;font-size:12px;}
+
+    /* ── 소관기관 섹션 (도청 실국 / 산하기관 분리) ── */
+    .ag-wrap{border-bottom:1px solid var(--gb);}
+    .ag-sec{padding:8px 20px;}
+    .ag-tog{background:none;border:none;cursor:pointer;font-size:12px;color:var(--gd);font-weight:600;display:flex;align-items:center;gap:4px;padding:4px 0;}
+    .ag-tog .arr{transition:transform .2s;display:inline-block;}
+    .ag-tog.open .arr{transform:rotate(90deg);}
+    .ag-body{display:none;overflow-x:auto;margin-bottom:4px;}
+    .ag-body.open{display:block;}
+
+    /* 도청 실국 헤더 */
+    .sec-label{font-size:11px;font-weight:700;letter-spacing:.5px;padding:4px 10px 2px;color:#fff;}
+    .sec-label.gg{background:#3a7d44;}
+    .sec-label.edu{background:#1565c0;}
+    .sec-label.sub{background:#5a9e6f;}
+
+    .ag-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+    .ag-tbl th{background:#f0f7f2;padding:6px 10px;text-align:left;color:var(--gd);font-weight:600;border-bottom:1px solid var(--gb);white-space:nowrap;}
+    .ag-tbl td{padding:6px 10px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+    .ag-tbl tr:last-child td{border-bottom:none;}
+    .ag-tbl tr:hover td{background:#fafffe;}
+    .tel{color:#666;font-size:11px;white-space:nowrap;}
+    .lp{display:flex;gap:4px;}
+    .lb{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:5px;font-size:11px;text-decoration:none;white-space:nowrap;transition:all .15s;border:1px solid;}
+    .lb.main{background:var(--wh);color:var(--gd);border-color:var(--gd);}
+    .lb.main:hover{background:var(--gl);}
+    .lb.board{background:var(--gd);color:var(--wh);border-color:var(--gd);}
+    .lb.board:hover{background:var(--gm);}
+
+    /* ── 공모 테이블 ── */
+    .pt{width:100%;border-collapse:collapse;font-size:13px;}
+    .pt thead tr{background:#f0f7f2;}
+    .pt th{padding:9px 14px;text-align:left;font-weight:600;color:var(--gd);border-bottom:1px solid var(--gb);white-space:nowrap;}
+    .pt td{padding:9px 14px;border-bottom:1px solid #eef2ee;vertical-align:middle;}
+    .pt tr:last-child td{border-bottom:none;}
+    .pt tr:hover td{background:#fafffe;}
+    .pl{color:var(--tx);text-decoration:none;font-weight:500;}
+    .pl:hover{color:var(--gd);text-decoration:underline;}
+    .st{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap;}
+    .st.open{background:#e6f4ea;color:#2e7d32;}
+    .st.soon{background:#fff3e0;color:#e65100;}
+    .st.closed{background:#f5f5f5;color:#9e9e9e;}
+    .st.prep{background:#e3f2fd;color:#1565c0;}
+    .dday{font-size:11px;font-weight:700;margin-left:4px;}
+    .dday.hot{color:#e65100;} .dday.norm{color:#2e7d32;}
+    .no-proj{padding:16px 20px;font-size:13px;color:#aaa;text-align:center;}
+
+    /* ── 모달 ── */
+    .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;}
+    .ov.open{display:flex;}
+    .modal{background:var(--wh);border-radius:14px;width:100%;max-width:1040px;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden;animation:su .2s ease;}
+    @keyframes su{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .mh{background:var(--gd);color:var(--wh);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+    .mh h2{font-size:17px;font-weight:700;}
+    .mc-btn{background:none;border:none;color:var(--wh);font-size:24px;cursor:pointer;line-height:1;}
+    .mb{padding:20px 24px;max-height:76vh;overflow-y:auto;}
+    .mtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+    .mtab{padding:6px 14px;border:1px solid var(--gb);border-radius:20px;background:var(--wh);font-size:13px;cursor:pointer;transition:all .15s;}
+    .mtab:hover,.mtab.active{background:var(--gd);color:var(--wh);border-color:var(--gd);}
+    .mc{display:none;}
+    .mc.active{display:block;}
+
+    .mot{width:100%;border-collapse:collapse;font-size:13px;}
+    .mot th{background:#f0f7f2;padding:8px 10px;text-align:left;color:var(--gd);font-weight:600;border-bottom:1px solid var(--gb);white-space:nowrap;}
+    .mot td{padding:7px 10px;border-bottom:1px solid #eef2ee;vertical-align:middle;}
+    .mot tr:last-child td{border-bottom:none;}
+    .mot tr:hover td{background:#fafffe;}
+    .mot .cname{font-weight:700;color:var(--gd);white-space:nowrap;vertical-align:top;padding-top:9px !important;}
+    /* 모달 내 구분 행 */
+    .mot .grp-row td{background:#f8fdf9;font-size:11px;font-weight:700;color:var(--gd);padding:4px 10px;letter-spacing:.4px;}
+
+    @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.mb{padding:12px;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">2</div>
+  <div>
+    <h1>경기도의회 상임위원회별 공모사업 현황</h1>
+    <p id="updateInfo">각 상임위원회 소관기관 공모사업 일정 안내</p>
+  </div>
+  <div class="today-box">
+    <div class="tl">오늘 날짜</div>
+    <div class="td" id="todayDisplay">-</div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <input type="text" id="searchInput" placeholder="공모사업명, 기관명, 위원회명 검색..." oninput="applyFilter()" />
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    <button class="fbtn active" onclick="setF('upcoming',this)">앞으로의 일정</button>
+    <button class="fbtn"        onclick="setF('open',this)">접수중</button>
+    <button class="fbtn"        onclick="setF('soon',this)">마감임박</button>
+    <button class="fbtn"        onclick="setF('prep',this)">공고예정</button>
+    <button class="fbtn cl"     onclick="setF('closed',this)">마감</button>
+  </div>
+  <button class="org-btn" onclick="openModal()">📋 상임위원회별 소관기관</button>
+</div>
+
+<main>
+  <div class="summary">
+    <div class="sc"><div class="num">13</div><div class="lbl">상임위원회</div></div>
+    <div class="sc"><div class="num" id="cU" style="color:#3a7d44">0</div><div class="lbl">앞으로의 일정</div></div>
+    <div class="sc"><div class="num" id="cO" style="color:#2e7d32">0</div><div class="lbl">접수중</div></div>
+    <div class="sc"><div class="num" id="cS" style="color:#e65100">0</div><div class="lbl">마감임박(7일)</div></div>
+    <div class="sc"><div class="num" id="cP" style="color:#1565c0">0</div><div class="lbl">공고예정</div></div>
+    <div class="sc"><div class="num" id="cC" style="color:#9e9e9e">0</div><div class="lbl">마감(올해)</div></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<div class="ov" id="ov" onclick="ovOut(event)">
+  <div class="modal">
+    <div class="mh">
+      <h2>📋 상임위원회별 소관기관 현황</h2>
+      <button class="mc-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="mb">
+      <div class="mtabs" id="mTabs"></div>
+      <div id="mCont"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ 날짜 유틸 ═══ */
+const TODAY = new Date(); TODAY.setHours(0,0,0,0);
+const THIS_YEAR = TODAY.getFullYear();
+function pd(s){const[y,m,d]=s.trim().split('.');return new Date(+y,+m-1,+d);}
+function calcSt(period){
+  const[s,e]=period.split('~').map(pd);
+  const diff=Math.ceil((e-TODAY)/86400000);
+  if(e<TODAY)  return{status:'closed',dday:null};
+  if(s>TODAY)  return{status:'prep',  dday:`D-${Math.ceil((s-TODAY)/86400000)}`};
+  if(diff<=7)  return{status:'soon',  dday:`D-${diff}`};
+  return            {status:'open',  dday:`D-${diff}`};
+}
+function isUp(st){return st==='open'||st==='soon'||st==='prep';}
+function endYr(p){return +p.split('~')[1].trim().split('.')[0];}
+
+/* 날짜 표시 */
+(()=>{const d=TODAY,w=['일','월','화','수','목','금','토'];
+  document.getElementById('todayDisplay').textContent=
+  `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} (${w[d.getDay()]})`;
+})();
+
+/* ═══════════════════════════════════════════════════════
+   데이터
+   agencies: { org, dept, tel, url(메인), boardUrl(공모게시판), type:'gg'|'edu'|'agency' }
+   - type='gg'    : 경기도청 직속 실국
+   - type='edu'   : 경기도교육청 직속 부서
+   - type='agency': 별도 산하기관
+═══════════════════════════════════════════════════════ */
+const DATA=[
+  {
+    id:'uiwoon',name:'의회운영위원회',
+    agencies:[
+      {org:'경기도의회 사무처',      dept:'의정담당관·운영지원담당관·입법정책담당관',tel:'031-8008-7000',type:'agency',url:'https://www.ggc.go.kr',boardUrl:'https://www.ggc.go.kr'},
+      {org:'경기도청',               dept:'지사 비서실',              tel:'031-8008-2000',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',               dept:'대변인실·홍보기획관',      tel:'031-8008-2100',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',               dept:'중앙협력본부(서울)',        tel:'02-2170-2900', type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도교육청',           dept:'교육감 비서실',             tel:'031-820-0100', type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',           dept:'홍보기획관',                tel:'031-820-0130', type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+    ],
+    projects:[
+      {name:'의정활동 우수사례 공모',       period:'2026.06.01 ~ 2026.07.31',org:'경기도의회 사무처',dept:'의정담당관',  boardUrl:'https://www.ggc.go.kr'},
+      {name:'경기도 홍보 아이디어 공모',    period:'2026.07.01 ~ 2026.08.15',org:'경기도청',        dept:'홍보기획관',  boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'2026 의회 소통 우수사례 공모', period:'2026.03.01 ~ 2026.05.31',org:'경기도의회 사무처',dept:'의정담당관',  boardUrl:'https://www.ggc.go.kr'},
+    ]
+  },
+  {
+    id:'gihoek',name:'기획재정위원회',
+    agencies:[
+      {org:'경기도청',      dept:'기획조정실',     tel:'031-8008-2200',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',      dept:'공정발전기획실',  tel:'031-8008-2300',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',      dept:'평화협력국',     tel:'031-8008-4600',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도감사위원회',dept:'감사위원회',    tel:'031-8008-3300',type:'agency',url:'https://audit.gg.go.kr',boardUrl:'https://audit.gg.go.kr'},
+      {org:'경기도인권위원회',dept:'인권위원회',    tel:'031-8008-2930',type:'agency',url:'https://www.gg.go.kr', boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기연구원',    dept:'연구기획실',     tel:'031-250-3000', type:'agency',url:'https://www.gri.re.kr',boardUrl:'https://www.gri.re.kr/web/contents/notice.do'},
+    ],
+    projects:[
+      {name:'경기도 중장기 발전계획 연구 공모',period:'2026.06.10 ~ 2026.07.20',org:'경기연구원',       dept:'연구기획실',boardUrl:'https://www.gri.re.kr/web/contents/notice.do'},
+      {name:'2027년 자체감사 우수기관 공모',   period:'2026.08.01 ~ 2026.09.30',org:'경기도감사위원회', dept:'감사위원회', boardUrl:'https://audit.gg.go.kr'},
+      {name:'2026 경기연구 정책연구 공모',     period:'2026.02.01 ~ 2026.04.30',org:'경기연구원',       dept:'연구기획실',boardUrl:'https://www.gri.re.kr/web/contents/notice.do'},
+    ]
+  },
+  {
+    id:'gyeongje',name:'경제노동위원회',
+    agencies:[
+      {org:'경기도청',          dept:'노동국',          tel:'031-8008-4100',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',          dept:'경제실',          tel:'031-8008-3700',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',          dept:'사회혁신경제국',  tel:'031-8008-3900',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기신용보증재단',  dept:'기업지원본부',    tel:'031-259-7700', type:'agency',url:'https://www.gcgf.or.kr',boardUrl:'https://www.gcgf.or.kr'},
+      {org:'킨텍스',            dept:'전시운영팀',      tel:'031-995-8000', type:'agency',url:'https://www.kintex.com', boardUrl:'https://www.kintex.com'},
+      {org:'경기경제자유구역청',dept:'투자유치본부',    tel:'031-8030-4000',type:'agency',url:'https://www.ggez.go.kr',boardUrl:'https://www.ggez.go.kr'},
+      {org:'경기도일자리재단',  dept:'일자리정책실',    tel:'031-270-9600', type:'agency',url:'https://www.jobfound.or.kr',boardUrl:'https://www.jobfound.or.kr'},
+      {org:'경기도주식회사',    dept:'경영지원팀',      tel:'031-8008-9700',type:'agency',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도시장상권진흥원',dept:'상권활성화팀',  tel:'031-270-5800', type:'agency',url:'https://gmr.or.kr',   boardUrl:'https://gmr.or.kr'},
+      {org:'경기도사회적경제원',dept:'사회적경제지원팀',tel:'031-220-3100', type:'agency',url:'https://www.gsea.or.kr',boardUrl:'https://www.gsea.or.kr'},
+    ],
+    projects:[
+      {name:'경기도 사회적기업 육성사업 공모',     period:'2026.06.05 ~ 2026.07.10',org:'경기도사회적경제원', dept:'사회적경제지원팀',boardUrl:'https://www.gsea.or.kr'},
+      {name:'2026 청년 일자리 창출 지원사업 공모', period:'2026.07.01 ~ 2026.08.15',org:'경기도일자리재단',   dept:'일자리정책실',    boardUrl:'https://www.jobfound.or.kr'},
+      {name:'소상공인 경영안정 지원 공모',          period:'2026.03.01 ~ 2026.05.15',org:'경기도시장상권진흥원',dept:'상권활성화팀',    boardUrl:'https://gmr.or.kr'},
+    ]
+  },
+  {
+    id:'anjeun',name:'안전행정위원회',
+    agencies:[
+      {org:'경기도청',                 dept:'안전관리실',     tel:'031-8008-5300',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',                 dept:'자치행정국',     tel:'031-8008-2600',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',                 dept:'인권담당관',     tel:'031-8008-2930',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기북부특별자치도추진단', dept:'추진기획팀',     tel:'031-8008-9300',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도 소방재난본부',      dept:'소방행정과',     tel:'031-8008-6600',type:'agency',url:'https://fire.gg.go.kr',boardUrl:'https://fire.gg.go.kr'},
+      {org:'경기도 북부소방재난본부',  dept:'소방행정과',     tel:'031-8030-6000',type:'agency',url:'https://fire.gg.go.kr',boardUrl:'https://fire.gg.go.kr'},
+      {org:'경기도119특수대응단',      dept:'특수대응팀',     tel:'031-8008-6800',type:'agency',url:'https://fire.gg.go.kr',boardUrl:'https://fire.gg.go.kr'},
+      {org:'경기도국민안전체험관',     dept:'안전체험교육팀', tel:'031-8030-5600',type:'agency',url:'https://www.gg.go.kr', boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도남부자치경찰위원회', dept:'자치경찰위원회', tel:'031-8008-2700',type:'agency',url:'https://www.gg.go.kr', boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도북부자치경찰위원회', dept:'자치경찰위원회', tel:'031-8030-2700',type:'agency',url:'https://www.gg.go.kr', boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기자원봉사센터',         dept:'사업팀',         tel:'031-236-6565', type:'agency',url:'https://www.ggvol.or.kr',boardUrl:'https://www.ggvol.or.kr'},
+    ],
+    projects:[
+      {name:'경기도 안전문화 우수사례 공모',period:'2026.06.15 ~ 2026.07.31',org:'경기도청',        dept:'안전관리실',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'자원봉사 프로그램 공모',       period:'2026.06.08 ~ 2026.06.20',org:'경기자원봉사센터',dept:'사업팀',    boardUrl:'https://www.ggvol.or.kr'},
+      {name:'2026 자원봉사 우수사례 공모',  period:'2026.03.10 ~ 2026.04.25',org:'경기자원봉사센터',dept:'사업팀',    boardUrl:'https://www.ggvol.or.kr'},
+    ]
+  },
+  {
+    id:'munhwa',name:'문화체육관광위원회',
+    agencies:[
+      {org:'경기도청',                       dept:'문화체육관광국',  tel:'031-8008-4700',type:'gg',   url:'https://www.gg.go.kr',                boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기관광공사',                   dept:'관광마케팅팀',    tel:'031-259-4700', type:'agency',url:'https://www.gto.or.kr',               boardUrl:'https://www.gto.or.kr'},
+      {org:'경기문화재단',                   dept:'문화예술본부',    tel:'031-231-7200', type:'agency',url:'https://www.ggcf.kr',                 boardUrl:'https://www.ggcf.kr/boards/businessNotices/articles'},
+      {org:'경기아트센터',                   dept:'공연기획팀',      tel:'031-230-3200', type:'agency',url:'https://www.ggac.or.kr',              boardUrl:'https://www.ggac.or.kr'},
+      {org:'경기도수원월드컵경기장관리재단', dept:'시설운영팀',      tel:'031-259-2500', type:'agency',url:'https://www.suwonworldcup.or.kr',     boardUrl:'https://www.suwonworldcup.or.kr'},
+      {org:'한국도자재단',                   dept:'사업기획팀',      tel:'031-799-1500', type:'agency',url:'https://www.kocef.org',               boardUrl:'https://www.kocef.org'},
+      {org:'경기콘텐츠진흥원',              dept:'콘텐츠지원팀',    tel:'031-259-7300', type:'agency',url:'https://www.gcon.or.kr',              boardUrl:'https://www.gcon.or.kr'},
+      {org:'경기도체육회',                   dept:'경기력향상팀',    tel:'031-250-1300', type:'agency',url:'https://www.ggsc.or.kr',              boardUrl:'https://www.ggsc.or.kr'},
+      {org:'경기도장애인체육회',             dept:'장애인체육진흥팀',tel:'031-250-1800', type:'agency',url:'https://www.ggdsc.or.kr',             boardUrl:'https://www.ggdsc.or.kr'},
+      {org:'사단법인 DMZ국제다큐멘터리영화제',dept:'사무국',         tel:'031-944-6240', type:'agency',url:'https://www.dmzdocs.com',             boardUrl:'https://www.dmzdocs.com'},
+      {org:'경기도남한산성세계유산센터',     dept:'학예팀',          tel:'031-743-6610', type:'agency',url:'https://www.gg.go.kr',               boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+    ],
+    projects:[
+      {name:'경기도 문화예술 창작지원 공모',period:'2026.06.01 ~ 2026.07.25',org:'경기문화재단',    dept:'문화예술본부',boardUrl:'https://www.ggcf.kr/boards/businessNotices/articles'},
+      {name:'콘텐츠 스타트업 육성 공모',   period:'2026.07.01 ~ 2026.08.01',org:'경기콘텐츠진흥원',dept:'콘텐츠지원팀',boardUrl:'https://www.gcon.or.kr'},
+      {name:'경기관광 우수상품 공모',       period:'2026.08.01 ~ 2026.09.15',org:'경기관광공사',    dept:'관광마케팅팀',boardUrl:'https://www.gto.or.kr'},
+      {name:'2026 한국도자 공모전',         period:'2026.02.01 ~ 2026.04.30',org:'한국도자재단',    dept:'사업기획팀',  boardUrl:'https://www.kocef.org'},
+    ]
+  },
+  {
+    id:'nonghae',name:'농정해양위원회',
+    agencies:[
+      {org:'경기도청',              dept:'농수산생명과학국',              tel:'031-8008-5000',type:'gg',   url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',              dept:'축산동물복지국',                tel:'031-8008-5100',type:'gg',   url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',              dept:'기후환경에너지자국(산림녹지과)',tel:'031-8008-4800',type:'gg',   url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도농업기술원',      dept:'기술보급과·연구개발과',        tel:'031-229-5600', type:'agency',url:'https://www.nongup.gg.go.kr', boardUrl:'https://www.nongup.gg.go.kr'},
+      {org:'경기도동물위생시험소',  dept:'검역과',                       tel:'031-8030-5000',type:'agency',url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도북부동물위생시험소',dept:'검역과',                     tel:'031-8030-5100',type:'agency',url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도해양수산자원연구소',dept:'연구개발팀',                 tel:'031-580-4400', type:'agency',url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도산림환경연구소',  dept:'산림연구팀',                   tel:'031-8030-4100',type:'agency',url:'https://fore.gg.go.kr',        boardUrl:'https://fore.gg.go.kr'},
+      {org:'경기도농수산진흥원',    dept:'유통지원팀',                   tel:'031-270-5700', type:'agency',url:'https://www.ggaf.or.kr',       boardUrl:'https://www.ggaf.or.kr'},
+      {org:'경기도종자관리소',      dept:'종자보급팀',                   tel:'031-229-6000', type:'agency',url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도축산진흥센터',    dept:'축산지원팀',                   tel:'031-8030-5200',type:'agency',url:'https://www.gg.go.kr',         boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기평택항만공사',      dept:'농수산생명과학국 관련업무',     tel:'031-8030-6500',type:'agency',url:'https://www.gppc.or.kr',       boardUrl:'https://www.gppc.or.kr'},
+    ],
+    projects:[
+      {name:'청년농업인 스마트팜 창업 지원 공모',period:'2026.06.10 ~ 2026.07.25',org:'경기도농업기술원',   dept:'기술보급과',  boardUrl:'https://www.nongup.gg.go.kr'},
+      {name:'친환경농업 실천 우수농가 공모',     period:'2026.07.15 ~ 2026.09.10',org:'경기도농수산진흥원', dept:'유통지원팀',  boardUrl:'https://www.ggaf.or.kr'},
+      {name:'산림복지 프로그램 개발 공모',       period:'2026.08.01 ~ 2026.09.15',org:'경기도산림환경연구소',dept:'산림연구팀',boardUrl:'https://fore.gg.go.kr'},
+      {name:'2026 친환경 우수농가 공모',         period:'2026.02.10 ~ 2026.04.30',org:'경기도농수산진흥원', dept:'유통지원팀',  boardUrl:'https://www.ggaf.or.kr'},
+    ]
+  },
+  {
+    id:'bokji',name:'보건복지위원회',
+    agencies:[
+      {org:'경기도청',                    dept:'복지국',                                          tel:'031-8008-4300',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',                    dept:'보건건강국',                                      tel:'031-8008-4400',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도보건환경연구원',        dept:'운영기획부·식품의약품연구부·감염병연구부',        tel:'031-250-3500', type:'agency',url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도보건환경연구원 북부지원',dept:'행정지원팀·식품분석팀·미생물검사팀·감염병조사팀',tel:'031-820-0700', type:'agency',url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도의료원',                dept:'기획관리실',                                      tel:'031-250-8000', type:'agency',url:'https://www.gmc.gg.go.kr',boardUrl:'https://www.gmc.gg.go.kr'},
+      {org:'경기복지재단',                dept:'복지정책본부',                                    tel:'031-267-9300', type:'agency',url:'https://www.ggwf.or.kr', boardUrl:'https://www.ggwf.or.kr'},
+      {org:'경기도사회서비스원',          dept:'서비스지원팀',                                    tel:'031-8030-7000',type:'agency',url:'https://www.ggss.or.kr', boardUrl:'https://www.ggss.or.kr/bbs/?bid=notice'},
+    ],
+    projects:[
+      {name:'경기도 복지 우수사례 공모',      period:'2026.06.01 ~ 2026.07.20',org:'경기복지재단',       dept:'복지정책본부',boardUrl:'https://www.ggwf.or.kr'},
+      {name:'사회서비스 혁신모델 공모',       period:'2026.06.15 ~ 2026.07.30',org:'경기도사회서비스원', dept:'서비스지원팀',boardUrl:'https://www.ggss.or.kr/bbs/?bid=notice'},
+      {name:'지역사회 건강증진 프로그램 공모',period:'2026.08.01 ~ 2026.09.15',org:'경기도청',           dept:'보건건강국',  boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'2026 사회서비스 혁신모델 공모',  period:'2026.02.15 ~ 2026.04.30',org:'경기도사회서비스원', dept:'서비스지원팀',boardUrl:'https://www.ggss.or.kr/bbs/?bid=notice'},
+    ]
+  },
+  {
+    id:'gunseol',name:'건설교통위원회',
+    agencies:[
+      {org:'경기도청',          dept:'건설국',         tel:'031-8008-5500',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',          dept:'교통국',         tel:'031-8008-5700',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',          dept:'철도항만물류국', tel:'031-8008-5900',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기국제공항추진단',dept:'추진기획팀',     tel:'031-8008-9500',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도건설본부',    dept:'건설기술관리팀', tel:'031-250-4400', type:'agency',url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도교통연수원',  dept:'교육운영팀',     tel:'031-250-5500', type:'agency',url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기평택항만공사',  dept:'항만운영팀',     tel:'031-8030-6500',type:'agency',url:'https://www.gppc.or.kr', boardUrl:'https://www.gppc.or.kr'},
+      {org:'경기교통공사',      dept:'교통서비스팀',   tel:'031-8030-8200',type:'agency',url:'https://www.gbus.or.kr', boardUrl:'https://www.gbus.or.kr'},
+    ],
+    projects:[
+      {name:'경기도 교통안전 아이디어 공모',    period:'2026.06.03 ~ 2026.06.25',org:'경기도교통연수원',dept:'교육운영팀',    boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'스마트 물류 인프라 구축 지원 공모',period:'2026.07.01 ~ 2026.08.31',org:'경기도청',        dept:'철도항만물류국',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'2026 교통안전 우수사례 공모',      period:'2026.02.15 ~ 2026.04.30',org:'경기도교통연수원',dept:'교육운영팀',    boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+    ]
+  },
+  {
+    id:'dosi',name:'도시환경위원회',
+    agencies:[
+      {org:'경기도청',             dept:'도시주택실',   tel:'031-8008-6000',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',             dept:'도시개발국',   tel:'031-8008-6200',type:'gg',   url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',             dept:'기후환경정책과·기후환경관리과·에너지산업과·에너지관리과·대기환경관리과·환경보건안전과·자원순환과·정원산업과',tel:'031-8008-4800',type:'gg',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도보건환경연구원', dept:'기후대기연구부·물환경연구부·생활환경연구부·북부지원(대기환경팀·토양분석팀·수질환경팀·먹는물검사팀·환경생태팀)',tel:'031-250-3500',type:'agency',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도수자원본부',     dept:'수자원관리팀', tel:'031-250-4800', type:'agency',url:'https://water.gg.go.kr',boardUrl:'https://water.gg.go.kr'},
+      {org:'경기주택도시공사(GH)', dept:'주거복지본부·도시재생본부',tel:'031-220-8000',type:'agency',url:'https://www.gh.or.kr',boardUrl:'https://www.gh.or.kr'},
+      {org:'경기환경에너지진흥원', dept:'에너지전환팀', tel:'031-8030-7300',type:'agency',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+    ],
+    projects:[
+      {name:'경기도 에너지 절약 우수사례 공모',period:'2026.06.10 ~ 2026.07.31',org:'경기도청',             dept:'기후환경정책과',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'GH 청년주택 입주자 모집 공고',   period:'2026.06.08 ~ 2026.07.08',org:'경기주택도시공사(GH)',  dept:'주거복지본부',  boardUrl:'https://www.gh.or.kr'},
+      {name:'기후변화 적응 우수사례 공모',     period:'2026.09.01 ~ 2026.10.31',org:'경기도청',             dept:'기후환경정책과',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'2026 에너지 절약 우수사례',      period:'2026.03.01 ~ 2026.05.30',org:'경기도청',             dept:'기후환경정책과',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+    ]
+  },
+  {
+    id:'mirae',name:'미래과학협력위원회',
+    agencies:[
+      {org:'경기도청(경제부지사)',   dept:'AI국',               tel:'031-8008-3500',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청(경제부지사)',   dept:'국제협력과',         tel:'031-8008-3600',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청(경제부지사)',   dept:'미래성장산업국',     tel:'031-8008-3700',type:'gg',   url:'https://www.gg.go.kr',   boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도차세대융합기술원', dept:'융합기술연구소',     tel:'031-8006-0100',type:'agency',url:'https://www.ict.re.kr',  boardUrl:'https://www.ict.re.kr'},
+      {org:'경기테크노파크',         dept:'기업지원팀',         tel:'031-500-3000', type:'agency',url:'https://www.gtp.or.kr',  boardUrl:'https://www.gtp.or.kr'},
+      {org:'경기대진테크노파크',     dept:'기업지원팀',         tel:'031-539-6400', type:'agency',url:'https://www.djtp.or.kr', boardUrl:'https://www.djtp.or.kr'},
+      {org:'경기도경제과학진흥원',   dept:'기업성장팀·스타트업팀',tel:'031-259-6000',type:'agency',url:'https://www.gbsa.or.kr',boardUrl:'https://egbiz.or.kr/sp/supportPrjCatList.do'},
+    ],
+    projects:[
+      {name:'경기도 AI 스타트업 육성 공모',period:'2026.06.01 ~ 2026.07.15',org:'경기도경제과학진흥원',dept:'스타트업팀',boardUrl:'https://egbiz.or.kr/sp/supportPrjCatList.do'},
+      {name:'R&D 기술사업화 지원 공모',    period:'2026.06.10 ~ 2026.07.31',org:'경기테크노파크',      dept:'기업지원팀',boardUrl:'https://www.gtp.or.kr'},
+      {name:'국제협력 우수기업 지원 공모', period:'2026.08.01 ~ 2026.09.30',org:'경기도청(경제부지사)',dept:'국제협력과',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'2026 AI 스타트업 공모',       period:'2026.03.20 ~ 2026.05.15',org:'경기도경제과학진흥원',dept:'스타트업팀',boardUrl:'https://egbiz.or.kr/sp/supportPrjCatList.do'},
+    ]
+  },
+  {
+    id:'yeoseong',name:'여성가족평생교육위원회',
+    agencies:[
+      {org:'경기도청',           dept:'미래평생교육국', tel:'031-8008-4200',type:'gg',   url:'https://www.gg.go.kr',          boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',           dept:'여성가족국',     tel:'031-8008-4250',type:'gg',   url:'https://www.gg.go.kr',          boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도청',           dept:'이민사회국',     tel:'031-8008-4260',type:'gg',   url:'https://www.gg.go.kr',          boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {org:'경기도서관',         dept:'자료서비스팀',   tel:'031-870-6900', type:'agency',url:'https://www.library.gg.go.kr', boardUrl:'https://www.library.gg.go.kr'},
+      {org:'경기도여성비전센터', dept:'여성역량강화팀', tel:'031-239-9800', type:'agency',url:'https://www.ggwf.or.kr',       boardUrl:'https://www.ggwf.or.kr'},
+      {org:'경기도여성가족재단', dept:'정책연구팀',     tel:'031-270-9300', type:'agency',url:'https://www.gfwf.or.kr',       boardUrl:'https://www.gfwf.or.kr'},
+      {org:'경기도미래세대재단', dept:'아동청소년팀',   tel:'031-8030-7100',type:'agency',url:'https://www.ggff.or.kr',       boardUrl:'https://www.ggff.or.kr'},
+      {org:'경기도평생교육진흥원',dept:'평생교육지원팀',tel:'031-259-1700', type:'agency',url:'https://www.gill.or.kr',       boardUrl:'https://www.gill.or.kr'},
+    ],
+    projects:[
+      {name:'경기도 여성 리더십 아카데미 공모',period:'2026.06.10 ~ 2026.07.15',org:'경기도여성가족재단',   dept:'정책연구팀',    boardUrl:'https://www.gfwf.or.kr'},
+      {name:'평생학습 우수 프로그램 공모',     period:'2026.06.08 ~ 2026.06.30',org:'경기도평생교육진흥원', dept:'평생교육지원팀', boardUrl:'https://www.gill.or.kr'},
+      {name:'다문화가족 지원사업 공모',         period:'2026.07.01 ~ 2026.08.31',org:'경기도청',             dept:'여성가족국',     boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
+      {name:'2026 평생학습 우수 프로그램 공모',period:'2026.03.08 ~ 2026.05.08',org:'경기도평생교육진흥원', dept:'평생교육지원팀', boardUrl:'https://www.gill.or.kr'},
+    ]
+  },
+  {
+    id:'gyoyuk1',name:'교육기획위원회',
+    agencies:[
+      {org:'경기도교육청',  dept:'기획조정실 (제1부교육감)',     tel:'031-820-0200',type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',  dept:'협력국 (제1부교육감)',         tel:'031-820-0400',type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',  dept:'교원인사정책과 (제2부교육감)', tel:'031-820-0600',type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',  dept:'학교교육국 (제2부교육감)',     tel:'031-820-0800',type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',  dept:'유보통합준비단 (제1부교육감)', tel:'031-820-0900',type:'edu',  url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육연구원',dept:'연구기획부',                tel:'031-250-1700',type:'agency',url:'https://www.gie.re.kr',boardUrl:'https://www.gie.re.kr/board/noticeList.do'},
+    ],
+    projects:[
+      {name:'경기 미래교육 혁신 우수학교 공모',   period:'2026.06.01 ~ 2026.07.20',org:'경기도교육청',    dept:'학교교육국',    boardUrl:'https://www.goe.go.kr'},
+      {name:'유보통합 시범사업 참여기관 공모',     period:'2026.07.15 ~ 2026.09.15',org:'경기도교육청',    dept:'유보통합준비단',boardUrl:'https://www.goe.go.kr'},
+      {name:'2026년 교원 해외연수 프로그램 공모', period:'2026.06.20 ~ 2026.07.31',org:'경기도교육청',    dept:'협력국',        boardUrl:'https://www.goe.go.kr'},
+      {name:'교육 정책연구 공모',                 period:'2026.08.01 ~ 2026.09.30',org:'경기도교육연구원', dept:'연구기획부',    boardUrl:'https://www.gie.re.kr/board/noticeList.do'},
+      {name:'2026 교원 인사혁신 우수사례 공모',   period:'2026.02.01 ~ 2026.04.30',org:'경기도교육청',    dept:'교원인사정책과',boardUrl:'https://www.goe.go.kr'},
+    ]
+  },
+  {
+    id:'gyoyuk2',name:'교육행정위원회',
+    agencies:[
+      {org:'경기도교육청',dept:'감사관 (제1부교육감)',       tel:'031-820-0150',type:'edu',url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',dept:'운영지원과',                 tel:'031-820-0300',type:'edu',url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',dept:'지방공무원인사과',           tel:'031-820-0350',type:'edu',url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',dept:'행정국 (제1부교육감)',       tel:'031-820-0500',type:'edu',url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',dept:'지역교육과 (제2부교육감)',   tel:'031-820-0700',type:'edu',url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+      {org:'경기도교육청',dept:'디지털인재국 (제2부교육감)', tel:'031-820-0850',type:'edu',url:'https://www.goe.go.kr',boardUrl:'https://www.goe.go.kr'},
+    ],
+    projects:[
+      {name:'디지털 교육 콘텐츠 공모',              period:'2026.06.05 ~ 2026.07.10',org:'경기도교육청',dept:'디지털인재국',boardUrl:'https://www.goe.go.kr'},
+      {name:'AI 기반 교육행정 혁신 아이디어 공모',  period:'2026.06.15 ~ 2026.07.20',org:'경기도교육청',dept:'디지털인재국',boardUrl:'https://www.goe.go.kr'},
+      {name:'2026년 지역교육청 우수 행정사례 공모', period:'2026.08.01 ~ 2026.09.30',org:'경기도교육청',dept:'지역교육과',  boardUrl:'https://www.goe.go.kr'},
+      {name:'행정혁신 우수사례 공모',                period:'2026.09.01 ~ 2026.10.15',org:'경기도교육청',dept:'행정국',      boardUrl:'https://www.goe.go.kr'},
+    ]
+  },
+];
+
+/* ═══ 상태 상수 ═══ */
+const SL={open:'접수중',soon:'마감임박',prep:'공고예정',closed:'마감'};
+const SC={open:'open', soon:'soon',    prep:'prep',    closed:'closed'};
+const TYPE_LABEL={gg:'경기도청 직속 실국', edu:'경기도교육청 직속 부서', agency:'소관 산하기관'};
+const TYPE_COLOR={gg:'#3a7d44',           edu:'#1565c0',                 agency:'#5a9e6f'};
+
+let curFilter='upcoming';
+
+/* ═══ 소관기관 그룹 렌더링 ═══ */
+function agencyGroupHtml(agencies, showAll){
+  // type별로 그룹화 (gg → edu → agency 순)
+  const order=['gg','edu','agency'];
+  const groups={gg:[],edu:[],agency:[]};
+  agencies.forEach(a=>{ if(groups[a.type]) groups[a.type].push(a); });
+
+  let html='';
+  order.forEach(t=>{
+    if(!groups[t].length) return;
+    if(!showAll && groups[t][0].type==='gg' && groups['agency'].length===0) return; // 도청만 있으면 라벨 생략
+
+    // 그룹 색 라벨
+    const hasMultiTypes = order.filter(x=>groups[x].length>0).length>1;
+    if(hasMultiTypes){
+      html+=`<tr><td colspan="4" style="background:${TYPE_COLOR[t]};color:#fff;font-size:11px;font-weight:700;padding:4px 10px;letter-spacing:.4px;">▸ ${TYPE_LABEL[t]}</td></tr>`;
+    }
+    groups[t].forEach(a=>{
+      html+=`<tr>
+        <td><strong>${a.org}</strong><br><span style="font-size:11px;color:#888">${a.dept}</span></td>
+        <td class="tel">📞 ${a.tel}</td>
+        <td><div class="lp">
+          <a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>
+          <a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>
+        </div></td>
+      </tr>`;
+    });
+  });
+  return html;
+}
+
+/* ═══ 렌더링 ═══ */
+function render(){
+  const grid=document.getElementById('grid');
+  grid.innerHTML='';
+  let cO=0,cS=0,cP=0,cC=0;
+
+  DATA.forEach(c=>{
+    const enriched=c.projects
+      .map(p=>{const r=calcSt(p.period);return{...p,...r};})
+      .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
+
+    enriched.forEach(p=>{
+      if(p.status==='open')   cO++;
+      if(p.status==='soon')   cS++;
+      if(p.status==='prep')   cP++;
+      if(p.status==='closed') cC++;
+    });
+
+    /* 소관기관 (도청 실국 / 산하기관 분리) */
+    const agHtml = agencyGroupHtml(c.agencies, false);
+    const ggCnt    = c.agencies.filter(a=>a.type==='gg').length;
+    const eduCnt   = c.agencies.filter(a=>a.type==='edu').length;
+    const agCnt    = c.agencies.filter(a=>a.type==='agency').length;
+    let togLabel   = `소관기관·실국·연락처 (${c.agencies.length}개)`;
+    if(ggCnt>0)  togLabel += ` — 도청 실국 ${ggCnt}`;
+    if(eduCnt>0) togLabel += ` — 교육청 ${eduCnt}`;
+    if(agCnt>0)  togLabel += ` — 산하기관 ${agCnt}`;
+
+    /* 공모 행 */
+    let rows='';
+    if(!enriched.length){
+      rows=`<tr><td colspan="4" class="no-proj">등록된 공모사업이 없습니다.</td></tr>`;
+    } else {
+      enriched.forEach(p=>{
+        const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
+        rows+=`<tr data-status="${p.status}">
+          <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
+          <td><a class="pl" href="${p.boardUrl}" target="_blank" rel="noopener">${p.name}</a>${dd}</td>
+          <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
+          <td style="white-space:nowrap;font-size:12px">${p.period}</td>
+        </tr>`;
+      });
+    }
+
+    const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
+    grid.innerHTML+=`
+      <div class="card" data-id="${c.id}" data-name="${c.name}" data-ag="${agText}">
+        <div class="ch"><h2>${c.name}</h2><span class="cb">공모 ${enriched.length}건</span></div>
+        <div class="ag-wrap">
+          <div class="ag-sec">
+            <button class="ag-tog" onclick="togAg(this)">
+              <span class="arr">▶</span>&nbsp;${togLabel}
+            </button>
+            <div class="ag-body">
+              <table class="ag-tbl">
+                <thead><tr><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead>
+                <tbody>${agHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <table class="pt">
+          <thead><tr>
+            <th style="width:76px">상태</th>
+            <th>공모사업명 (클릭 → 공모게시판)</th>
+            <th style="width:140px">담당기관·부서</th>
+            <th style="width:170px">공모일정</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  });
+
+  document.getElementById('cO').textContent=cO;
+  document.getElementById('cS').textContent=cS;
+  document.getElementById('cP').textContent=cP;
+  document.getElementById('cC').textContent=cC;
+  document.getElementById('cU').textContent=cO+cS+cP;
+  applyFilter();
+}
+
+/* ═══ 필터 ═══ */
+function applyFilter(){
+  const kw=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    const name=card.dataset.name.toLowerCase(), ag=card.dataset.ag.toLowerCase();
+    const rows=card.querySelectorAll('tbody tr[data-status]');
+    rows.forEach(row=>{
+      const st=row.dataset.status;
+      const mF=curFilter==='upcoming'?isUp(st):st===curFilter;
+      const mK=!kw||row.textContent.toLowerCase().includes(kw)||name.includes(kw)||ag.includes(kw);
+      row.style.display=(mF&&mK)?'':'none';
+    });
+    const any=[...rows].some(r=>r.style.display!=='none');
+    const hit=!kw||name.includes(kw)||ag.includes(kw);
+    card.classList.toggle('hidden',!any&&!hit);
+  });
+}
+function setF(f,btn){curFilter=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyFilter();}
+function togAg(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+
+/* ═══ 모달 ═══ */
+function buildModal(){
+  const tabs=document.getElementById('mTabs'), cont=document.getElementById('mCont');
+  tabs.innerHTML=cont.innerHTML='';
+
+  const allTab=document.createElement('button');
+  allTab.className='mtab active'; allTab.textContent='전체 보기';
+  allTab.onclick=()=>swTab('all',allTab); tabs.appendChild(allTab);
+
+  const allDiv=document.createElement('div');
+  allDiv.id='mc-all'; allDiv.className='mc active';
+  let allRows='';
+  DATA.forEach(c=>{
+    const order=['gg','edu','agency'];
+    const groups={gg:[],edu:[],agency:[]};
+    c.agencies.forEach(a=>{if(groups[a.type])groups[a.type].push(a);});
+    const multiType=order.filter(t=>groups[t].length>0).length>1;
+    let firstRow=true;
+    order.forEach(t=>{
+      if(!groups[t].length) return;
+      if(multiType){
+        allRows+=`<tr>
+          ${firstRow?`<td class="cname" rowspan="${c.agencies.length+(multiType?order.filter(x=>groups[x].length>0).length:0)}">${c.name}</td>`:''}
+          <td colspan="4" style="background:${TYPE_COLOR[t]};color:#fff;font-size:11px;font-weight:700;padding:4px 10px;">${TYPE_LABEL[t]}</td>
+        </tr>`;
+        firstRow=false;
+      }
+      groups[t].forEach((a,i)=>{
+        allRows+=`<tr>
+          ${!multiType&&i===0?`<td class="cname" rowspan="${c.agencies.length}">${c.name}</td>`:''}
+          <td><strong>${a.org}</strong><br><span style="font-size:11px;color:#888">${a.dept}</span></td>
+          <td class="tel">📞 ${a.tel}</td>
+          <td><div class="lp">
+            <a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>
+            <a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>
+          </div></td>
+        </tr>`;
+      });
+    });
+  });
+  allDiv.innerHTML=`<table class="mot"><thead><tr><th>상임위원회</th><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead><tbody>${allRows}</tbody></table>`;
+  cont.appendChild(allDiv);
+
+  DATA.forEach(c=>{
+    const tab=document.createElement('button');
+    tab.className='mtab'; tab.textContent=c.name;
+    tab.onclick=()=>swTab(c.id,tab); tabs.appendChild(tab);
+
+    const div=document.createElement('div');
+    div.id=`mc-${c.id}`; div.className='mc';
+    const rows=agencyGroupHtml(c.agencies,true);
+    div.innerHTML=`<table class="mot"><thead><tr><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead><tbody>${rows}</tbody></table>`;
+    cont.appendChild(div);
+  });
+}
+function swTab(id,btn){
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.mc').forEach(d=>d.classList.remove('active'));
+  document.getElementById(`mc-${id}`).classList.add('active');
+}
+function openModal(){buildModal();document.getElementById('ov').classList.add('open');}
+function closeModal(){document.getElementById('ov').classList.remove('open');}
+function ovOut(e){if(e.target===document.getElementById('ov'))closeModal();}
+
+/* ═══ projects.json 동적 로드 ═══ */
+(function loadProjects(){
+  fetch('projects.json?v=' + Date.now())
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(json){
+      if(json && json.projects){
+        DATA.forEach(function(c){
+          if(json.projects[c.id]) c.projects = json.projects[c.id];
+        });
+        if(json.updated){
+          document.getElementById('updateInfo').textContent =
+            '각 상임위원회 소관기관 공모사업 일정 안내 (최종 갱신: ' + json.updated + ')';
+        }
+      }
+      render();
+    })
+    .catch(function(){ render(); });
+})();
+</script>
+</body>
+</html>
