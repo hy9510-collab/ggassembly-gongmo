@@ -219,14 +219,6 @@
         "org": "경기도교통연수원",
         "dept": "교육운영팀",
         "boardUrl": "https://www.gg.go.kr/gongmo/main.do"
-      },
-      {
-        "name": "모집공고\n\n모집공고\n경기도버스와 함께 할 승무사원을 모집합니다.\n지역별 모집공고 확인 후 지원하세요.\n모집공고 보기",
-        "period": "",
-        "org": "경기교통공사",
-        "dept": "교통서비스팀",
-        "boardUrl": "https://www.gbus.or.kr/recruitment/recruitment-notice",
-        "src": "auto"
       }
     ],
     "dosi": [
@@ -257,70 +249,6 @@
         "org": "경기도청",
         "dept": "기후환경정책과",
         "boardUrl": "https://www.gg.go.kr/gongmo/main.do"
-      },
-      {
-        "name": "공고 및 공지",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do",
-        "src": "auto"
-      },
-      {
-        "name": "분양/임대 공고",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/announcement-of-salerental001.do",
-        "src": "auto"
-      },
-      {
-        "name": "ㆍ보상공고\n안양 인덕원 주변 도시개발사업 이주 대책 시행 공고\n2026-06-04",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/reward-announcement.do?mode=view&articleNo=64910",
-        "src": "auto"
-      },
-      {
-        "name": "ㆍ채용공고\n경기주택도시공사 장애인 인턴 채용 최종합격자 발표 및 임용등록 안내\n2026-06-02",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/employment-announcement.do?mode=view&articleNo=64908",
-        "src": "auto"
-      },
-      {
-        "name": "ㆍ입찰정보\n고양창릉 S16블록, 남양주왕숙2 A8, A12블록 민간참여 공공주택사업 민간사업자 공모 공고\n2026-06-02",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/bid-announcement.do?mode=view&articleNo=64905",
-        "src": "auto"
-      },
-      {
-        "name": "ㆍ보상공고\n광명시흥 도시첨단산업단지 외의 도로 설치공사 보상계획 및 열람 공고\n2026-05-27",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/reward-announcement.do?mode=view&articleNo=64904",
-        "src": "auto"
-      },
-      {
-        "name": "ㆍ채용공고\n경기주택도시공사 공무직(사옥미화) 공개채용 서류전형 합격자 발표 및 인성검사·면접시험 안내\n2026-05-29",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/employment-announcement.do?mode=view&articleNo=64901",
-        "src": "auto"
-      },
-      {
-        "name": "고덕 자연앤하우스디(A4BL) 분양주택(민영주택) 임의공급 입주자 모집공고\n\n2026-06-02",
-        "period": "2026.06.02 ~ 2026.05.28",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/announcement-of-salerental001.do?mode=view&articleNo=64909",
-        "src": "auto"
       }
     ],
     "mirae": [
@@ -351,110 +279,6 @@
         "org": "경기도경제과학진흥원",
         "dept": "스타트업팀",
         "boardUrl": "https://egbiz.or.kr/sp/supportPrjCatList.do"
-      },
-      {
-        "name": "분야별지원사업",
-        "period": "",
-        "org": "경기도경제과학진흥원",
-        "dept": "기업성장팀",
-        "boardUrl": "https://egbiz.or.kr/sp/supportPrjCatList.do",
-        "src": "auto"
-      },
-      {
-        "name": "지역별지원사업",
-        "period": "",
-        "org": "경기도경제과학진흥원",
-        "dept": "기업성장팀",
-        "boardUrl": "https://egbiz.or.kr/sp/supportPrjAreaList.do",
-        "src": "auto"
-      },
-      {
-        "name": "기업마당지원사업",
-        "period": "",
-        "org": "경기도경제과학진흥원",
-        "dept": "기업성장팀",
-        "boardUrl": "https://egbiz.or.kr/sp/supportPrjGiupList.do",
-        "src": "auto"
-      },
-      {
-        "name": "일정별지원사업",
-        "period": "",
-        "org": "경기도경제과학진흥원",
-        "dept": "기업성장팀",
-        "boardUrl": "https://egbiz.or.kr/sp/supportPrjPlanList.do",
-        "src": "auto"
-      },
-      {
-        "name": "사업공고등록안내",
-        "period": "",
-        "org": "경기도경제과학진흥원",
-        "dept": "기업성장팀",
-        "boardUrl": "https://egbiz.or.kr/ug/bizNotiManual.do",
-        "src": "auto"
-      },
-      {
-        "name": "지원사업 안내",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/bbs/supportList.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "입주신청안내",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/cont/tenant/tenant01.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "입주기업소개",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/bbs/companyList.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "입주기업상담",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/bbs/minwonList.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "안산정보산업진흥센터 (창업보육센터) 입주안내",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/cont/ansan/ansan06.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "안산 IT·SW 기업성장 지원사업",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/cont/ansan/ansan07.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "입주기업현황",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/bbs/ansanCompanyList.jsp",
-        "src": "auto"
-      },
-      {
-        "name": "안산정보산업진흥센터 입주기업",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://www.gtp.or.kr/web/bbs/ansanCompanyList.jsp",
-        "src": "auto"
       }
     ],
     "yeoseong": [

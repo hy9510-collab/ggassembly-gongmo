@@ -6,6 +6,12 @@ on:
     - cron: "0 23 * * *"
   # 수동 실행 허용
   workflow_dispatch:
+  # 스크래퍼/워크플로우를 수정해 push하면 즉시 재수집 (검증용)
+  push:
+    branches: [main]
+    paths:
+      - "scraper.py"
+      - ".github/workflows/update.yml"
 
 jobs:
   scrape-and-update:

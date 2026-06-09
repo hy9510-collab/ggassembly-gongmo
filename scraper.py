@@ -24,10 +24,21 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 # 공모 제목으로 인정할 키워드
-KEYWORDS = ("공모", "모집", "공고", "지원사업", "선정", "참가자", "참여기업", "입주")
-# 제외할 잡음 (메뉴/안내성)
-EXCLUDE = ("개인정보", "이용약관", "저작권", "찾아오시는", "사이트맵",
-           "로그인", "회원가입", "바로가기", "메뉴", "닫기", "전체보기")
+KEYWORDS = ("공모", "모집", "지원사업", "지원 사업", "선정", "참가자", "참여기업",
+            "참여자", "공모전", "아이디어", "경진대회", "지원자")
+# 제외할 잡음 (채용/입찰/분양 등 — 제목 줄에 있으면 제외)
+# '안내/현황/소개/목록'은 정상 공모 제목에도 자주 쓰여 제외하지 않는다.
+EXCLUDE = ("채용", "입찰", "낙찰", "계약", "보상", "분양", "임대", "합격", "임용",
+           "인사발령", "발령", "승무", "사원", "운영규정", "매뉴얼", "약관",
+           "개인정보", "로그인", "회원가입", "사이트맵", "더보기",
+           "바로가기", "전체보기", "닫기", "오시는")
+# 제외할 URL 패턴 (채용/입찰/분양 게시판) — 흔한 단어의 일부와 겹치지 않게 구체적으로
+EXCLUDE_URL = ("recruit", "employ", "chaeyong", "/bid", "bid-", "reward",
+               "salerental", "rental", "/sale", "sale-")
+# 개별 게시글로 인정할 href 패턴 (목록/메뉴 페이지 배제)
+DETAIL_HINTS = ("articleno", "article=", "seq=", "idx=", "nttid", "bidx=",
+                "mode=view", "subact=view", "boardview", "/view", "?no=",
+                "bsidx", "ntt_id", "/articles/")
 
 
 # ──────────────────────────────────────────────────────────────
@@ -119,14 +130,16 @@ PORTAL_CLASSIFY = {
 
 # ──────────────────────────────────────────────────────────────
 def normalize_period(raw: str) -> str:
-    """'YYYY.MM.DD ~ YYYY.MM.DD' 형식으로 정규화."""
+    """'YYYY.MM.DD ~ YYYY.MM.DD' 형식으로 정규화 (시작<=종료만 인정)."""
     dates = re.findall(r"\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2}", raw or "")
     if len(dates) >= 2:
-        a, b = dates[0], dates[1]
         def fix(d):
             p = re.sub(r"[-/]", ".", d).split(".")
             return f"{p[0]}.{p[1].zfill(2)}.{p[2].zfill(2)}"
-        return f"{fix(a)} ~ {fix(b)}"
+        a, b = fix(dates[0]), fix(dates[1])
+        # 0 패딩된 'YYYY.MM.DD'는 문자열 비교가 곧 날짜 비교
+        if a <= b:
+            return f"{a} ~ {b}"
     return ""
 
 
@@ -139,12 +152,37 @@ def classify_portal(text: str) -> str:
     return "gihoek"  # 기본값
 
 
+def clean_title(raw: str) -> str:
+    """여러 줄 텍스트(행 전체·네비 블록)에서 제목 한 줄만 고른다.
+    키워드를 포함한 줄을 우선하고, 그 중 가장 긴 줄을 택한다."""
+    if not raw:
+        return ""
+    lines = [ln.strip() for ln in re.split(r"[\r\n\t]+", raw) if ln.strip()]
+    if not lines:
+        return ""
+    kw_lines = [ln for ln in lines if any(k in ln for k in KEYWORDS)]
+    pool = kw_lines if kw_lines else lines
+    return max(pool, key=len)
+
+
 def looks_like_title(text: str) -> bool:
-    if not text or len(text) < 6 or len(text) > 120:
+    if not text or len(text) < 6 or len(text) > 90:
         return False
     if any(x in text for x in EXCLUDE):
         return False
     return any(k in text for k in KEYWORDS)
+
+
+def is_excluded_href(href: str) -> bool:
+    """채용/입찰/분양 등 잡음 게시판 URL 제외."""
+    h = (href or "").lower()
+    return any(bad in h for bad in EXCLUDE_URL)
+
+
+def is_detail_href(href: str) -> bool:
+    """개별 게시글로 보이는 URL인지 (article id 등 포함)."""
+    h = (href or "").lower()
+    return any(hint in h for hint in DETAIL_HINTS)
 
 
 # ──────────────────────────────────────────────────────────────
@@ -174,22 +212,34 @@ def extract_from_page(page, target: dict) -> list[dict]:
     )
 
     for a in anchors:
-        text = (a.get("text") or "").strip()
-        href = a.get("href") or ""
-        row_text = a.get("rowText") or text
+        href = (a.get("href") or "").strip()
+        raw_text = (a.get("text") or "").strip()
+        row_text = a.get("rowText") or raw_text
 
-        # 링크 식별: link_key가 있으면 href로, 없으면 키워드로
+        # 유효한 링크만 (자바스크립트/앵커/빈 링크 제외)
+        if not href or href.startswith("javascript") or href.startswith("#"):
+            continue
+        # 채용/입찰/분양 등 잡음 URL 제외
+        if is_excluded_href(href):
+            continue
+
+        # 제목 정리: 여러 줄 중 키워드 포함한 가장 긴 줄
+        name = clean_title(raw_text)
+        if not looks_like_title(name):
+            continue
+
+        # 링크 식별
         if link_key:
+            # 게시판 view 링크가 명확한 사이트
             if link_key not in href:
                 continue
-            if not text or len(text) < 6 or any(x in text for x in EXCLUDE):
-                continue
         else:
-            if not looks_like_title(text):
+            # 키워드 기반 사이트: 개별 게시글 URL(article id 등)만 인정
+            if not is_detail_href(href):
                 continue
 
-        abs_href = urljoin(base, href) if href and not href.startswith("javascript") else base
-        key = (text, abs_href)
+        abs_href = urljoin(base, href)
+        key = (name, abs_href)
         if key in seen:
             continue
         seen.add(key)
@@ -199,10 +249,10 @@ def extract_from_page(page, target: dict) -> list[dict]:
         # 상임위 결정
         cid = target["id"]
         if cid == "_portal":
-            cid = classify_portal(text)
+            cid = classify_portal(name)
 
         items.append({
-            "name": text,
+            "name": name,
             "period": period,
             "org": target["org"],
             "dept": target["dept"],

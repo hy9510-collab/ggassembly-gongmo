@@ -85,6 +85,7 @@
     .st.soon{background:#fff3e0;color:#e65100;}
     .st.closed{background:#f5f5f5;color:#9e9e9e;}
     .st.prep{background:#e3f2fd;color:#1565c0;}
+    .st.ongoing{background:#ede7f6;color:#5e35b1;}
     .dday{font-size:11px;font-weight:700;margin-left:4px;}
     .dday.hot{color:#e65100;} .dday.norm{color:#2e7d32;}
     .no-proj{padding:16px 20px;font-size:13px;color:#aaa;text-align:center;}
@@ -173,15 +174,17 @@ const TODAY = new Date(); TODAY.setHours(0,0,0,0);
 const THIS_YEAR = TODAY.getFullYear();
 function pd(s){const[y,m,d]=s.trim().split('.');return new Date(+y,+m-1,+d);}
 function calcSt(period){
+  if(!period||period.indexOf('~')<0) return{status:'ongoing',dday:null};
   const[s,e]=period.split('~').map(pd);
+  if(isNaN(+s)||isNaN(+e))           return{status:'ongoing',dday:null};
   const diff=Math.ceil((e-TODAY)/86400000);
   if(e<TODAY)  return{status:'closed',dday:null};
   if(s>TODAY)  return{status:'prep',  dday:`D-${Math.ceil((s-TODAY)/86400000)}`};
   if(diff<=7)  return{status:'soon',  dday:`D-${diff}`};
   return            {status:'open',  dday:`D-${diff}`};
 }
-function isUp(st){return st==='open'||st==='soon'||st==='prep';}
-function endYr(p){return +p.split('~')[1].trim().split('.')[0];}
+function isUp(st){return st==='open'||st==='soon'||st==='prep'||st==='ongoing';}
+function endYr(p){const t=(p||'').split('~')[1];return t?+t.trim().split('.')[0]:THIS_YEAR;}
 
 /* 날짜 표시 */
 (()=>{const d=TODAY,w=['일','월','화','수','목','금','토'];
@@ -444,8 +447,8 @@ const DATA=[
 ];
 
 /* ═══ 상태 상수 ═══ */
-const SL={open:'접수중',soon:'마감임박',prep:'공고예정',closed:'마감'};
-const SC={open:'open', soon:'soon',    prep:'prep',    closed:'closed'};
+const SL={open:'접수중',soon:'마감임박',prep:'공고예정',closed:'마감',ongoing:'진행중'};
+const SC={open:'open', soon:'soon',    prep:'prep',    closed:'closed',ongoing:'ongoing'};
 const TYPE_LABEL={gg:'경기도청 직속 실국', edu:'경기도교육청 직속 부서', agency:'소관 산하기관'};
 const TYPE_COLOR={gg:'#3a7d44',           edu:'#1565c0',                 agency:'#5a9e6f'};
 
@@ -486,7 +489,7 @@ function agencyGroupHtml(agencies, showAll){
 function render(){
   const grid=document.getElementById('grid');
   grid.innerHTML='';
-  let cO=0,cS=0,cP=0,cC=0;
+  let cO=0,cS=0,cP=0,cC=0,cG=0;
 
   DATA.forEach(c=>{
     const enriched=c.projects
@@ -498,6 +501,7 @@ function render(){
       if(p.status==='soon')   cS++;
       if(p.status==='prep')   cP++;
       if(p.status==='closed') cC++;
+      if(p.status==='ongoing') cG++;
     });
 
     /* 소관기관 (도청 실국 / 산하기관 분리) */
@@ -559,7 +563,7 @@ function render(){
   document.getElementById('cS').textContent=cS;
   document.getElementById('cP').textContent=cP;
   document.getElementById('cC').textContent=cC;
-  document.getElementById('cU').textContent=cO+cS+cP;
+  document.getElementById('cU').textContent=cO+cS+cP+cG;
   applyFilter();
 }
 
