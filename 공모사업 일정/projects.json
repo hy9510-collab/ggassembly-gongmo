@@ -249,6 +249,14 @@
         "org": "경기도청",
         "dept": "기후환경정책과",
         "boardUrl": "https://www.gg.go.kr/gongmo/main.do"
+      },
+      {
+        "name": "GH 경기도주거복지센터, ‘2026년 주거복지사업 아이디어 공모’ 사업 최종 선정",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/press-release.do?mode=view&articleNo=64900",
+        "src": "auto"
       }
     ],
     "mirae": [
@@ -279,6 +287,30 @@
         "org": "경기도경제과학진흥원",
         "dept": "스타트업팀",
         "boardUrl": "https://egbiz.or.kr/sp/supportPrjCatList.do"
+      },
+      {
+        "name": "2026년 안산정보산업진흥센터(경기TP안산창업보육센터) 제2차 신규 입주자 모집 공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172278",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 첨단제조로봇 실증사업(2차) 참여기업 모집",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172275",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 IP디딤돌 프로그램지식재산 창업교육 참가자 모집 공고 경기테크노파크(경기지식재산센터)에서는 강한 지식재산을 보유한 창업자를 양성하기 위해‘",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172274",
+        "src": "auto"
       }
     ],
     "yeoseong": [
