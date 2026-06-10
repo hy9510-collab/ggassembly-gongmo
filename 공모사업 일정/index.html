@@ -90,6 +90,23 @@
     .dday.hot{color:#e65100;} .dday.norm{color:#2e7d32;}
     .no-proj{padding:16px 20px;font-size:13px;color:#aaa;text-align:center;}
 
+    /* ── 1단계: 상임위원회 목록 ── */
+    .list-hint{font-size:14px;color:#777;margin:2px 0 16px;font-weight:600;}
+    .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:16px;}
+    .ccard{background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:20px 22px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;gap:8px;min-height:118px;}
+    .ccard:hover{border-color:var(--gd);transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.13);}
+    .ccard .cc-name{font-size:16px;font-weight:700;color:var(--gd);line-height:1.35;}
+    .ccard .cc-cnt{font-size:13px;color:#666;}
+    .ccard .cc-cnt b{font-size:24px;color:var(--gd);margin-right:3px;}
+    .ccard .cc-cnt span{font-size:12px;color:#999;}
+    .ccard .cc-go{font-size:12px;color:#5a9e6f;font-weight:700;margin-top:auto;}
+    .ccard.dim .cc-cnt b{color:#c4c4c4;}
+    .ccard.hidden{display:none;}
+
+    /* ── 2단계: 뒤로가기 ── */
+    .back-btn{background:var(--wh);border:1px solid var(--gb);color:var(--gd);border-radius:8px;padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:16px;display:inline-flex;align-items:center;gap:6px;box-shadow:var(--sh);}
+    .back-btn:hover{background:var(--gl);}
+
     /* ── 모달 ── */
     .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;}
     .ov.open{display:flex;}
@@ -132,8 +149,8 @@
 </header>
 
 <div class="toolbar">
-  <input type="text" id="searchInput" placeholder="공모사업명, 기관명, 위원회명 검색..." oninput="applyFilter()" />
-  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+  <input type="text" id="searchInput" placeholder="상임위원회 이름 검색..." oninput="applyFilter()" />
+  <div id="statusFilters" style="display:none;gap:6px;flex-wrap:wrap;">
     <button class="fbtn active" onclick="setF('upcoming',this)">앞으로의 일정</button>
     <button class="fbtn"        onclick="setF('open',this)">접수중</button>
     <button class="fbtn"        onclick="setF('soon',this)">마감임박</button>
@@ -144,7 +161,7 @@
 </div>
 
 <main>
-  <div class="summary">
+  <div class="summary" id="summary">
     <div class="sc"><div class="num">13</div><div class="lbl">상임위원회</div></div>
     <div class="sc"><div class="num" id="cU" style="color:#3a7d44">0</div><div class="lbl">앞으로의 일정</div></div>
     <div class="sc"><div class="num" id="cO" style="color:#2e7d32">0</div><div class="lbl">접수중</div></div>
@@ -152,7 +169,18 @@
     <div class="sc"><div class="num" id="cP" style="color:#1565c0">0</div><div class="lbl">공고예정</div></div>
     <div class="sc"><div class="num" id="cC" style="color:#9e9e9e">0</div><div class="lbl">마감(올해)</div></div>
   </div>
-  <div class="grid" id="grid"></div>
+
+  <!-- 1단계: 상임위원회 목록 -->
+  <div id="viewList">
+    <div class="list-hint">👇 상임위원회를 선택하면 해당 위원회의 공모사업이 나옵니다.</div>
+    <div class="clist" id="clist"></div>
+  </div>
+
+  <!-- 2단계: 선택한 위원회 상세 -->
+  <div id="viewDetail" style="display:none;">
+    <button class="back-btn" onclick="backToList()">← 상임위원회 목록</button>
+    <div class="grid" id="detailGrid"></div>
+  </div>
 </main>
 
 <div class="ov" id="ov" onclick="ovOut(event)">
@@ -453,6 +481,8 @@ const TYPE_LABEL={gg:'경기도청 직속 실국', edu:'경기도교육청 직�
 const TYPE_COLOR={gg:'#3a7d44',           edu:'#1565c0',                 agency:'#5a9e6f'};
 
 let curFilter='upcoming';
+let curView='list';        // 'list'(위원회 목록) | 'detail'(위원회 상세)
+let curCommittee=null;
 
 /* ═══ 소관기관 그룹 렌더링 ═══ */
 function agencyGroupHtml(agencies, showAll){
@@ -486,102 +516,168 @@ function agencyGroupHtml(agencies, showAll){
 }
 
 /* ═══ 렌더링 ═══ */
-function render(){
-  const grid=document.getElementById('grid');
-  grid.innerHTML='';
+/* 공모에 상태 부여 + 작년 마감건 제외 */
+function enrich(c){
+  return c.projects
+    .map(p=>{const r=calcSt(p.period);return{...p,...r};})
+    .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
+}
+
+/* 상단 요약(전체 통계) */
+function computeStats(){
   let cO=0,cS=0,cP=0,cC=0,cG=0;
-
   DATA.forEach(c=>{
-    const enriched=c.projects
-      .map(p=>{const r=calcSt(p.period);return{...p,...r};})
-      .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
-
-    enriched.forEach(p=>{
-      if(p.status==='open')   cO++;
-      if(p.status==='soon')   cS++;
-      if(p.status==='prep')   cP++;
-      if(p.status==='closed') cC++;
-      if(p.status==='ongoing') cG++;
+    enrich(c).forEach(p=>{
+      if(p.status==='open')        cO++;
+      else if(p.status==='soon')   cS++;
+      else if(p.status==='prep')   cP++;
+      else if(p.status==='closed') cC++;
+      else if(p.status==='ongoing')cG++;
     });
-
-    /* 소관기관 (도청 실국 / 산하기관 분리) */
-    const agHtml = agencyGroupHtml(c.agencies, false);
-    const ggCnt    = c.agencies.filter(a=>a.type==='gg').length;
-    const eduCnt   = c.agencies.filter(a=>a.type==='edu').length;
-    const agCnt    = c.agencies.filter(a=>a.type==='agency').length;
-    let togLabel   = `소관기관·실국·연락처 (${c.agencies.length}개)`;
-    if(ggCnt>0)  togLabel += ` — 도청 실국 ${ggCnt}`;
-    if(eduCnt>0) togLabel += ` — 교육청 ${eduCnt}`;
-    if(agCnt>0)  togLabel += ` — 산하기관 ${agCnt}`;
-
-    /* 공모 행 */
-    let rows='';
-    if(!enriched.length){
-      rows=`<tr><td colspan="4" class="no-proj">등록된 공모사업이 없습니다.</td></tr>`;
-    } else {
-      enriched.forEach(p=>{
-        const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
-        rows+=`<tr data-status="${p.status}">
-          <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-          <td><a class="pl" href="${p.boardUrl}" target="_blank" rel="noopener">${p.name}</a>${dd}</td>
-          <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-          <td style="white-space:nowrap;font-size:12px">${p.period}</td>
-        </tr>`;
-      });
-    }
-
-    const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
-    grid.innerHTML+=`
-      <div class="card" data-id="${c.id}" data-name="${c.name}" data-ag="${agText}">
-        <div class="ch"><h2>${c.name}</h2><span class="cb">공모 ${enriched.length}건</span></div>
-        <div class="ag-wrap">
-          <div class="ag-sec">
-            <button class="ag-tog" onclick="togAg(this)">
-              <span class="arr">▶</span>&nbsp;${togLabel}
-            </button>
-            <div class="ag-body">
-              <table class="ag-tbl">
-                <thead><tr><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead>
-                <tbody>${agHtml}</tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <table class="pt">
-          <thead><tr>
-            <th style="width:76px">상태</th>
-            <th>공모사업명 (클릭 → 공모게시판)</th>
-            <th style="width:140px">담당기관·부서</th>
-            <th style="width:170px">공모일정</th>
-          </tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>`;
   });
-
   document.getElementById('cO').textContent=cO;
   document.getElementById('cS').textContent=cS;
   document.getElementById('cP').textContent=cP;
   document.getElementById('cC').textContent=cC;
   document.getElementById('cU').textContent=cO+cS+cP+cG;
+}
+
+/* 1단계: 상임위원회 목록 카드 */
+function renderList(){
+  const wrap=document.getElementById('clist');
+  wrap.innerHTML='';
+  DATA.forEach(c=>{
+    const up=enrich(c).filter(p=>isUp(p.status)).length;
+    const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
+    const div=document.createElement('div');
+    div.className='ccard'+(up===0?' dim':'');
+    div.dataset.name=c.name;
+    div.dataset.ag=agText;
+    div.onclick=()=>openCommittee(c.id);
+    div.innerHTML=
+      `<div class="cc-name">${c.name}</div>`+
+      `<div class="cc-cnt"><b>${up}</b>건 <span>· 앞으로의 일정</span></div>`+
+      `<div class="cc-go">공모 보기 →</div>`;
+    wrap.appendChild(div);
+  });
+}
+
+/* 위원회 카드 HTML (소관기관 + 공모 테이블) — 2단계 상세에서 사용 */
+function committeeCardHtml(c){
+  const enriched=enrich(c);
+  const agHtml = agencyGroupHtml(c.agencies, false);
+  const ggCnt    = c.agencies.filter(a=>a.type==='gg').length;
+  const eduCnt   = c.agencies.filter(a=>a.type==='edu').length;
+  const agCnt    = c.agencies.filter(a=>a.type==='agency').length;
+  let togLabel   = `소관기관·실국·연락처 (${c.agencies.length}개)`;
+  if(ggCnt>0)  togLabel += ` — 도청 실국 ${ggCnt}`;
+  if(eduCnt>0) togLabel += ` — 교육청 ${eduCnt}`;
+  if(agCnt>0)  togLabel += ` — 산하기관 ${agCnt}`;
+
+  let rows='';
+  if(!enriched.length){
+    rows=`<tr><td colspan="4" class="no-proj">등록된 공모사업이 없습니다.</td></tr>`;
+  } else {
+    enriched.forEach(p=>{
+      const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
+      rows+=`<tr data-status="${p.status}">
+        <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
+        <td><a class="pl" href="${p.boardUrl}" target="_blank" rel="noopener">${p.name}</a>${dd}</td>
+        <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
+        <td style="white-space:nowrap;font-size:12px">${p.period}</td>
+      </tr>`;
+    });
+  }
+
+  const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
+  return `
+    <div class="card" data-id="${c.id}" data-name="${c.name}" data-ag="${agText}">
+      <div class="ch"><h2>${c.name}</h2><span class="cb">공모 ${enriched.length}건</span></div>
+      <div class="ag-wrap">
+        <div class="ag-sec">
+          <button class="ag-tog" onclick="togAg(this)">
+            <span class="arr">▶</span>&nbsp;${togLabel}
+          </button>
+          <div class="ag-body">
+            <table class="ag-tbl">
+              <thead><tr><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead>
+              <tbody>${agHtml}</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <table class="pt">
+        <thead><tr>
+          <th style="width:76px">상태</th>
+          <th>공모사업명 (클릭 → 공모게시판)</th>
+          <th style="width:140px">담당기관·부서</th>
+          <th style="width:170px">공모일정</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+
+/* 2단계: 선택한 위원회 상세 표시 */
+function renderDetail(id){
+  const c=DATA.find(x=>x.id===id);
+  if(!c) return;
+  document.getElementById('detailGrid').innerHTML=committeeCardHtml(c);
+}
+
+function openCommittee(id){
+  curView='detail'; curCommittee=id;
+  renderDetail(id);
+  document.getElementById('summary').style.display='none';
+  document.getElementById('viewList').style.display='none';
+  document.getElementById('viewDetail').style.display='block';
+  document.getElementById('statusFilters').style.display='flex';
+  const s=document.getElementById('searchInput');
+  s.value=''; s.placeholder='이 위원회의 공모사업 검색...';
+  window.scrollTo(0,0);
+  applyFilter();
+}
+
+function backToList(){
+  curView='list'; curCommittee=null;
+  document.getElementById('viewDetail').style.display='none';
+  document.getElementById('summary').style.display='grid';
+  document.getElementById('viewList').style.display='block';
+  document.getElementById('statusFilters').style.display='none';
+  const s=document.getElementById('searchInput');
+  s.value=''; s.placeholder='상임위원회 이름 검색...';
+  window.scrollTo(0,0);
+  applyFilter();
+}
+
+function init(){
+  computeStats();
+  renderList();
   applyFilter();
 }
 
 /* ═══ 필터 ═══ */
 function applyFilter(){
   const kw=document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card=>{
+  if(curView==='list'){
+    /* 1단계: 위원회 카드 이름/기관 검색 */
+    document.querySelectorAll('#clist .ccard').forEach(card=>{
+      const name=(card.dataset.name||'').toLowerCase();
+      const ag=(card.dataset.ag||'').toLowerCase();
+      const hit=!kw||name.includes(kw)||ag.includes(kw);
+      card.classList.toggle('hidden',!hit);
+    });
+    return;
+  }
+  /* 2단계: 선택한 위원회의 공모 행을 상태/검색어로 필터 */
+  document.querySelectorAll('#detailGrid .card').forEach(card=>{
     const name=card.dataset.name.toLowerCase(), ag=card.dataset.ag.toLowerCase();
-    const rows=card.querySelectorAll('tbody tr[data-status]');
-    rows.forEach(row=>{
+    card.querySelectorAll('tbody tr[data-status]').forEach(row=>{
       const st=row.dataset.status;
       const mF=curFilter==='upcoming'?isUp(st):st===curFilter;
       const mK=!kw||row.textContent.toLowerCase().includes(kw)||name.includes(kw)||ag.includes(kw);
       row.style.display=(mF&&mK)?'':'none';
     });
-    const any=[...rows].some(r=>r.style.display!=='none');
-    const hit=!kw||name.includes(kw)||ag.includes(kw);
-    card.classList.toggle('hidden',!any&&!hit);
   });
 }
 function setF(f,btn){curFilter=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyFilter();}
@@ -665,9 +761,9 @@ function ovOut(e){if(e.target===document.getElementById('ov'))closeModal();}
             '각 상임위원회 소관기관 공모사업 일정 안내 (최종 갱신: ' + json.updated + ')';
         }
       }
-      render();
+      init();
     })
-    .catch(function(){ render(); });
+    .catch(function(){ init(); });
 })();
 </script>
 </body>
