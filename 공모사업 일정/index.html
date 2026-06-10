@@ -92,8 +92,8 @@
 
     /* ── 1단계: 상임위원회 목록 ── */
     .list-hint{font-size:14px;color:#777;margin:2px 0 16px;font-weight:600;}
-    .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:16px;}
-    .ccard{background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:20px 22px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;gap:8px;min-height:118px;}
+    .clist{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .ccard{background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:22px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:110px;}
     .ccard:hover{border-color:var(--gd);transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.13);}
     .ccard .cc-name{font-size:16px;font-weight:700;color:var(--gd);line-height:1.35;}
     .ccard .cc-cnt{font-size:13px;color:#666;}
@@ -131,7 +131,7 @@
     /* 모달 내 구분 행 */
     .mot .grp-row td{background:#f8fdf9;font-size:11px;font-weight:700;color:var(--gd);padding:4px 10px;letter-spacing:.4px;}
 
-    @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.mb{padding:12px;}}
+    @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.clist{grid-template-columns:repeat(2,1fr);gap:10px;}.mb{padding:12px;}}
   </style>
 </head>
 <body>
@@ -546,7 +546,7 @@ function computeStats(){
 function renderList(){
   const wrap=document.getElementById('clist');
   wrap.innerHTML='';
-  DATA.forEach(c=>{
+  DATA.filter(c=>c.id!=='uiwoon').forEach(c=>{
     const up=enrich(c).filter(p=>isUp(p.status)).length;
     const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
     const div=document.createElement('div');
@@ -556,8 +556,7 @@ function renderList(){
     div.onclick=()=>openCommittee(c.id);
     div.innerHTML=
       `<div class="cc-name">${c.name}</div>`+
-      `<div class="cc-cnt"><b>${up}</b>건 <span>· 앞으로의 일정</span></div>`+
-      `<div class="cc-go">공모 보기 →</div>`;
+      `<div class="cc-cnt"><b>${up}</b>건 <span>· 앞으로의 일정</span></div>`;
     wrap.appendChild(div);
   });
 }
