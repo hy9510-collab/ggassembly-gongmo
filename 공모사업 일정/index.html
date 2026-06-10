@@ -92,10 +92,11 @@
 
     /* ── 1단계: 상임위원회 목록 ── */
     .list-hint{font-size:14px;color:#777;margin:2px 0 16px;font-weight:600;}
-    .clist{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-    .ccard{background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:22px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:110px;}
+    .clist{display:flex;flex-wrap:wrap;gap:14px;}
+    .ccard{width:216px;background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:16px 18px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:92px;}
     .ccard:hover{border-color:var(--gd);transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.13);}
-    .ccard .cc-name{font-size:16px;font-weight:700;color:var(--gd);line-height:1.35;}
+    .ccard .cc-name{font-size:15px;font-weight:700;color:var(--gd);line-height:1.3;white-space:nowrap;}
+    .no-result{padding:34px 20px;text-align:center;color:#999;font-size:14px;}
     .ccard .cc-cnt{font-size:13px;color:#666;}
     .ccard .cc-cnt b{font-size:24px;color:var(--gd);margin-right:3px;}
     .ccard .cc-cnt span{font-size:12px;color:#999;}
@@ -131,7 +132,7 @@
     /* 모달 내 구분 행 */
     .mot .grp-row td{background:#f8fdf9;font-size:11px;font-weight:700;color:var(--gd);padding:4px 10px;letter-spacing:.4px;}
 
-    @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.clist{grid-template-columns:repeat(2,1fr);gap:10px;}.mb{padding:12px;}}
+    @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.clist{gap:10px;}.ccard{width:calc(50% - 5px);}.mb{padding:12px;}}
   </style>
 </head>
 <body>
@@ -149,12 +150,10 @@
 </header>
 
 <div class="toolbar">
-  <input type="text" id="searchInput" placeholder="상임위원회 이름 검색..." oninput="applyFilter()" />
+  <input type="text" id="searchInput" placeholder="공모사업명·기관 검색..." oninput="applyFilter()" />
   <div id="statusFilters" style="display:none;gap:6px;flex-wrap:wrap;">
-    <button class="fbtn active" onclick="setF('upcoming',this)">앞으로의 일정</button>
-    <button class="fbtn"        onclick="setF('open',this)">접수중</button>
+    <button class="fbtn active" onclick="setF('open',this)">접수중</button>
     <button class="fbtn"        onclick="setF('soon',this)">마감임박</button>
-    <button class="fbtn"        onclick="setF('prep',this)">공고예정</button>
     <button class="fbtn cl"     onclick="setF('closed',this)">마감</button>
   </div>
   <button class="org-btn" onclick="openModal()">📋 상임위원회별 소관기관</button>
@@ -163,17 +162,16 @@
 <main>
   <div class="summary" id="summary">
     <div class="sc"><div class="num">13</div><div class="lbl">상임위원회</div></div>
-    <div class="sc"><div class="num" id="cU" style="color:#3a7d44">0</div><div class="lbl">앞으로의 일정</div></div>
     <div class="sc"><div class="num" id="cO" style="color:#2e7d32">0</div><div class="lbl">접수중</div></div>
-    <div class="sc"><div class="num" id="cS" style="color:#e65100">0</div><div class="lbl">마감임박(7일)</div></div>
-    <div class="sc"><div class="num" id="cP" style="color:#1565c0">0</div><div class="lbl">공고예정</div></div>
-    <div class="sc"><div class="num" id="cC" style="color:#9e9e9e">0</div><div class="lbl">마감(올해)</div></div>
+    <div class="sc"><div class="num" id="cS" style="color:#e65100">0</div><div class="lbl">마감임박</div></div>
+    <div class="sc"><div class="num" id="cC" style="color:#9e9e9e">0</div><div class="lbl">마감</div></div>
   </div>
 
   <!-- 1단계: 상임위원회 목록 -->
   <div id="viewList">
-    <div class="list-hint">👇 상임위원회를 선택하면 해당 위원회의 공모사업이 나옵니다.</div>
+    <div class="list-hint">👇 상임위원회를 선택하거나, 위 검색창에 공모사업명을 입력하세요.</div>
     <div class="clist" id="clist"></div>
+    <div id="searchResults" style="display:none;"></div>
   </div>
 
   <!-- 2단계: 선택한 위원회 상세 -->
@@ -202,16 +200,16 @@ const TODAY = new Date(); TODAY.setHours(0,0,0,0);
 const THIS_YEAR = TODAY.getFullYear();
 function pd(s){const[y,m,d]=s.trim().split('.');return new Date(+y,+m-1,+d);}
 function calcSt(period){
-  if(!period||period.indexOf('~')<0) return{status:'ongoing',dday:null};
+  // 상태는 접수중(open)·마감임박(soon)·마감(closed) 3가지. 기간 미정은 접수중.
+  if(!period||period.indexOf('~')<0) return{status:'open',dday:null};
   const[s,e]=period.split('~').map(pd);
-  if(isNaN(+s)||isNaN(+e))           return{status:'ongoing',dday:null};
+  if(isNaN(+s)||isNaN(+e))           return{status:'open',dday:null};
   const diff=Math.ceil((e-TODAY)/86400000);
   if(e<TODAY)  return{status:'closed',dday:null};
-  if(s>TODAY)  return{status:'prep',  dday:`D-${Math.ceil((s-TODAY)/86400000)}`};
-  if(diff<=7)  return{status:'soon',  dday:`D-${diff}`};
-  return            {status:'open',  dday:`D-${diff}`};
+  if(diff<=7)  return{status:'soon', dday:`D-${diff}`};
+  return            {status:'open', dday:`D-${diff}`};
 }
-function isUp(st){return st==='open'||st==='soon'||st==='prep'||st==='ongoing';}
+function isUp(st){return st==='open'||st==='soon';}
 function endYr(p){const t=(p||'').split('~')[1];return t?+t.trim().split('.')[0]:THIS_YEAR;}
 
 /* 날짜 표시 */
@@ -475,14 +473,16 @@ const DATA=[
 ];
 
 /* ═══ 상태 상수 ═══ */
-const SL={open:'접수중',soon:'마감임박',prep:'공고예정',closed:'마감',ongoing:'진행중'};
-const SC={open:'open', soon:'soon',    prep:'prep',    closed:'closed',ongoing:'ongoing'};
+const SL={open:'접수중',soon:'마감임박',closed:'마감'};
+const SC={open:'open', soon:'soon',    closed:'closed'};
 const TYPE_LABEL={gg:'경기도청 직속 실국', edu:'경기도교육청 직속 부서', agency:'소관 산하기관'};
 const TYPE_COLOR={gg:'#3a7d44',           edu:'#1565c0',                 agency:'#5a9e6f'};
 
-let curFilter='upcoming';
+let curFilter='open';
 let curView='list';        // 'list'(위원회 목록) | 'detail'(위원회 상세)
 let curCommittee=null;
+/* 첫 화면 목록·검색에서 의회운영위원회 제외 */
+const SHOWN=DATA.filter(c=>c.id!=='uiwoon');
 
 /* ═══ 소관기관 그룹 렌더링 ═══ */
 function agencyGroupHtml(agencies, showAll){
@@ -525,28 +525,24 @@ function enrich(c){
 
 /* 상단 요약(전체 통계) */
 function computeStats(){
-  let cO=0,cS=0,cP=0,cC=0,cG=0;
-  DATA.forEach(c=>{
+  let cO=0,cS=0,cC=0;
+  SHOWN.forEach(c=>{
     enrich(c).forEach(p=>{
       if(p.status==='open')        cO++;
       else if(p.status==='soon')   cS++;
-      else if(p.status==='prep')   cP++;
       else if(p.status==='closed') cC++;
-      else if(p.status==='ongoing')cG++;
     });
   });
   document.getElementById('cO').textContent=cO;
   document.getElementById('cS').textContent=cS;
-  document.getElementById('cP').textContent=cP;
   document.getElementById('cC').textContent=cC;
-  document.getElementById('cU').textContent=cO+cS+cP+cG;
 }
 
 /* 1단계: 상임위원회 목록 카드 */
 function renderList(){
   const wrap=document.getElementById('clist');
   wrap.innerHTML='';
-  DATA.filter(c=>c.id!=='uiwoon').forEach(c=>{
+  SHOWN.forEach(c=>{
     const up=enrich(c).filter(p=>isUp(p.status)).length;
     const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
     const div=document.createElement('div');
@@ -556,7 +552,7 @@ function renderList(){
     div.onclick=()=>openCommittee(c.id);
     div.innerHTML=
       `<div class="cc-name">${c.name}</div>`+
-      `<div class="cc-cnt"><b>${up}</b>건 <span>· 앞으로의 일정</span></div>`;
+      `<div class="cc-cnt"><b>${up}</b>건 <span>· 접수 중</span></div>`;
     wrap.appendChild(div);
   });
 }
@@ -644,7 +640,7 @@ function backToList(){
   document.getElementById('viewList').style.display='block';
   document.getElementById('statusFilters').style.display='none';
   const s=document.getElementById('searchInput');
-  s.value=''; s.placeholder='상임위원회 이름 검색...';
+  s.value=''; s.placeholder='공모사업명·기관 검색...';
   window.scrollTo(0,0);
   applyFilter();
 }
@@ -657,15 +653,47 @@ function init(){
 
 /* ═══ 필터 ═══ */
 function applyFilter(){
-  const kw=document.getElementById('searchInput').value.toLowerCase();
+  const kw=document.getElementById('searchInput').value.trim().toLowerCase();
   if(curView==='list'){
-    /* 1단계: 위원회 카드 이름/기관 검색 */
-    document.querySelectorAll('#clist .ccard').forEach(card=>{
-      const name=(card.dataset.name||'').toLowerCase();
-      const ag=(card.dataset.ag||'').toLowerCase();
-      const hit=!kw||name.includes(kw)||ag.includes(kw);
-      card.classList.toggle('hidden',!hit);
+    /* 1단계: 검색어 없으면 위원회 목록, 있으면 공모 전체검색 → 게시글 링크 */
+    const grid=document.getElementById('clist');
+    const hint=document.querySelector('#viewList .list-hint');
+    const res=document.getElementById('searchResults');
+    if(!kw){
+      grid.style.display='flex';
+      if(hint) hint.style.display='';
+      res.style.display='none'; res.innerHTML='';
+      return;
+    }
+    grid.style.display='none';
+    if(hint) hint.style.display='none';
+    const matches=[];
+    SHOWN.forEach(c=>{
+      enrich(c).forEach(p=>{
+        const hay=(p.name+' '+p.org+' '+p.dept+' '+c.name).toLowerCase();
+        if(hay.includes(kw)) matches.push({p:p,committee:c.name});
+      });
     });
+    if(!matches.length){
+      res.innerHTML=`<div class="card"><div class="no-result">'${kw}' 검색 결과가 없습니다.</div></div>`;
+    } else {
+      let rows='';
+      matches.forEach(m=>{
+        const p=m.p;
+        const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
+        rows+=`<tr>
+          <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
+          <td><a class="pl" href="${p.boardUrl}" target="_blank" rel="noopener">${p.name}</a>${dd}</td>
+          <td>${m.committee}<br><span style="font-size:11px;color:#888">${p.org}</span></td>
+          <td style="white-space:nowrap;font-size:12px">${p.period||'상시'}</td>
+        </tr>`;
+      });
+      res.innerHTML=`<div class="card">
+        <div class="ch"><h2>🔎 '${kw}' 검색 결과</h2><span class="cb">${matches.length}건</span></div>
+        <table class="pt"><thead><tr><th style="width:72px">상태</th><th>공모사업명 (클릭 → 게시글)</th><th style="width:170px">위원회·기관</th><th style="width:118px">일정</th></tr></thead><tbody>${rows}</tbody></table>
+      </div>`;
+    }
+    res.style.display='block';
     return;
   }
   /* 2단계: 선택한 위원회의 공모 행을 상태/검색어로 필터 */
@@ -673,7 +701,7 @@ function applyFilter(){
     const name=card.dataset.name.toLowerCase(), ag=card.dataset.ag.toLowerCase();
     card.querySelectorAll('tbody tr[data-status]').forEach(row=>{
       const st=row.dataset.status;
-      const mF=curFilter==='upcoming'?isUp(st):st===curFilter;
+      const mF=st===curFilter;
       const mK=!kw||row.textContent.toLowerCase().includes(kw)||name.includes(kw)||ag.includes(kw);
       row.style.display=(mF&&mK)?'':'none';
     });
