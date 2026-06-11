@@ -80,14 +80,6 @@
         "src": "auto"
       },
       {
-        "name": "생활문제 해결 창업 아이디어 공모전 '창업 아이디어 미니 경진대회'",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeaf619e0658200b22038658ba2d5a6a19&act=detail",
-        "src": "auto"
-      },
-      {
         "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
         "period": "",
         "org": "경기도사회적경제원",
@@ -142,6 +134,14 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M209147177/board.do?idx=cb00d1a0008a85e71a41b8741facbffe3300539bbdd92d98d270ba8a23c3eb87&act=detail",
         "src": "auto"
+      },
+      {
+        "name": "5월 7일까지 사회적경제 도약패키지 참여기업 42개사 모집 － 투자유치집중 36개사 최소 800만원~최대 3천800만원 － 실",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M209147177/board.do?idx=cb00d1a0008a85e71a41b8741facbffe46d6d0a493ac4ddadfd8486af825da86&act=detail",
+        "src": "auto"
       }
     ],
     "anjeun": [
@@ -161,6 +161,30 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189871",
+        "src": "auto"
+      },
+      {
+        "name": "2025년 학교운동부 지원사업[동계훈련 및 훈련용품구입비] 공고 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
+        "src": "auto"
+      },
+      {
+        "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189439",
         "src": "auto"
       },
       {
@@ -225,30 +249,6 @@
         "org": "경기문화재단",
         "dept": "문화예술본부",
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21299",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189871",
-        "src": "auto"
-      },
-      {
-        "name": "2025년 학교운동부 지원사업[동계훈련 및 훈련용품구입비] 공고 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
-        "src": "auto"
-      },
-      {
-        "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189439",
         "src": "auto"
       }
     ],
@@ -335,6 +335,15 @@
       }
     ],
     "gyoyuk1": [],
-    "gyoyuk2": []
+    "gyoyuk2": [
+      {
+        "name": "경기공유 학교 프로그램 신청하기",
+        "period": "",
+        "org": "경기도교육청",
+        "dept": "행정국",
+        "boardUrl": "https://gong-u.goe.go.kr/base/region/view?menuLevel=2&menuNo=438",
+        "src": "auto"
+      }
+    ]
   }
 }
