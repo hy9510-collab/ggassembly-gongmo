@@ -94,7 +94,7 @@ TARGETS = [
     {"id": "munhwa", "org": "경기콘텐츠진흥원", "dept": "콘텐츠지원팀",
      "url": "https://www.gcon.or.kr/user/board/list/8", "link": None},
     {"id": "munhwa", "org": "경기관광공사", "dept": "관광마케팅팀",
-     "url": "https://www.gto.or.kr", "link": None},
+     "url": "https://ggtour.or.kr/gto/notice/notice", "link": None},
 
     {"id": "bokji", "org": "경기도사회서비스원", "dept": "서비스지원팀",
      "url": "https://www.ggss.or.kr/bbs/?bid=notice", "link": "subAct=view"},
@@ -115,12 +115,12 @@ TARGETS = [
     {"id": "gyeongje", "org": "경기도일자리재단", "dept": "일자리정책실",
      "url": "https://www.jobaba.net", "link": None},
     {"id": "gyeongje", "org": "경기도사회적경제원", "dept": "사회적경제지원팀",
-     "url": "https://www.gsea.or.kr", "link": None},
+     "url": "https://gsic.or.kr", "link": None},
 
     {"id": "nonghae", "org": "경기도농업기술원", "dept": "기술보급과",
-     "url": "https://www.nongup.gg.go.kr", "link": None},
+     "url": "https://nongup.gg.go.kr", "link": None},
     {"id": "nonghae", "org": "경기도농수산진흥원", "dept": "유통지원팀",
-     "url": "https://www.ggaf.or.kr", "link": None},
+     "url": "https://www.gafi.or.kr/web/board/boardContentsListPage.do?board_id=42&menu_id=9d7a4fa3cd784b2ea1ab192315847444", "link": None},
 
     {"id": "dosi", "org": "경기주택도시공사(GH)", "dept": "주거복지본부",
      "url": "https://www.gh.or.kr", "link": None},
@@ -128,17 +128,17 @@ TARGETS = [
     {"id": "yeoseong", "org": "경기도평생교육진흥원", "dept": "평생교육지원팀",
      "url": "https://www.gill.or.kr", "link": None},
     {"id": "yeoseong", "org": "경기도여성가족재단", "dept": "정책연구팀",
-     "url": "https://www.gfwf.or.kr", "link": None},
+     "url": "https://www.gwff.kr/base/board/list?boardManagementNo=21&menuLevel=2&menuNo=23", "link": None},
 
     {"id": "anjeun", "org": "경기자원봉사센터", "dept": "사업팀",
-     "url": "https://www.ggvol.or.kr", "link": None},
+     "url": "https://www.ggvc.or.kr/cop/bbs/selectBoardArticle.do?bbsId=Business_main", "link": None},
 
     {"id": "gunseol", "org": "경기교통공사", "dept": "교통서비스팀",
      "url": "https://www.gbus.or.kr", "link": None},
 
     # ── 경기도교육청 (JS 렌더링) ──
     {"id": "gyoyuk2", "org": "경기도교육청", "dept": "행정국",
-     "url": "https://www.goe.go.kr/home/main.do", "link": None},
+     "url": "https://www.goe.go.kr", "link": None},
 ]
 
 # 통합공모 포털 게시글 → 상임위 분류용 키워드 맵 (제목/부서 텍스트 기반)
