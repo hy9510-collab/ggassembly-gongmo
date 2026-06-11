@@ -147,6 +147,7 @@
     .mot .cname{font-weight:700;color:var(--gd);white-space:nowrap;vertical-align:top;padding-top:9px !important;}
     /* 모달 내 구분 행 */
     .mot .grp-row td{background:#f8fdf9;font-size:11px;font-weight:700;color:var(--gd);padding:4px 10px;letter-spacing:.4px;}
+    .mot .cgrp td{background:var(--gd);color:#fff;font-weight:700;font-size:13px;padding:8px 12px;}
 
     @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.clist{grid-template-columns:repeat(2,1fr);gap:10px;max-width:none;}.mb{padding:12px;}}
   </style>
@@ -500,32 +501,42 @@ let curCommittee=null;
 const SHOWN=DATA.filter(c=>c.id!=='uiwoon');
 
 /* ═══ 소관기관 그룹 렌더링 ═══ */
+function agencyLinks(a){
+  return `<div class="lp">`+
+    `<a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>`+
+    `<a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>`+
+    `</div>`;
+}
 function agencyGroupHtml(agencies, showAll){
   // type별로 그룹화 (gg → edu → agency 순)
   const order=['gg','edu','agency'];
   const groups={gg:[],edu:[],agency:[]};
   agencies.forEach(a=>{ if(groups[a.type]) groups[a.type].push(a); });
 
+  const hasMultiTypes = order.filter(x=>groups[x].length>0).length>1;
   let html='';
   order.forEach(t=>{
     if(!groups[t].length) return;
-    if(!showAll && groups[t][0].type==='gg' && groups['agency'].length===0) return; // 도청만 있으면 라벨 생략
+    if(!showAll && t==='gg' && groups['agency'].length===0) return; // 도청만 있으면 라벨 생략
 
-    // 그룹 색 라벨
-    const hasMultiTypes = order.filter(x=>groups[x].length>0).length>1;
     if(hasMultiTypes){
-      html+=`<tr><td colspan="4" style="background:${TYPE_COLOR[t]};color:#fff;font-size:11px;font-weight:700;padding:4px 10px;letter-spacing:.4px;">▸ ${TYPE_LABEL[t]}</td></tr>`;
+      html+=`<tr><td colspan="2" style="background:${TYPE_COLOR[t]};color:#fff;font-size:11px;font-weight:700;padding:4px 10px;letter-spacing:.4px;">▸ ${TYPE_LABEL[t]}</td></tr>`;
     }
-    groups[t].forEach(a=>{
-      html+=`<tr>
-        <td><strong>${a.org}</strong><br><span style="font-size:11px;color:#888">${a.dept}</span></td>
-        <td class="tel">📞 ${a.tel}</td>
-        <td><div class="lp">
-          <a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>
-          <a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>
-        </div></td>
-      </tr>`;
-    });
+    if(t==='agency'){
+      // 산하기관: 기관명 + 링크만 (부서·전화 제거 — 여러 부서가 공모 진행)
+      groups[t].forEach(a=>{
+        html+=`<tr><td><strong>${a.org}</strong></td><td>${agencyLinks(a)}</td></tr>`;
+      });
+    } else {
+      // 도청/교육청: 기관별로 실국·부서명을 한 줄로 합쳐 한 행에 (전화 제거)
+      const byOrg={};
+      groups[t].forEach(a=>{ (byOrg[a.org]=byOrg[a.org]||[]).push(a); });
+      Object.keys(byOrg).forEach(org=>{
+        const list=byOrg[org];
+        const depts=list.map(a=>a.dept).join(' · ');
+        html+=`<tr><td><strong>${org}</strong><br><span style="font-size:11px;color:#888">${depts}</span></td><td>${agencyLinks(list[0])}</td></tr>`;
+      });
+    }
   });
   return html;
 }
@@ -610,7 +621,7 @@ function committeeCardHtml(c){
           </button>
           <div class="ag-body">
             <table class="ag-tbl">
-              <thead><tr><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead>
+              <thead><tr><th>기관·부서</th><th>링크</th></tr></thead>
               <tbody>${agHtml}</tbody>
             </table>
           </div>
@@ -782,34 +793,10 @@ function buildModal(){
   allDiv.id='mc-all'; allDiv.className='mc active';
   let allRows='';
   DATA.forEach(c=>{
-    const order=['gg','edu','agency'];
-    const groups={gg:[],edu:[],agency:[]};
-    c.agencies.forEach(a=>{if(groups[a.type])groups[a.type].push(a);});
-    const multiType=order.filter(t=>groups[t].length>0).length>1;
-    let firstRow=true;
-    order.forEach(t=>{
-      if(!groups[t].length) return;
-      if(multiType){
-        allRows+=`<tr>
-          ${firstRow?`<td class="cname" rowspan="${c.agencies.length+(multiType?order.filter(x=>groups[x].length>0).length:0)}">${c.name}</td>`:''}
-          <td colspan="4" style="background:${TYPE_COLOR[t]};color:#fff;font-size:11px;font-weight:700;padding:4px 10px;">${TYPE_LABEL[t]}</td>
-        </tr>`;
-        firstRow=false;
-      }
-      groups[t].forEach((a,i)=>{
-        allRows+=`<tr>
-          ${!multiType&&i===0?`<td class="cname" rowspan="${c.agencies.length}">${c.name}</td>`:''}
-          <td><strong>${a.org}</strong><br><span style="font-size:11px;color:#888">${a.dept}</span></td>
-          <td class="tel">📞 ${a.tel}</td>
-          <td><div class="lp">
-            <a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>
-            <a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>
-          </div></td>
-        </tr>`;
-      });
-    });
+    allRows+=`<tr class="cgrp"><td colspan="2">📌 ${c.name}</td></tr>`;
+    allRows+=agencyGroupHtml(c.agencies, true);
   });
-  allDiv.innerHTML=`<table class="mot"><thead><tr><th>상임위원회</th><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead><tbody>${allRows}</tbody></table>`;
+  allDiv.innerHTML=`<table class="mot"><tbody>${allRows}</tbody></table>`;
   cont.appendChild(allDiv);
 
   DATA.forEach(c=>{
@@ -820,7 +807,7 @@ function buildModal(){
     const div=document.createElement('div');
     div.id=`mc-${c.id}`; div.className='mc';
     const rows=agencyGroupHtml(c.agencies,true);
-    div.innerHTML=`<table class="mot"><thead><tr><th>기관명·실국부서</th><th>연락처</th><th>링크</th></tr></thead><tbody>${rows}</tbody></table>`;
+    div.innerHTML=`<table class="mot"><thead><tr><th>기관·부서</th><th>링크</th></tr></thead><tbody>${rows}</tbody></table>`;
     cont.appendChild(div);
   });
 }
