@@ -106,15 +106,14 @@
     /* 전체/검색 목록의 소관위원회 컬럼·그룹 헤더 */
     .pt .ccol{font-weight:600;color:var(--gd);white-space:nowrap;}
     .pt .grp td{background:#eef6f0;font-weight:700;color:var(--gd);font-size:12.5px;padding:7px 14px;}
-    /* 자동수집 불가 기관 안내 (하단) */
-    .manual-foot{margin:10px 32px 44px;padding:20px 22px;background:#fff8f0;border:1px solid #ffd9a8;border-radius:12px;}
-    .manual-foot h3{font-size:15px;color:#b35900;margin-bottom:6px;}
-    .mf-note{font-size:12.5px;color:#8a6d3b;margin-bottom:14px;line-height:1.55;}
-    .mf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
-    .mf-item{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:#fff;border:1px solid #f0e0c8;border-radius:8px;text-decoration:none;transition:all .15s;}
-    .mf-item:hover{border-color:#e9961e;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-    .mf-item b{font-size:13px;color:#333;}
-    .mf-item span{font-size:11px;color:#999;}
+    /* 자동수집 불가 기관 — 위원회 화면 내 안내 줄 */
+    .manual-inline{padding:12px 20px 14px;border-top:1px solid #f0e0c8;background:#fffdf7;display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+    .mi-label{font-size:12px;font-weight:700;color:#b35900;}
+    .mi-link{font-size:12px;color:var(--gd);text-decoration:none;border:1px solid var(--gb);border-radius:14px;padding:3px 10px;background:#fff;transition:all .15s;}
+    .mi-link:hover{background:var(--gd);color:#fff;}
+    /* 하단 전체 공지 */
+    .site-note{margin:6px 32px 40px;padding:14px 18px;background:#f3f6f3;border-radius:10px;}
+    .site-note p{font-size:12.5px;color:#667;line-height:1.6;}
     .ccard .cc-cnt{font-size:13px;color:#666;}
     .ccard .cc-cnt b{font-size:24px;color:var(--gd);margin-right:3px;}
     .ccard .cc-cnt span{font-size:12px;color:#999;}
@@ -193,10 +192,8 @@
   </div>
 </main>
 
-<footer class="manual-foot">
-  <h3>⚠️ 자동수집이 안 되는 기관 — 게시판에서 직접 확인하세요</h3>
-  <p class="mf-note">아래 기관들은 홈페이지가 자바스크립트로 되어 있어 개별 공모를 자동으로 가져오지 못합니다. 기관명을 누르면 해당 공모·공지 게시판으로 이동합니다.</p>
-  <div class="mf-grid" id="manualList"></div>
+<footer class="site-note">
+  <p>ℹ️ 일부 소관기관은 홈페이지 구조상 공모 글을 자동으로 가져올 수 없습니다. 이런 기관은 각 상임위원회 화면 아래에 <b>「게시판에서 직접 확인」</b> 링크로 표시되며, 누르면 해당 기관 공모게시판으로 바로 연결됩니다. 이 페이지는 매일 아침 8시에 자동 갱신됩니다.</p>
 </footer>
 
 <div class="ov" id="ov" onclick="ovOut(event)">
@@ -327,7 +324,7 @@ const DATA=[
       {org:'경기도수원월드컵경기장관리재단', dept:'시설운영팀',      tel:'031-259-2500', type:'agency',url:'https://www.suwonworldcup.or.kr',     boardUrl:'https://www.suwonworldcup.or.kr'},
       {org:'한국도자재단',                   dept:'사업기획팀',      tel:'031-799-1500', type:'agency',url:'https://www.kocef.org',               boardUrl:'https://www.kocef.org'},
       {org:'경기콘텐츠진흥원',              dept:'콘텐츠지원팀',    tel:'031-259-7300', type:'agency',url:'https://www.gcon.or.kr',              boardUrl:'https://www.gcon.or.kr/user/board/list/8'},
-      {org:'경기도체육회',                   dept:'경기력향상팀',    tel:'031-250-1300', type:'agency',url:'https://www.ggsc.or.kr',              boardUrl:'https://www.ggsc.or.kr'},
+      {org:'경기도체육회',                   dept:'경기력향상팀',    tel:'031-250-1300', type:'agency',url:'https://ggsports.gg.go.kr',           boardUrl:'https://ggsports.gg.go.kr/archives/category/gg_sports_notice'},
       {org:'경기도장애인체육회',             dept:'장애인체육진흥팀',tel:'031-250-1800', type:'agency',url:'https://www.ggdsc.or.kr',             boardUrl:'https://www.ggdsc.or.kr'},
       {org:'사단법인 DMZ국제다큐멘터리영화제',dept:'사무국',         tel:'031-944-6240', type:'agency',url:'https://www.dmzdocs.com',             boardUrl:'https://www.dmzdocs.com'},
       {org:'경기도남한산성세계유산센터',     dept:'학예팀',          tel:'031-743-6610', type:'agency',url:'https://www.gg.go.kr',               boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
@@ -638,7 +635,19 @@ function committeeCardHtml(c){
         </tr></thead>
         <tbody>${rows}</tbody>
       </table>
+      ${manualInlineHtml(c)}
     </div>`;
+}
+
+/* 자동수집 불가 기관 안내 — 위원회 상세 카드 하단 */
+function manualInlineHtml(c){
+  const seen=new Set();
+  const list=c.agencies.filter(a=>MANUAL_ORGS.includes(a.org)&&!seen.has(a.org)&&seen.add(a.org));
+  if(!list.length) return '';
+  return `<div class="manual-inline">
+    <span class="mi-label">📋 자동수집이 안 되는 기관 — 게시판에서 직접 확인:</span>
+    ${list.map(a=>`<a class="mi-link" href="${a.boardUrl}">${a.org} →</a>`).join('')}
+  </div>`;
 }
 
 /* ═══ 화면 전환 ═══ */
@@ -758,26 +767,15 @@ function onSearch(){
   res.style.display='block';
 }
 
-/* 자동수집 불가 기관 — 하단 참고 목록 (게시판 직접 확인) */
-const MANUAL_ORGS=['경기콘텐츠진흥원','경기관광공사','경기도사회서비스원','경기복지재단',
+/* 자동수집 불가 기관 (게시판 직접 확인) — 각 위원회 화면 아래에 링크로 표시 */
+const MANUAL_ORGS=['경기콘텐츠진흥원','경기관광공사','경기도체육회','경기도사회서비스원','경기복지재단',
   '경기연구원','경기도교육연구원','경기도경제과학진흥원','경기도일자리재단',
   '경기도농업기술원','경기도농수산진흥원','경기도여성가족재단',
   '경기자원봉사센터','경기교통공사','경기도평생교육진흥원','경기도교육청'];
-function renderManual(){
-  const wrap=el('manualList'); if(!wrap) return;
-  const find=(org)=>{for(const c of DATA){const a=c.agencies.find(x=>x.org===org);if(a)return{a:a,com:c.name};}return null;};
-  let html='';
-  MANUAL_ORGS.forEach(org=>{
-    const f=find(org); if(!f) return;
-    html+=`<a class="mf-item" href="${f.a.boardUrl}"><b>${org}</b><span>${f.com.replace('위원회','위')} · 게시판 바로가기 →</span></a>`;
-  });
-  wrap.innerHTML=html;
-}
 
 function init(){
   computeStats();
   renderList();
-  renderManual();
   showHome();
 }
 function togAg(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
