@@ -112,8 +112,11 @@
     .mi-link{font-size:12px;color:var(--gd);text-decoration:none;border:1px solid var(--gb);border-radius:14px;padding:3px 10px;background:#fff;transition:all .15s;}
     .mi-link:hover{background:var(--gd);color:#fff;}
     /* 하단 전체 공지 */
-    .site-note{margin:6px 32px 40px;padding:14px 18px;background:#f3f6f3;border-radius:10px;}
-    .site-note p{font-size:12.5px;color:#667;line-height:1.6;}
+    .site-note{margin:6px 32px 40px;padding:16px 20px;background:#f3f6f3;border-radius:10px;}
+    .site-note h4{font-size:14px;color:var(--gd);margin-bottom:9px;}
+    .site-note ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px;}
+    .site-note li{font-size:12.5px;color:#566;line-height:1.65;}
+    .site-note b{color:var(--gd);}
     .ccard .cc-cnt{font-size:13px;color:#666;}
     .ccard .cc-cnt b{font-size:24px;color:var(--gd);margin-right:3px;}
     .ccard .cc-cnt span{font-size:12px;color:#999;}
@@ -193,7 +196,14 @@
 </main>
 
 <footer class="site-note">
-  <p>ℹ️ 일부 소관기관은 홈페이지 구조상 공모 글을 자동으로 가져올 수 없습니다. 이런 기관은 각 상임위원회 화면 아래에 <b>「게시판에서 직접 확인」</b> 링크로 표시되며, 누르면 해당 기관 공모게시판으로 바로 연결됩니다. 이 페이지는 매일 아침 8시에 자동 갱신됩니다.</p>
+  <h4>ℹ️ 이용 안내</h4>
+  <ul>
+    <li>이 페이지는 <b>매일 아침 8시</b>에 각 기관 공모 게시판을 자동으로 수집해 갱신됩니다.</li>
+    <li>공모사업명을 누르면 <b>해당 공고 게시글</b>로 바로 이동합니다.</li>
+    <li>접수기간이 표시되지 않은 항목은 <b>「공고문 참조」</b>로 표시됩니다 — <b>연중(상시) 모집</b>이거나 기간이 공고문 안에 안내된 경우이니 게시글에서 확인하세요.</li>
+    <li>제목에 '공모'가 없어도 <b>신청·접수·참가 등 도민이 지원할 수 있는 공고</b>를 함께 수집합니다.</li>
+    <li>일부 소관기관은 홈페이지 구조상 자동수집이 어려워, 각 상임위원회 화면 아래 <b>「게시판에서 직접 확인」</b> 링크로 해당 기관 공모게시판에 연결됩니다.</li>
+  </ul>
 </footer>
 
 <div class="ov" id="ov" onclick="ovOut(event)">
@@ -604,7 +614,7 @@ function committeeCardHtml(c){
         <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
         <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}</td>
         <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-        <td style="white-space:nowrap;font-size:12px">${p.period}</td>
+        <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
       </tr>`;
     });
   }
@@ -661,7 +671,7 @@ function rowHtml(p,committee){
     <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}</td>
     <td class="ccol">${committee}</td>
     <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-    <td style="white-space:nowrap;font-size:12px">${p.period||'상시'}</td>
+    <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
   </tr>`;
 }
 function listCardHtml(title,count,bodyRows){
