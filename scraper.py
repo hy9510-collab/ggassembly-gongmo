@@ -96,7 +96,7 @@ TARGETS = [
     {"id": "munhwa", "org": "경기관광공사", "dept": "관광마케팅팀",
      "url": "https://ggtour.or.kr/gto/notice/notice", "link": None},
     {"id": "munhwa", "org": "경기도체육회", "dept": "사무처",
-     "url": "https://ggsports.gg.go.kr/archives/category/gg_sports_notice",
+     "url": "https://ggsports.gg.go.kr/archives/category/gg_sports_notice/public",
      "link": "/archives/"},
 
     {"id": "bokji", "org": "경기도사회서비스원", "dept": "서비스지원팀",
