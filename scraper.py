@@ -34,9 +34,10 @@ EXCLUDE = ("채용", "입찰", "낙찰", "계약", "보상", "분양", "임대",
            "인사발령", "발령", "승무", "사원", "운영규정", "매뉴얼", "약관",
            "개인정보", "로그인", "회원가입", "사이트맵", "더보기",
            "바로가기", "전체보기", "닫기", "오시는", "이의신청", "증명서")
-# 제외할 URL 패턴 (채용/입찰/분양 게시판) — 흔한 단어의 일부와 겹치지 않게 구체적으로
+# 제외할 URL 패턴 (채용/입찰/분양/보도자료 게시판) — 흔한 단어의 일부와 겹치지 않게 구체적으로
 EXCLUDE_URL = ("recruit", "employ", "chaeyong", "/bid", "bid-", "reward",
-               "salerental", "rental", "/sale", "sale-")
+               "salerental", "rental", "/sale", "sale-",
+               "press", "m209147177")  # 보도자료 (gh press-release, gsic 보도 게시판 등)
 # 개별 게시글로 인정할 href 패턴 (목록/메뉴 페이지 배제)
 DETAIL_HINTS = ("articleno", "article=", "seq=", "idx=", "nttid", "bidx=",
                 "mode=view", "subact=view", "boardview", "/view", "?no=",
@@ -128,7 +129,7 @@ TARGETS = [
      "url": "https://www.gafi.or.kr/web/board/boardContentsListPage.do?board_id=42&menu_id=9d7a4fa3cd784b2ea1ab192315847444", "link": None},
 
     {"id": "dosi", "org": "경기주택도시공사(GH)", "dept": "주거복지본부",
-     "url": "https://www.gh.or.kr", "link": None},
+     "url": "https://www.gh.or.kr/gh/notice.do", "link": None},
 
     {"id": "yeoseong", "org": "경기도평생교육진흥원", "dept": "평생교육지원팀",
      "url": "https://www.gill.or.kr", "link": None},
@@ -329,6 +330,53 @@ def extract_from_page(page, target: dict) -> list[dict]:
     return items
 
 
+# 지원대상/자격 줄 추출 패턴
+TARGET_PAT = re.compile(
+    r"(?:지원|신청|모집|응모|참가|참여|공모)\s*(?:대상|자격)\s*[:：]?\s*([^\n]{2,70})")
+# 접수/공모 기간이 적힌 줄 탐지
+PERIOD_LINE_PAT = re.compile(r"(?:접수|신청|공모|모집|응모|참가)\s*기간")
+
+
+def enrich_details(page, items: list[dict]) -> list[dict]:
+    """개별 공고 게시글을 열어 접수기간·지원대상을 보충한다 (best-effort)."""
+    n_p = n_t = 0
+    for item in items:
+        if item.get("period") and item.get("target"):
+            continue
+        url = item.get("boardUrl") or ""
+        if not url.startswith("http"):
+            continue
+        try:
+            page.goto(url, wait_until="domcontentloaded")
+            page.wait_for_timeout(700)
+            body = page.evaluate(
+                "() => document.body ? document.body.innerText.slice(0, 9000) : ''")
+        except Exception:
+            continue
+        lines = [ln.strip() for ln in (body or "").splitlines() if ln.strip()]
+        if not item.get("period"):
+            for ln in lines:
+                if PERIOD_LINE_PAT.search(ln):
+                    # '2026. 6. 1.' 처럼 점 뒤 공백이 있는 표기도 인식되게 정리
+                    ln2 = re.sub(r"(?<=\d)\.\s+(?=\d)", ".", ln)
+                    p = normalize_period(ln2)
+                    if p:
+                        item["period"] = p
+                        n_p += 1
+                        break
+        if not item.get("target"):
+            for ln in lines:
+                m = TARGET_PAT.search(ln)
+                if m:
+                    t = re.sub(r"\s+", " ", m.group(1)).strip(" :：·-")
+                    if 2 <= len(t) <= 70:
+                        item["target"] = t
+                        n_t += 1
+                        break
+    print(f"  [상세보충] 기간 {n_p}건, 지원대상 {n_t}건 추가")
+    return items
+
+
 def scrape_all() -> list[dict]:
     results = []
     with sync_playwright() as p:
@@ -354,6 +402,12 @@ def scrape_all() -> list[dict]:
             except Exception as e:
                 print(f"    [오류] {e}", file=sys.stderr)
                 continue
+
+        # 개별 공고 게시글에서 접수기간·지원대상 보충
+        try:
+            results = enrich_details(page, results)
+        except Exception as e:
+            print(f"  [상세보충 오류] {e}", file=sys.stderr)
 
         browser.close()
     return results

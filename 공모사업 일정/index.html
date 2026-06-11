@@ -88,6 +88,7 @@
     .st.closed{background:#f5f5f5;color:#9e9e9e;}
     .st.prep{background:#e3f2fd;color:#1565c0;}
     .st.ongoing{background:#ede7f6;color:#5e35b1;}
+    .tgt{font-size:11px;color:#3a7d44;margin-top:3px;}
     .dday{font-size:11px;font-weight:700;margin-left:4px;}
     .dday.hot{color:#e65100;} .dday.norm{color:#2e7d32;}
     .no-proj{padding:16px 20px;font-size:13px;color:#aaa;text-align:center;}
@@ -413,7 +414,7 @@ const DATA=[
       {org:'경기도청',             dept:'기후환경정책과·기후환경관리과·에너지산업과·에너지관리과·대기환경관리과·환경보건안전과·자원순환과·정원산업과',tel:'031-8008-4800',type:'gg',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
       {org:'경기도보건환경연구원', dept:'기후대기연구부·물환경연구부·생활환경연구부·북부지원(대기환경팀·토양분석팀·수질환경팀·먹는물검사팀·환경생태팀)',tel:'031-250-3500',type:'agency',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
       {org:'경기도수자원본부',     dept:'수자원관리팀', tel:'031-250-4800', type:'agency',url:'https://water.gg.go.kr',boardUrl:'https://water.gg.go.kr'},
-      {org:'경기주택도시공사(GH)', dept:'주거복지본부·도시재생본부',tel:'031-220-8000',type:'agency',url:'https://www.gh.or.kr',boardUrl:'https://www.gh.or.kr'},
+      {org:'경기주택도시공사(GH)', dept:'주거복지본부·도시재생본부',tel:'031-220-8000',type:'agency',url:'https://www.gh.or.kr',boardUrl:'https://www.gh.or.kr/gh/notice.do'},
       {org:'경기환경에너지진흥원', dept:'에너지전환팀', tel:'031-8030-7300',type:'agency',url:'https://www.gg.go.kr',boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
     ],
     projects:[
@@ -517,35 +518,22 @@ function agencyLinks(a){
     `</div>`;
 }
 function agencyGroupHtml(agencies, showAll){
-  // type별로 그룹화 (gg → edu → agency 순)
-  const order=['gg','edu','agency'];
-  const groups={gg:[],edu:[],agency:[]};
-  agencies.forEach(a=>{ if(groups[a.type]) groups[a.type].push(a); });
-
-  const hasMultiTypes = order.filter(x=>groups[x].length>0).length>1;
+  // 경기도청·경기도교육청·경기도의회(도청 직속 포함)는 구분 라벨 없이 맨 위에
+  // 기관별 한 줄(실국·부서 합침)로, 그 아래에 산하기관을 나열한다.
+  const isTop=a=>a.type==='gg'||a.type==='edu'||a.org.startsWith('경기도의회');
+  const tops=agencies.filter(isTop), rest=agencies.filter(a=>!isTop(a));
+  const byOrg={}, orgOrder=[];
+  tops.forEach(a=>{ if(!byOrg[a.org]){byOrg[a.org]=[];orgOrder.push(a.org);} byOrg[a.org].push(a); });
+  const rank=o=>o.startsWith('경기도의회')?2:(o.startsWith('경기도교육청')?1:0);
+  orgOrder.sort((a,b)=>rank(a)-rank(b));
   let html='';
-  order.forEach(t=>{
-    if(!groups[t].length) return;
-    if(!showAll && t==='gg' && groups['agency'].length===0) return; // 도청만 있으면 라벨 생략
-
-    if(hasMultiTypes){
-      html+=`<tr><td colspan="2" style="background:${TYPE_COLOR[t]};color:#fff;font-size:11px;font-weight:700;padding:4px 10px;letter-spacing:.4px;">▸ ${TYPE_LABEL[t]}</td></tr>`;
-    }
-    if(t==='agency'){
-      // 산하기관: 기관명 + 링크만 (부서·전화 제거 — 여러 부서가 공모 진행)
-      groups[t].forEach(a=>{
-        html+=`<tr><td><strong>${a.org}</strong></td><td>${agencyLinks(a)}</td></tr>`;
-      });
-    } else {
-      // 도청/교육청: 기관별로 실국·부서명을 한 줄로 합쳐 한 행에 (전화 제거)
-      const byOrg={};
-      groups[t].forEach(a=>{ (byOrg[a.org]=byOrg[a.org]||[]).push(a); });
-      Object.keys(byOrg).forEach(org=>{
-        const list=byOrg[org];
-        const depts=list.map(a=>a.dept).join(' · ');
-        html+=`<tr><td><strong>${org}</strong><br><span style="font-size:11px;color:#888">${depts}</span></td><td>${agencyLinks(list[0])}</td></tr>`;
-      });
-    }
+  orgOrder.forEach(org=>{
+    const list=byOrg[org];
+    const depts=list.map(a=>a.dept).join(' · ');
+    html+=`<tr><td><strong>${org}</strong><br><span style="font-size:11px;color:#888">${depts}</span></td><td>${agencyLinks(list[0])}</td></tr>`;
+  });
+  rest.forEach(a=>{
+    html+=`<tr><td><strong>${a.org}</strong></td><td>${agencyLinks(a)}</td></tr>`;
   });
   return html;
 }
@@ -596,13 +584,7 @@ function renderList(){
 function committeeCardHtml(c){
   const enriched=enrich(c);
   const agHtml = agencyGroupHtml(c.agencies, false);
-  const ggCnt    = c.agencies.filter(a=>a.type==='gg').length;
-  const eduCnt   = c.agencies.filter(a=>a.type==='edu').length;
-  const agCnt    = c.agencies.filter(a=>a.type==='agency').length;
-  let togLabel   = `소관기관·실국·연락처 (${c.agencies.length}개)`;
-  if(ggCnt>0)  togLabel += ` — 도청 실국 ${ggCnt}`;
-  if(eduCnt>0) togLabel += ` — 교육청 ${eduCnt}`;
-  if(agCnt>0)  togLabel += ` — 산하기관 ${agCnt}`;
+  const togLabel = `소관기관·실국 보기`;
 
   let rows='';
   if(!enriched.length){
@@ -610,9 +592,10 @@ function committeeCardHtml(c){
   } else {
     enriched.forEach(p=>{
       const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
+      const tg=p.target?`<div class="tgt">👥 지원대상: ${p.target}</div>`:'';
       rows+=`<tr data-status="${p.status}">
         <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-        <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}</td>
+        <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
         <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
         <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
       </tr>`;
@@ -666,9 +649,10 @@ function el(id){return document.getElementById(id);}
 /* 공모 한 행 (소관 상임위원회 컬럼 포함) — 같은 창에서 게시글 열기 */
 function rowHtml(p,committee){
   const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
+  const tg=p.target?`<div class="tgt">👥 지원대상: ${p.target}</div>`:'';
   return `<tr>
     <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-    <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}</td>
+    <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
     <td class="ccol">${committee}</td>
     <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
     <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
@@ -781,7 +765,8 @@ function onSearch(){
 const MANUAL_ORGS=['경기콘텐츠진흥원','경기관광공사','경기도사회서비스원','경기복지재단',
   '경기연구원','경기도교육연구원','경기도경제과학진흥원','경기도일자리재단',
   '경기도농업기술원','경기도농수산진흥원','경기도여성가족재단',
-  '경기자원봉사센터','경기교통공사','경기도평생교육진흥원','경기도교육청'];
+  '경기자원봉사센터','경기교통공사','경기도평생교육진흥원','경기도교육청',
+  '경기주택도시공사(GH)'];
 
 function init(){
   computeStats();
