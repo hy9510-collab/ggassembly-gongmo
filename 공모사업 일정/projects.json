@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-10",
+  "updated": "2026-06-11",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -77,6 +77,70 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110890944&page=1&menuId=4434&bcIdx=0",
+        "src": "auto"
+      },
+      {
+        "name": "생활문제 해결 창업 아이디어 공모전 '창업 아이디어 미니 경진대회'",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeaf619e0658200b22038658ba2d5a6a19&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "경기도 공고 제2026-1029호  2026년 사회적가치 창출 활성화 사업 선정결과 수정공고 ｢사회적기업 육성법｣ 제14조,",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffea4ea7d3e5af9432c851f3acc50f72c5a&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "사회혁신공간 입주기업 (추가) 모집공고",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeb61c3df30677d65c059222c519fa2d74&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "민생에 플러스,「고유가 피해지원금」 지원사업 안내",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5d0d4c02abed661cdb4e6383a0bf214d&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "자립준비청년 일자리·아동 놀이권 등 경기도 사회환경 문제해결 지원사업 성과 공유 ○ 5일 사회환경 문제해결 지원사업 성과공",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M209147177/board.do?idx=cb00d1a0008a85e71a41b8741facbffeaf3d3042a9cef3b894319ee6e96ca540&act=detail",
+        "src": "auto"
+      },
+      {
+        "name": "경기도사회적경제원, 2년 연속 지역사회공헌인정 기관 선정. ESG 전 분야 A+ 획득 ○ 사회적경제 기반 지역사회 공헌 모",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M209147177/board.do?idx=cb00d1a0008a85e71a41b8741facbffe3300539bbdd92d98d270ba8a23c3eb87&act=detail",
         "src": "auto"
       }
     ],
