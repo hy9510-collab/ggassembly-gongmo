@@ -108,6 +108,9 @@ TARGETS = [
     {"id": "munhwa", "org": "경기도체육회", "dept": "사무처",
      "url": "https://ggsports.gg.go.kr/archives/category/gg_sports_notice/public",
      "link": "/archives/"},
+    {"id": "munhwa", "org": "경기아트센터", "dept": "공연기획팀",
+     "url": "https://www.ggac.or.kr/ggac/M0000217/board/list.do",
+     "link": "atcSn="},
 
     {"id": "bokji", "org": "경기도사회서비스원", "dept": "서비스지원팀",
      "url": "https://www.ggss.or.kr/bbs/?bid=notice", "link": "subAct=view"},
