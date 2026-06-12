@@ -28,6 +28,9 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 KEYWORDS = ("공모", "모집", "지원사업", "지원 사업", "선정", "참가자", "참여기업",
             "참여자", "공모전", "아이디어", "경진대회", "지원자",
             "신청", "접수", "참가", "지원 안내", "지원금")
+# 행사 제목 키워드 — 공모 키워드가 없고 아래만 있으면 '행사'로 분류
+EVENT_KEYWORDS = ("행사", "축제", "박람회", "설명회", "세미나", "포럼", "강연",
+                  "공연", "전시", "체험", "캠페인", "대회", "교실", "아카데미")
 # 제외할 잡음 (채용/입찰/분양 등 — 제목 줄에 있으면 제외)
 # '안내/현황/소개/목록'은 정상 공모 제목에도 자주 쓰여 제외하지 않는다.
 EXCLUDE = ("채용", "입찰", "낙찰", "계약", "보상", "분양", "임대", "합격", "임용",
@@ -101,6 +104,9 @@ TARGETS = [
     {"id": "munhwa", "org": "경기도체육회", "dept": "사무처",
      "url": "https://ggsports.gg.go.kr/archives/category/gg_sports_notice/public",
      "link": "/archives/"},
+    {"id": "munhwa", "org": "경기도체육회", "dept": "사무처",
+     "url": "https://ggsports.gg.go.kr/archives/category/ggsports_ggdo_game",
+     "link": "/archives/", "kind": "event"},
 
     {"id": "bokji", "org": "경기도사회서비스원", "dept": "서비스지원팀",
      "url": "https://www.ggss.or.kr/bbs/?bid=notice", "link": "subAct=view"},
@@ -196,7 +202,8 @@ def clean_title(raw: str) -> str:
     lines = [ln.strip() for ln in re.split(r"[\r\n\t]+", raw) if ln.strip()]
     if not lines:
         return ""
-    kw_lines = [ln for ln in lines if any(k in ln for k in KEYWORDS)]
+    kw_lines = [ln for ln in lines
+                if any(k in ln for k in KEYWORDS + EVENT_KEYWORDS)]
     pool = kw_lines if kw_lines else lines
     name = max(pool, key=len)
     # 제목 뒤에 본문이 이어붙은 경우(…에서는/…드립니다 …) 본문 앞에서 끊는다
@@ -213,7 +220,17 @@ def looks_like_title(text: str) -> bool:
         return False
     if any(x in text for x in EXCLUDE):
         return False
-    return any(k in text for k in KEYWORDS)
+    return (any(k in text for k in KEYWORDS)
+            or any(k in text for k in EVENT_KEYWORDS))
+
+
+def classify_kind(title: str) -> str:
+    """공모/행사 구분 — 공모 키워드가 있으면 공모, 행사 키워드만 있으면 행사."""
+    if any(k in title for k in KEYWORDS):
+        return ""          # 공모 (기본)
+    if any(k in title for k in EVENT_KEYWORDS):
+        return "event"     # 행사
+    return ""
 
 
 def is_excluded_href(href: str) -> bool:
@@ -315,7 +332,12 @@ def extract_from_page(page, target: dict) -> list[dict]:
                 continue
             cid = classify_portal(name)
 
-        items.append({
+        # 공모/행사 구분 (행사 전용 게시판은 target에 kind 지정)
+        kind = target.get("kind") or classify_kind(name)
+        if kind == "event" and any(x in name for x in ("결과", "취소", "연기")):
+            continue  # 행사 결과·취소 소식은 제외
+
+        item = {
             "name": name,
             "period": period,
             "org": target["org"],
@@ -323,7 +345,10 @@ def extract_from_page(page, target: dict) -> list[dict]:
             "boardUrl": abs_href,
             "src": "auto",          # 자동 수집 표시 (매 실행마다 교체)
             "_committee": cid,
-        })
+        }
+        if kind == "event":
+            item["kind"] = "event"
+        items.append(item)
         if len(items) >= 8:
             break
 
@@ -333,8 +358,8 @@ def extract_from_page(page, target: dict) -> list[dict]:
 # 지원대상/자격 줄 추출 패턴
 TARGET_PAT = re.compile(
     r"(?:지원|신청|모집|응모|참가|참여|공모)\s*(?:대상|자격)\s*[:：]?\s*([^\n]{2,70})")
-# 접수/공모 기간이 적힌 줄 탐지
-PERIOD_LINE_PAT = re.compile(r"(?:접수|신청|공모|모집|응모|참가)\s*기간")
+# 접수/공모/행사 기간이 적힌 줄 탐지
+PERIOD_LINE_PAT = re.compile(r"(?:접수|신청|공모|모집|응모|참가|행사|운영)\s*기간")
 
 
 def enrich_details(page, items: list[dict]) -> list[dict]:

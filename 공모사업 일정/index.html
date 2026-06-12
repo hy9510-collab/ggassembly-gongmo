@@ -89,6 +89,12 @@
     .st.prep{background:#e3f2fd;color:#1565c0;}
     .st.ongoing{background:#ede7f6;color:#5e35b1;}
     .tgt{font-size:11px;color:#3a7d44;margin-top:3px;}
+    .kind{display:inline-block;font-size:10.5px;font-weight:700;border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px;}
+    .kind.gm{background:#e6f4ea;color:#2e7d32;}
+    .kind.evt{background:#ede7f6;color:#5e35b1;}
+    .lb.evt{background:#5e35b1;color:#fff;border-color:#5e35b1;}
+    .lb.evt:hover{background:#7e57c2;}
+    .ccard .cc-cnt b.evt-n{color:#5e35b1;}
     .dday{font-size:11px;font-weight:700;margin-left:4px;}
     .dday.hot{color:#e65100;} .dday.norm{color:#2e7d32;}
     .no-proj{padding:16px 20px;font-size:13px;color:#aaa;text-align:center;}
@@ -335,7 +341,7 @@ const DATA=[
       {org:'경기도수원월드컵경기장관리재단', dept:'시설운영팀',      tel:'031-259-2500', type:'agency',url:'https://www.suwonworldcup.or.kr',     boardUrl:'https://www.suwonworldcup.or.kr'},
       {org:'한국도자재단',                   dept:'사업기획팀',      tel:'031-799-1500', type:'agency',url:'https://www.kocef.org',               boardUrl:'https://www.kocef.org'},
       {org:'경기콘텐츠진흥원',              dept:'콘텐츠지원팀',    tel:'031-259-7300', type:'agency',url:'https://www.gcon.or.kr',              boardUrl:'https://www.gcon.or.kr/user/board/list/8'},
-      {org:'경기도체육회',                   dept:'경기력향상팀',    tel:'031-250-1300', type:'agency',url:'https://ggsports.gg.go.kr',           boardUrl:'https://ggsports.gg.go.kr/archives/category/gg_sports_notice/public'},
+      {org:'경기도체육회',                   dept:'경기력향상팀',    tel:'031-250-1300', type:'agency',url:'https://ggsports.gg.go.kr',           boardUrl:'https://ggsports.gg.go.kr/archives/category/gg_sports_notice/public',eventUrl:'https://ggsports.gg.go.kr/archives/category/ggsports_ggdo_game'},
       {org:'경기도장애인체육회',             dept:'장애인체육진흥팀',tel:'031-250-1800', type:'agency',url:'https://www.ggdsc.or.kr',             boardUrl:'https://www.ggdsc.or.kr'},
       {org:'사단법인 DMZ국제다큐멘터리영화제',dept:'사무국',         tel:'031-944-6240', type:'agency',url:'https://www.dmzdocs.com',             boardUrl:'https://www.dmzdocs.com'},
       {org:'경기도남한산성세계유산센터',     dept:'학예팀',          tel:'031-743-6610', type:'agency',url:'https://www.gg.go.kr',               boardUrl:'https://www.gg.go.kr/gongmo/main.do'},
@@ -515,6 +521,7 @@ function agencyLinks(a){
   return `<div class="lp">`+
     `<a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>`+
     `<a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>`+
+    (a.eventUrl?`<a class="lb evt" href="${a.eventUrl}" target="_blank" rel="noopener">🎪 행사게시판</a>`:'')+
     `</div>`;
 }
 function agencyGroupHtml(agencies, showAll){
@@ -566,16 +573,20 @@ function renderList(){
   const wrap=document.getElementById('clist');
   wrap.innerHTML='';
   SHOWN.forEach(c=>{
-    const up=enrich(c).filter(p=>isUp(p.status)).length;
+    const ups=enrich(c).filter(p=>isUp(p.status));
+    const ev=ups.filter(p=>p.kind==='event').length;
+    const gm=ups.length-ev;
     const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
     const div=document.createElement('div');
-    div.className='ccard'+(up===0?' dim':'');
+    div.className='ccard'+(ups.length===0?' dim':'');
     div.dataset.name=c.name;
     div.dataset.ag=agText;
     div.onclick=()=>showCommittee(c.id);
     div.innerHTML=
       `<div class="cc-name">${c.name}</div>`+
-      `<div class="cc-cnt"><b>${up}</b>건 <span>· 접수 중</span></div>`;
+      `<div class="cc-cnt"><b>${gm}</b><span>공모</span>`+
+      (ev?`&nbsp;&nbsp;<b class="evt-n">${ev}</b><span>행사</span>`:'')+
+      `</div>`;
     wrap.appendChild(div);
   });
 }
@@ -593,9 +604,10 @@ function committeeCardHtml(c){
     enriched.forEach(p=>{
       const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
       const tg=p.target?`<div class="tgt">👥 지원대상: ${p.target}</div>`:'';
+      const kd=p.kind==='event'?'<span class="kind evt">행사</span>':'<span class="kind gm">공모</span>';
       rows+=`<tr data-status="${p.status}">
         <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-        <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
+        <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
         <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
         <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
       </tr>`;
@@ -622,7 +634,7 @@ function committeeCardHtml(c){
       <table class="pt">
         <thead><tr>
           <th style="width:76px">상태</th>
-          <th>공모사업명 (클릭 → 공모게시판)</th>
+          <th>공모·행사명 (클릭 → 게시글)</th>
           <th style="width:140px">담당기관·부서</th>
           <th style="width:170px">공모일정</th>
         </tr></thead>
@@ -650,9 +662,10 @@ function el(id){return document.getElementById(id);}
 function rowHtml(p,committee){
   const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
   const tg=p.target?`<div class="tgt">👥 지원대상: ${p.target}</div>`:'';
+  const kd=p.kind==='event'?'<span class="kind evt">행사</span>':'<span class="kind gm">공모</span>';
   return `<tr>
     <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-    <td><a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
+    <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
     <td class="ccol">${committee}</td>
     <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
     <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
@@ -663,7 +676,7 @@ function listCardHtml(title,count,bodyRows){
     <div class="ch"><h2>${title}</h2><span class="cb">${count}건</span></div>
     <table class="pt"><thead><tr>
       <th style="width:70px">상태</th>
-      <th>공모사업명 (클릭 → 게시글)</th>
+      <th>공모·행사명 (클릭 → 게시글)</th>
       <th style="width:140px">소관 상임위원회</th>
       <th style="width:130px">담당기관</th>
       <th style="width:108px">일정</th>
