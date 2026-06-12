@@ -94,8 +94,7 @@
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
-        "src": "auto",
-        "target": "증빙자료와 함께 모집기간 내에 메일로 제출하여 주시기 바랍니다."
+        "src": "auto"
       },
       {
         "name": "경기도 공고 제2026-1029호  2026년 사회적가치 창출 활성화 사업 선정결과 수정공고 ｢사회적기업 육성법｣ 제14조,",
@@ -128,7 +127,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe4e0ef26310606dc6763de6b789d3b51c",
         "src": "auto",
-        "target": ", 신청유형, 모집기간, 신청유형, 모집기간, 선발인원, 결과발표일, 담당자 내용이 담겨있는 표"
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "2026년 마을기업 도약지원 사업 참여기업 모집 공고(연장)",
@@ -137,7 +136,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffec20e16997cba507e8edf668bea0d7be9",
         "src": "auto",
-        "target": ", 신청유형, 모집기간, 신청유형, 모집기간, 선발인원, 결과발표일, 담당자 내용이 담겨있는 표"
+        "target": "마을기업 신청유형 공통"
       },
       {
         "name": "「2026년 제품경쟁력 강화 지원사업」 참여기업 모집공고",
@@ -146,7 +145,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1fe0ece6c82ef0e9382bfd31b2abcbd5",
         "src": "auto",
-        "target": ", 신청유형, 모집기간, 신청유형, 모집기간, 선발인원, 결과발표일, 담당자 내용이 담겨있는 표"
+        "target": "사회적경제조직 신청유형 기업"
       }
     ],
     "anjeun": [
@@ -310,8 +309,7 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172280",
-        "src": "auto",
-        "target": "구분"
+        "src": "auto"
       },
       {
         "name": "[GTP공고 제2026-137호] 2026년 안산IT·SW기업 성장지원사업<판로개척 지원> 참여기업 2차 모집(재)경기테크노파크",
@@ -319,8 +317,7 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172279",
-        "src": "auto",
-        "target": "구분"
+        "src": "auto"
       },
       {
         "name": "2026년 안산정보산업진흥센터(경기TP안산창업보육센터) 제2차 신규 입주자 모집 공고",
@@ -328,8 +325,7 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172278",
-        "src": "auto",
-        "target": "구분"
+        "src": "auto"
       },
       {
         "name": "2026년 IP디딤돌 프로그램지식재산 창업교육 참가자 모집 공고 경기테크노파크(경기지식재산센터)",
@@ -337,8 +333,7 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172282",
-        "src": "auto",
-        "target": "구분"
+        "src": "auto"
       }
     ],
     "yeoseong": [
