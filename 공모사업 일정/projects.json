@@ -254,6 +254,71 @@
         "dept": "문화예술본부",
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21299",
         "src": "auto"
+      },
+      {
+        "name": "2026 GPAM(경기 공연예술 미팅) 예술인 및 예술단체 참가 신청 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55578&pageIndex=1&category=",
+        "src": "auto",
+        "kind": "event"
+      },
+      {
+        "name": "2026년 제9기 고객자문단 선정 결과 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55561&pageIndex=1&category=",
+        "src": "auto"
+      },
+      {
+        "name": "「2026년 거리로 나온 예술」예술인(단체) 선정 공모 결과 알림",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55532&pageIndex=1&category=",
+        "src": "auto"
+      },
+      {
+        "name": "「2026년 예술인 기회소득 확산사업」 예술인(단체) 선정 공모 결과 알림",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55521&pageIndex=1&category=",
+        "src": "auto"
+      },
+      {
+        "name": "2026 아동·청소년 예술기회 지원 「툭, 예술」 공모 예술강사 매칭 결과 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55527&pageIndex=1&category=",
+        "src": "auto"
+      },
+      {
+        "name": "2026 청소년 창작 뮤지컬「경기틴즈」최종 선정결과 공고(정정)",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55505&pageIndex=1&category=",
+        "src": "auto"
+      },
+      {
+        "name": "2026 아동·청소년 예술기회 지원「툭, 예술」예술강사 선정결과 공고",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55519&pageIndex=1&category=",
+        "src": "auto"
+      },
+      {
+        "name": "경기아트센터 2026년 제9기 고객자문단 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55468&pageIndex=1&category=",
+        "src": "auto"
       }
     ],
     "nonghae": [],
