@@ -549,7 +549,12 @@ function agencyGroupHtml(agencies, showAll){
 /* 공모에 상태 부여 + 작년 마감건 제외 */
 function enrich(c){
   return c.projects
-    .map(p=>{const r=calcSt(p.period);return{...p,...r};})
+    .map(p=>{
+      const r=calcSt(p.period);
+      // 기간이 없어도 제목에 '마감' 표기가 있으면 마감 처리
+      if(!p.period && p.name.indexOf('마감')>=0) r.status='closed';
+      return{...p,...r};
+    })
     .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
 }
 

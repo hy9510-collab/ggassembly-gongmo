@@ -360,6 +360,9 @@ TARGET_PAT = re.compile(
     r"(?:지원|신청|모집|응모|참가|참여|공모)\s*(?:대상|자격)\s*[:：]?\s*([^\n]{2,70})")
 # 접수/공모/행사 기간이 적힌 줄 탐지
 PERIOD_LINE_PAT = re.compile(r"(?:접수|신청|공모|모집|응모|참가|행사|운영)\s*기간")
+# 지원대상으로 부적합한 텍스트 (표 머리글·문장 조각·안내문)
+BAD_TARGET = re.compile(r"(기간|마감|발표|제출|바랍니다|주시기|첨부|양식|클릭|"
+                        r"홈페이지|페이지|아래|참조|참고)")
 
 
 def enrich_details(page, items: list[dict]) -> list[dict]:
@@ -392,12 +395,18 @@ def enrich_details(page, items: list[dict]) -> list[dict]:
         if not item.get("target"):
             for ln in lines:
                 m = TARGET_PAT.search(ln)
-                if m:
-                    t = re.sub(r"\s+", " ", m.group(1)).strip(" :：·-")
-                    if 2 <= len(t) <= 70:
-                        item["target"] = t
-                        n_t += 1
-                        break
+                # '지원대상' 라벨이 줄 앞쪽에 있는 경우만 (문장 중간 매칭 배제)
+                if not m or m.start() > 8:
+                    continue
+                t = re.sub(r"\s+", " ", m.group(1)).strip(" :：·,、-")
+                # 표 머리글·문장 조각·안내문 잡음 배제
+                if len(t) < 4 or len(t) > 70:
+                    continue
+                if BAD_TARGET.search(t):
+                    continue
+                item["target"] = t
+                n_t += 1
+                break
     print(f"  [상세보충] 기간 {n_p}건, 지원대상 {n_t}건 추가")
     return items
 
