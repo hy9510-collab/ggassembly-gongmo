@@ -13,6 +13,11 @@ on:
       - "scraper.py"
       - ".github/workflows/update.yml"
 
+# 동시 실행 금지 — 푸시가 연달아 와도 한 번에 하나씩 순서대로 실행 (푸시 경합 방지)
+concurrency:
+  group: gongmo-update
+  cancel-in-progress: false
+
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest

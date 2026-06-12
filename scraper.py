@@ -28,9 +28,13 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 KEYWORDS = ("공모", "모집", "지원사업", "지원 사업", "선정", "참가자", "참여기업",
             "참여자", "공모전", "아이디어", "경진대회", "지원자",
             "신청", "접수", "참가", "지원 안내", "지원금")
-# 행사 제목 키워드 — 공모 키워드가 없고 아래만 있으면 '행사'로 분류
+# 행사 제목 키워드
 EVENT_KEYWORDS = ("행사", "축제", "박람회", "설명회", "세미나", "포럼", "강연",
                   "공연", "전시", "체험", "캠페인", "대회", "교실", "아카데미")
+# '확실한 공모' 키워드 — 이게 있으면 행사 단어가 섞여 있어도 공모로 분류
+# (신청·접수·참가·모집 같은 범용 단어는 행사 제목에도 흔해 분류 기준에서 제외)
+STRONG_GONGMO = ("공모", "지원사업", "지원 사업", "지원금", "경진대회",
+                 "아이디어", "참여기업")
 # 제외할 잡음 (채용/입찰/분양 등 — 제목 줄에 있으면 제외)
 # '안내/현황/소개/목록'은 정상 공모 제목에도 자주 쓰여 제외하지 않는다.
 EXCLUDE = ("채용", "입찰", "낙찰", "계약", "보상", "분양", "임대", "합격", "임용",
@@ -104,9 +108,6 @@ TARGETS = [
     {"id": "munhwa", "org": "경기도체육회", "dept": "사무처",
      "url": "https://ggsports.gg.go.kr/archives/category/gg_sports_notice/public",
      "link": "/archives/"},
-    {"id": "munhwa", "org": "경기도체육회", "dept": "사무처",
-     "url": "https://ggsports.gg.go.kr/archives/category/ggsports_ggdo_game",
-     "link": "/archives/", "kind": "event"},
 
     {"id": "bokji", "org": "경기도사회서비스원", "dept": "서비스지원팀",
      "url": "https://www.ggss.or.kr/bbs/?bid=notice", "link": "subAct=view"},
@@ -225,12 +226,15 @@ def looks_like_title(text: str) -> bool:
 
 
 def classify_kind(title: str) -> str:
-    """공모/행사 구분 — 공모 키워드가 있으면 공모, 행사 키워드만 있으면 행사."""
-    if any(k in title for k in KEYWORDS):
-        return ""          # 공모 (기본)
+    """공모/행사 구분.
+    확실한 공모 단어(공모·지원사업 등)가 있으면 공모,
+    없는데 행사 단어(행사·축제·대회·설명회 등)가 있으면 행사.
+    (신청·참가·모집 같은 범용 단어는 행사 제목에도 흔해 판단 기준에서 제외)"""
+    if any(k in title for k in STRONG_GONGMO):
+        return ""          # 공모
     if any(k in title for k in EVENT_KEYWORDS):
         return "event"     # 행사
-    return ""
+    return ""              # 그 외(신청·모집형 공고)는 공모로
 
 
 def is_excluded_href(href: str) -> bool:
