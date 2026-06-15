@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14",
+  "updated": "2026-06-15",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -301,7 +301,7 @@
         "src": "auto"
       },
       {
-        "name": "NEW2026년 경기예술성장학교 영재선발 공개 모집",
+        "name": "2026년 경기예술성장학교 영재선발 공개 모집",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
@@ -414,6 +414,22 @@
     ],
     "mirae": [
       {
+        "name": "(재)경기테크노파크 공고 제2026-142호 『2026년 국가기술거래플랫폼 서비스』안산시 기술사업화 지원사업 공고 <",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172284",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 제조로봇 도입지원 제조로봇 도입ㆍ실증 및 고도화지원 사업 공고(2차) 경기도와 (재)경기테크노파크가 도내",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172283",
+        "src": "auto"
+      },
+      {
         "name": "2026년 IP디딤돌 프로그램지식재산 창업교육 참가자 모집 공고 경기테크노파크(경기지식재산센터)",
         "period": "",
         "org": "경기테크노파크",
@@ -430,27 +446,11 @@
         "src": "auto"
       },
       {
-        "name": "[GTP공고 제2026-137호] 2026년 안산IT·SW기업 성장지원사업<판로개척 지원> 참여기업 2차 모집(재)경기테크노파크",
+        "name": "경기도형 스마트공장 종합지원「2026 산업AI EXPO」참가기업 모집 공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172279",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 안산정보산업진흥센터(경기TP안산창업보육센터) 제2차 신규 입주자 모집 공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172278",
-        "src": "auto"
-      },
-      {
-        "name": "(재)경기테크노파크 공고 제2026-142호 『2026년 국가기술거래플랫폼 서비스』안산시 기술사업화 지원사업 공고 <",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172284",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172285",
         "src": "auto"
       }
     ],
