@@ -86,6 +86,7 @@
     .st.open{background:#e6f4ea;color:#2e7d32;}
     .st.soon{background:#fff3e0;color:#e65100;}
     .st.closed{background:#f5f5f5;color:#9e9e9e;}
+    .st.result{background:#eef2f7;color:#5c6b80;}
     .st.prep{background:#e3f2fd;color:#1565c0;}
     .st.ongoing{background:#ede7f6;color:#5e35b1;}
     .tgt{font-size:11px;color:#3a7d44;margin-top:3px;}
@@ -505,8 +506,8 @@ const DATA=[
 ];
 
 /* ═══ 상태 상수 ═══ */
-const SL={open:'접수중',soon:'마감임박',closed:'마감'};
-const SC={open:'open', soon:'soon',    closed:'closed'};
+const SL={open:'접수중',soon:'마감임박',closed:'마감',result:'결과 공고'};
+const SC={open:'open', soon:'soon',    closed:'closed', result:'result'};
 const TYPE_LABEL={gg:'경기도청 직속 실국', edu:'경기도교육청 직속 부서', agency:'소관 산하기관'};
 const TYPE_COLOR={gg:'#3a7d44',           edu:'#1565c0',                 agency:'#5a9e6f'};
 
@@ -553,6 +554,14 @@ function enrich(c){
       const r=calcSt(p.period);
       // 기간이 없어도 제목에 '마감' 표기가 있으면 마감 처리
       if(!p.period && p.name.indexOf('마감')>=0) r.status='closed';
+      // 결과 공고: 게시일(없으면 첫 수집일) 기준 7일 지나면 마감, 그 전엔 '결과 공고'
+      if(p.result){
+        const base=p.posted||p.firstSeen;
+        const bd=base?pd(base):null;
+        const age=(bd&&!isNaN(+bd))?Math.floor((TODAY-bd)/86400000):0;
+        r.status = age>=7 ? 'closed' : 'result';
+        r.dday = null;
+      }
       return{...p,...r};
     })
     .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
@@ -614,7 +623,7 @@ function committeeCardHtml(c){
         <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
         <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
         <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-        <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
+        <td style="white-space:nowrap;font-size:12px">${p.period||(p.result&&p.posted?('발표 '+p.posted):'<span style="color:#999">공고문 참조</span>')}</td>
       </tr>`;
     });
   }
@@ -673,7 +682,7 @@ function rowHtml(p,committee){
     <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
     <td class="ccol">${committee}</td>
     <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-    <td style="white-space:nowrap;font-size:12px">${p.period||'<span style="color:#999">공고문 참조</span>'}</td>
+    <td style="white-space:nowrap;font-size:12px">${p.period||(p.result&&p.posted?('발표 '+p.posted):'<span style="color:#999">공고문 참조</span>')}</td>
   </tr>`;
 }
 function listCardHtml(title,count,bodyRows){

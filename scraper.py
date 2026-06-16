@@ -19,6 +19,7 @@ from playwright.sync_api import sync_playwright
 
 OUTPUT = Path(__file__).parent / "공모사업 일정" / "projects.json"
 TODAY_STR = date.today().strftime("%Y-%m-%d")
+TODAY_DOT = date.today().strftime("%Y.%m.%d")
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
@@ -240,6 +241,22 @@ def classify_kind(title: str) -> str:
     return ""              # 그 외(신청·모집형 공고)는 공모로
 
 
+def is_result(title: str) -> bool:
+    """결과 발표성 공고인지 (선정결과·합격자 발표 등)."""
+    if "결과" in title:
+        return True
+    return any(k in title for k in ("합격자", "당선작", "당선자", "최종 합격"))
+
+
+def extract_posted(raw: str) -> str:
+    """게시 목록 행에서 작성일(단일 날짜)을 추출 — 마지막 날짜 우선."""
+    dates = re.findall(r"\d{4}[.\-/]\d{1,2}[.\-/]\d{1,2}", raw or "")
+    if not dates:
+        return ""
+    p = re.sub(r"[-/]", ".", dates[-1]).split(".")
+    return f"{p[0]}.{p[1].zfill(2)}.{p[2].zfill(2)}"
+
+
 def is_excluded_href(href: str) -> bool:
     """채용/입찰/분양 등 잡음 게시판 URL 제외."""
     h = (href or "").lower()
@@ -355,6 +372,12 @@ def extract_from_page(page, target: dict) -> list[dict]:
         }
         if kind == "event":
             item["kind"] = "event"
+        if is_result(name):
+            item["result"] = True
+            item["firstSeen"] = TODAY_DOT       # 첫 수집일 (merge에서 보존)
+            posted = extract_posted(row_text)   # 게시판 작성일(있으면 우선)
+            if posted:
+                item["posted"] = posted
         items.append(item)
         if len(items) >= 8:
             break
@@ -486,9 +509,20 @@ def merge(existing: dict, scraped: list[dict]) -> dict:
             if p.get("src") != "auto" or p.get("org") not in fresh_orgs
         ]
 
+    # 결과 공고 7일 시계 유지: 기존 auto 항목의 firstSeen을 boardUrl로 보존
+    prev_seen = {}
+    for plist in existing_projects.values():
+        for p in plist:
+            if p.get("src") == "auto" and p.get("boardUrl") and p.get("firstSeen"):
+                prev_seen[p["boardUrl"]] = p["firstSeen"]
+
     # 2) 이번에 수집한 auto 항목 추가 (제목·URL 중복 제거)
     for item in scraped:
         cid = item.pop("_committee", "gihoek")
+        # 같은 글을 전에 본 적 있으면 첫 수집일을 더 이른 날짜로 유지
+        if item.get("result") and prev_seen.get(item.get("boardUrl")):
+            item["firstSeen"] = min(item.get("firstSeen", TODAY_DOT),
+                                    prev_seen[item["boardUrl"]])
         result.setdefault(cid, [])
         names = {p["name"] for p in result[cid]}
         urls = {p.get("boardUrl") for p in result[cid]}
