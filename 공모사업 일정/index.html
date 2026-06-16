@@ -607,7 +607,7 @@ function renderList(){
 
 /* 위원회 카드 HTML (소관기관 + 공모 테이블) — 2단계 상세에서 사용 */
 function committeeCardHtml(c){
-  const enriched=enrich(c);
+  const enriched=enrich(c).slice().sort((a,b)=>(a.status==='closed'?1:0)-(b.status==='closed'?1:0));
   const agHtml = agencyGroupHtml(c.agencies, false);
   const togLabel = `소관기관·실국 보기`;
 

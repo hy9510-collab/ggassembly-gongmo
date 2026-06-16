@@ -45,7 +45,8 @@ EXCLUDE = ("채용", "입찰", "낙찰", "계약", "보상", "분양", "임대",
 # 제외할 URL 패턴 (채용/입찰/분양/보도자료 게시판) — 흔한 단어의 일부와 겹치지 않게 구체적으로
 EXCLUDE_URL = ("recruit", "employ", "chaeyong", "/bid", "bid-", "reward",
                "salerental", "rental", "/sale", "sale-",
-               "press", "m209147177")  # 보도자료 (gh press-release, gsic 보도 게시판 등)
+               "press", "m209147177",  # 보도자료 (gh press-release, gsic 보도 게시판 등)
+               "/category/")           # 워드프레스 카테고리 nav 링크 (개별 글 아님)
 # 개별 게시글로 인정할 href 패턴 (목록/메뉴 페이지 배제)
 DETAIL_HINTS = ("articleno", "article=", "seq=", "idx=", "nttid", "bidx=",
                 "mode=view", "subact=view", "boardview", "/view", "?no=",
