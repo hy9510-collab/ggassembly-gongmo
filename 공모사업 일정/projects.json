@@ -102,7 +102,10 @@
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffea4ea7d3e5af9432c851f3acc50f72c5a&act=detail",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.04.27"
       },
       {
         "name": "사회혁신공간 입주기업 (추가) 모집공고",
@@ -159,70 +162,6 @@
       }
     ],
     "munhwa": [
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 예비트랙 서류심의 결과 및 인터뷰심의 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21353",
-        "src": "auto"
-      },
-      {
-        "name": "\"제1회 경기도어린이박물관 창작 그림책 공모전\" 당선작 발간 출판사 선정 공모",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21322",
-        "src": "auto"
-      },
-      {
-        "name": "경기문화재단 공모 제 2026-47호 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21306",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 경기상상캠퍼스 신규 입주단체 모집 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21305",
-        "src": "auto"
-      },
-      {
-        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21337",
-        "src": "auto"
-      },
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모(연장)",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21307",
-        "src": "auto"
-      },
       {
         "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
         "period": "2025.10.27 ~ 2025.11.10",
@@ -301,6 +240,79 @@
         "kind": "event"
       },
       {
+        "name": "\"제1회 경기도어린이박물관 창작 그림책 공모전\" 당선작 발간 출판사 선정 공모",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21322",
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.06.04"
+      },
+      {
+        "name": "경기문화재단 공모 제 2026-47호 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21306",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 경기상상캠퍼스 신규 입주단체 모집 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21305",
+        "src": "auto"
+      },
+      {
+        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
+        "src": "auto"
+      },
+      {
+        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.02.27"
+      },
+      {
+        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21337",
+        "src": "auto"
+      },
+      {
+        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 예비트랙 서류심의 결과 및 인터뷰심의 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21353",
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.06.12"
+      },
+      {
+        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모(연장)",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21307",
+        "src": "auto"
+      },
+      {
         "name": "2026년 경기예술성장학교 영재선발 공개 모집",
         "period": "",
         "org": "경기아트센터",
@@ -323,7 +335,10 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55561&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.05.26"
       },
       {
         "name": "「2026년 거리로 나온 예술」예술인(단체) 선정 공모 결과 알림",
@@ -331,7 +346,10 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55532&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.05.08"
       },
       {
         "name": "「2026년 예술인 기회소득 확산사업」 예술인(단체) 선정 공모 결과 알림",
@@ -339,7 +357,10 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55521&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.05.04"
       },
       {
         "name": "2026 아동·청소년 예술기회 지원 「툭, 예술」 공모 예술강사 매칭 결과 안내",
@@ -347,7 +368,10 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55527&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.05.04"
       },
       {
         "name": "2026 청소년 창작 뮤지컬「경기틴즈」최종 선정결과 공고(정정)",
@@ -355,7 +379,10 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55505&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.05.04"
       },
       {
         "name": "2026 아동·청소년 예술기회 지원「툭, 예술」예술강사 선정결과 공고",
@@ -363,7 +390,10 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55519&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.06.16",
+        "posted": "2026.04.30"
       }
     ],
     "nonghae": [],
