@@ -198,7 +198,7 @@
 
   <!-- 2단계: 선택한 위원회 상세 -->
   <div id="viewDetail" style="display:none;">
-    <button class="back-btn" onclick="showHome()">← 처음으로</button>
+    <button class="back-btn" onclick="history.back()">← 뒤로</button>
     <div class="grid" id="detailGrid"></div>
   </div>
 </main>
@@ -562,9 +562,24 @@ function enrich(c){
         r.status = age>=7 ? 'closed' : 'result';
         r.dday = null;
       }
+      r.closedAgo = closedDaysAgo(p, r.status);   // 마감 후 경과일(마감 아니면 null)
       return{...p,...r};
     })
     .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
+}
+
+/* 마감된 지 며칠 지났는지 — 위원회 상세에서 최근(7일 이내) 마감만 보이게 */
+function closedDaysAgo(p, status){
+  if(status!=='closed') return null;
+  if(p.result){
+    const base=p.posted||p.firstSeen, bd=base?pd(base):null;
+    return (bd&&!isNaN(+bd))?Math.floor((TODAY-bd)/86400000)-7:999;
+  }
+  if(p.period && p.period.indexOf('~')>=0){
+    const e=pd(p.period.split('~')[1]);
+    return isNaN(+e)?999:Math.floor((TODAY-e)/86400000);
+  }
+  return 999; // 날짜 없는 마감은 오래된 것으로 간주(상세에서 숨김)
 }
 
 /* 상단 요약(전체 통계) */
@@ -607,7 +622,10 @@ function renderList(){
 
 /* 위원회 카드 HTML (소관기관 + 공모 테이블) — 2단계 상세에서 사용 */
 function committeeCardHtml(c){
-  const enriched=enrich(c).slice().sort((a,b)=>(a.status==='closed'?1:0)-(b.status==='closed'?1:0));
+  // 위원회 상세: 마감은 숨기되, 마감된 지 7일 이내인 것은 그대로 노출
+  const enriched=enrich(c)
+    .filter(p=>p.status!=='closed'||p.closedAgo<7)
+    .slice().sort((a,b)=>(a.status==='closed'?1:0)-(b.status==='closed'?1:0));
   const agHtml = agencyGroupHtml(c.agencies, false);
   const togLabel = `소관기관·실국 보기`;
 
@@ -699,7 +717,7 @@ function listCardHtml(title,count,bodyRows){
 }
 
 /* 접수중·마감임박 = 전체 모아보기 / 마감 = 상임위원회별 */
-function showStatus(st){
+function renderStatus(st){
   curView='status'; curStatus=st; curCommittee=null;
   el('searchInput').value='';
   el('viewList').style.display='none';
@@ -727,7 +745,7 @@ function showStatus(st){
 }
 
 /* 위원회 카드 클릭 → 해당 위원회 상세 */
-function showCommittee(id){
+function renderCommittee(id){
   curView='committee'; curCommittee=id; curStatus=null;
   el('searchInput').value='';
   el('viewList').style.display='none';
@@ -737,7 +755,7 @@ function showCommittee(id){
   window.scrollTo(0,0);
 }
 
-function showHome(){
+function renderHome(){
   curView='home'; curStatus=null; curCommittee=null;
   el('searchInput').value='';
   el('viewDetail').style.display='none';
@@ -754,6 +772,19 @@ function highlightStatus(st){
     el(x[1]).classList.toggle('active', x[0]===st);
   });
 }
+
+/* ═══ 화면 이동 + 브라우저 뒤로가기 연동 ═══ */
+function applyView(s){
+  s = s || {view:'home'};
+  if(s.view==='committee') renderCommittee(s.id);
+  else if(s.view==='status') renderStatus(s.st);
+  else renderHome();
+}
+function go(state){ history.pushState(state,''); applyView(state); }
+function showCommittee(id){ go({view:'committee', id:id}); }
+function showStatus(st){ go({view:'status', st:st}); }
+function showHome(){ go({view:'home'}); }
+window.addEventListener('popstate', function(e){ applyView(e.state); });
 
 /* 검색: 공모사업명·기관 전체검색 → 게시글 링크(같은 창) */
 function onSearch(){
@@ -798,7 +829,8 @@ const MANUAL_ORGS=['경기콘텐츠진흥원','경기관광공사','경기도사
 function init(){
   computeStats();
   renderList();
-  showHome();
+  history.replaceState({view:'home'},'');
+  renderHome();
 }
 function togAg(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
 
