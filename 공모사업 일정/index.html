@@ -102,7 +102,7 @@
 
     /* ── 1단계: 상임위원회 목록 ── */
     .list-hint{font-size:14px;color:#777;margin:2px 0 16px;font-weight:600;}
-    .clist{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:920px;}
+    .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;}
     .ccard{background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:16px 18px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:92px;}
     .ccard:hover{border-color:var(--gd);transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.13);}
     .ccard .cc-name{font-size:15px;font-weight:700;color:var(--gd);line-height:1.3;white-space:nowrap;}
@@ -198,7 +198,6 @@
 
   <!-- 2단계: 선택한 위원회 상세 -->
   <div id="viewDetail" style="display:none;">
-    <button class="back-btn" onclick="history.back()">← 뒤로</button>
     <div class="grid" id="detailGrid"></div>
   </div>
 </main>
@@ -520,9 +519,9 @@ const SHOWN=DATA.filter(c=>c.id!=='uiwoon');
 /* ═══ 소관기관 그룹 렌더링 ═══ */
 function agencyLinks(a){
   return `<div class="lp">`+
-    `<a class="lb main"  href="${a.url}"      target="_blank" rel="noopener">🏠 홈페이지</a>`+
-    `<a class="lb board" href="${a.boardUrl}" target="_blank" rel="noopener">📋 공모게시판</a>`+
-    (a.eventUrl?`<a class="lb evt" href="${a.eventUrl}" target="_blank" rel="noopener">🎪 행사게시판</a>`:'')+
+    `<a class="lb main"  href="${a.url}">🏠 홈페이지</a>`+
+    `<a class="lb board" href="${a.boardUrl}">📋 공모게시판</a>`+
+    (a.eventUrl?`<a class="lb evt" href="${a.eventUrl}">🎪 행사게시판</a>`:'')+
     `</div>`;
 }
 function agencyGroupHtml(agencies, showAll){
