@@ -6,8 +6,8 @@
   <title>경기도의회 상임위원회별 공모사업 현황</title>
   <style>
     :root {
-      --gd:#3a7d44;--gm:#5a9e6f;--gl:#e8f5ec;--gb:#b2d8bc;
-      --bg:#f5f7f5;--tx:#444;--wh:#fff;--sh:0 2px 8px rgba(0,0,0,.08);
+      --gd:#1b76a5;--gm:#2e8fbf;--gl:#e9f3f9;--gb:#bcd8e8;
+      --bg:#f3f7fa;--tx:#444;--wh:#fff;--sh:0 2px 8px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;}
@@ -56,15 +56,15 @@
 
     /* 도청 실국 헤더 */
     .sec-label{font-size:11px;font-weight:700;letter-spacing:.5px;padding:4px 10px 2px;color:#fff;}
-    .sec-label.gg{background:#3a7d44;}
+    .sec-label.gg{background:#1b76a5;}
     .sec-label.edu{background:#1565c0;}
-    .sec-label.sub{background:#5a9e6f;}
+    .sec-label.sub{background:#2e8fbf;}
 
     .ag-tbl{width:100%;border-collapse:collapse;font-size:12px;}
-    .ag-tbl th{background:#f0f7f2;padding:6px 10px;text-align:left;color:var(--gd);font-weight:600;border-bottom:1px solid var(--gb);white-space:nowrap;}
+    .ag-tbl th{background:#eef4f9;padding:6px 10px;text-align:left;color:var(--gd);font-weight:600;border-bottom:1px solid var(--gb);white-space:nowrap;}
     .ag-tbl td{padding:6px 10px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
     .ag-tbl tr:last-child td{border-bottom:none;}
-    .ag-tbl tr:hover td{background:#fafffe;}
+    .ag-tbl tr:hover td{background:#f6fafd;}
     .tel{color:#666;font-size:11px;white-space:nowrap;}
     .lp{display:flex;gap:4px;}
     .lb{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:5px;font-size:11px;text-decoration:none;white-space:nowrap;transition:all .15s;border:1px solid;}
@@ -75,11 +75,11 @@
 
     /* ── 공모 테이블 ── */
     .pt{width:100%;border-collapse:collapse;font-size:13px;}
-    .pt thead tr{background:#f0f7f2;}
+    .pt thead tr{background:#eef4f9;}
     .pt th{padding:9px 14px;text-align:left;font-weight:600;color:var(--gd);border-bottom:1px solid var(--gb);white-space:nowrap;}
-    .pt td{padding:9px 14px;border-bottom:1px solid #eef2ee;vertical-align:middle;}
+    .pt td{padding:9px 14px;border-bottom:1px solid #eef2f7;vertical-align:middle;}
     .pt tr:last-child td{border-bottom:none;}
-    .pt tr:hover td{background:#fafffe;}
+    .pt tr:hover td{background:#f6fafd;}
     .pl{color:var(--tx);text-decoration:none;font-weight:500;}
     .pl:hover{color:var(--gd);text-decoration:underline;}
     .st{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap;}
@@ -89,9 +89,9 @@
     .st.result{background:#eef2f7;color:#5c6b80;}
     .st.prep{background:#e3f2fd;color:#1565c0;}
     .st.ongoing{background:#ede7f6;color:#5e35b1;}
-    .tgt{font-size:11px;color:#3a7d44;margin-top:3px;}
+    .tgt{font-size:11px;color:#1b76a5;margin-top:3px;}
     .kind{display:inline-block;font-size:10.5px;font-weight:700;border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px;}
-    .kind.gm{background:#e6f4ea;color:#2e7d32;}
+    .kind.gm{background:#e3eef6;color:#1b76a5;}
     .kind.evt{background:#ede7f6;color:#5e35b1;}
     .lb.evt{background:#5e35b1;color:#fff;border-color:#5e35b1;}
     .lb.evt:hover{background:#7e57c2;}
@@ -113,14 +113,14 @@
     .sc.active{outline:2px solid var(--gd);outline-offset:-2px;}
     /* 전체/검색 목록의 소관위원회 컬럼·그룹 헤더 */
     .pt .ccol{font-weight:600;color:var(--gd);white-space:nowrap;}
-    .pt .grp td{background:#eef6f0;font-weight:700;color:var(--gd);font-size:12.5px;padding:7px 14px;}
+    .pt .grp td{background:#e9f3f9;font-weight:700;color:var(--gd);font-size:12.5px;padding:7px 14px;}
     /* 자동수집 불가 기관 — 위원회 화면 내 안내 줄 */
     .manual-inline{padding:12px 20px 14px;border-top:1px solid #f0e0c8;background:#fffdf7;display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
     .mi-label{font-size:12px;font-weight:700;color:#b35900;}
     .mi-link{font-size:12px;color:var(--gd);text-decoration:none;border:1px solid var(--gb);border-radius:14px;padding:3px 10px;background:#fff;transition:all .15s;}
     .mi-link:hover{background:var(--gd);color:#fff;}
     /* 하단 전체 공지 */
-    .site-note{margin:6px 32px 40px;padding:16px 20px;background:#f3f6f3;border-radius:10px;}
+    .site-note{margin:6px 32px 40px;padding:16px 20px;background:#eef3f8;border-radius:10px;}
     .site-note h4{font-size:14px;color:var(--gd);margin-bottom:9px;}
     .site-note ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px;}
     .site-note li{font-size:12.5px;color:#566;line-height:1.65;}
@@ -128,7 +128,7 @@
     .ccard .cc-cnt{font-size:13px;color:#666;}
     .ccard .cc-cnt b{font-size:24px;color:var(--gd);margin-right:3px;}
     .ccard .cc-cnt span{font-size:12px;color:#999;}
-    .ccard .cc-go{font-size:12px;color:#5a9e6f;font-weight:700;margin-top:auto;}
+    .ccard .cc-go{font-size:12px;color:#2e8fbf;font-weight:700;margin-top:auto;}
     .ccard.dim .cc-cnt b{color:#c4c4c4;}
     .ccard.hidden{display:none;}
 
@@ -152,13 +152,13 @@
     .mc.active{display:block;}
 
     .mot{width:100%;border-collapse:collapse;font-size:13px;}
-    .mot th{background:#f0f7f2;padding:8px 10px;text-align:left;color:var(--gd);font-weight:600;border-bottom:1px solid var(--gb);white-space:nowrap;}
-    .mot td{padding:7px 10px;border-bottom:1px solid #eef2ee;vertical-align:middle;}
+    .mot th{background:#eef4f9;padding:8px 10px;text-align:left;color:var(--gd);font-weight:600;border-bottom:1px solid var(--gb);white-space:nowrap;}
+    .mot td{padding:7px 10px;border-bottom:1px solid #eef2f7;vertical-align:middle;}
     .mot tr:last-child td{border-bottom:none;}
-    .mot tr:hover td{background:#fafffe;}
+    .mot tr:hover td{background:#f6fafd;}
     .mot .cname{font-weight:700;color:var(--gd);white-space:nowrap;vertical-align:top;padding-top:9px !important;}
     /* 모달 내 구분 행 */
-    .mot .grp-row td{background:#f8fdf9;font-size:11px;font-weight:700;color:var(--gd);padding:4px 10px;letter-spacing:.4px;}
+    .mot .grp-row td{background:#e9f3f9;font-size:11px;font-weight:700;color:var(--gd);padding:4px 10px;letter-spacing:.4px;}
     .mot .cgrp td{background:var(--gd);color:#fff;font-weight:700;font-size:13px;padding:8px 12px;}
 
     @media(max-width:700px){header,main,.toolbar{padding:12px;}.grid{grid-template-columns:1fr;}.clist{grid-template-columns:repeat(2,1fr);gap:10px;max-width:none;}.mb{padding:12px;}}
@@ -509,7 +509,7 @@ const DATA=[
 const SL={open:'접수중',soon:'마감임박',closed:'마감',result:'결과 공고'};
 const SC={open:'open', soon:'soon',    closed:'closed', result:'result'};
 const TYPE_LABEL={gg:'경기도청 직속 실국', edu:'경기도교육청 직속 부서', agency:'소관 산하기관'};
-const TYPE_COLOR={gg:'#3a7d44',           edu:'#1565c0',                 agency:'#5a9e6f'};
+const TYPE_COLOR={gg:'#1b76a5',           edu:'#1565c0',                 agency:'#2e8fbf'};
 
 let curView='home';        // 'home'|'status'|'committee'|'search'
 let curStatus=null;
