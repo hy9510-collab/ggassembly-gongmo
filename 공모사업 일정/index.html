@@ -12,7 +12,7 @@
     *{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;}
 
-    header{background:var(--gd);color:var(--wh);padding:20px 32px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    header{background:var(--gd);color:var(--wh);padding:20px 20px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
     .badge{background:var(--gm);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;}
     header h1{font-size:21px;font-weight:700;}
     header h1.home-link{cursor:pointer;display:inline-block;}
@@ -22,7 +22,7 @@
     .today-box .tl{font-size:11px;opacity:.8;}
     .today-box .td{font-size:18px;font-weight:700;margin-top:2px;}
 
-    .toolbar{background:var(--wh);border-bottom:1px solid var(--gb);padding:12px 32px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+    .toolbar{background:var(--wh);border-bottom:1px solid var(--gb);padding:12px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.06);}
     .toolbar input{flex:1;min-width:180px;padding:8px 14px;border:1px solid #ccc;border-radius:6px;font-size:14px;outline:none;}
     .toolbar input:focus{border-color:var(--gm);}
     .fbtn{padding:6px 14px;border:1px solid var(--gb);border-radius:20px;background:var(--wh);font-size:13px;cursor:pointer;transition:all .15s;}
@@ -32,8 +32,15 @@
     .org-btn{padding:7px 16px;border:2px solid var(--gd);border-radius:20px;background:var(--wh);color:var(--gd);font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
     .org-btn:hover{background:var(--gd);color:var(--wh);}
 
-    main{padding:22px 32px;}
-    .summary{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:12px;margin-bottom:24px;}
+    main{padding:22px 20px;}
+    .summary{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:12px;}
+    .sum-wrap{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;margin-bottom:24px;}
+    .sum-group{display:flex;flex-direction:column;}
+    .sum-group.gongmo{flex:1 1 380px;}
+    .sum-group.event{flex:0 0 auto;}
+    .sum-group.event .summary{grid-template-columns:158px;}
+    .sum-cap{font-size:12.5px;font-weight:700;color:var(--gd);margin-bottom:8px;padding-left:2px;display:flex;align-items:center;gap:5px;}
+    .sum-cap.evt{color:#5e35b1;}
     .sc{background:var(--wh);border-radius:10px;padding:14px 16px;box-shadow:var(--sh);text-align:center;}
     .sc .num{font-size:26px;font-weight:700;color:var(--gd);}
     .sc .lbl{font-size:12px;color:#888;margin-top:3px;}
@@ -102,7 +109,7 @@
 
     /* ── 1단계: 상임위원회 목록 ── */
     .list-hint{font-size:14px;color:#777;margin:2px 0 16px;font-weight:600;}
-    .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;}
+    .clist{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
     .ccard{background:var(--wh);border-radius:12px;box-shadow:var(--sh);padding:16px 18px;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:92px;}
     .ccard:hover{border-color:var(--gd);transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.13);}
     .ccard .cc-name{font-size:15px;font-weight:700;color:var(--gd);line-height:1.3;white-space:nowrap;}
@@ -120,7 +127,7 @@
     .mi-link{font-size:12px;color:var(--gd);text-decoration:none;border:1px solid var(--gb);border-radius:14px;padding:3px 10px;background:#fff;transition:all .15s;}
     .mi-link:hover{background:var(--gd);color:#fff;}
     /* 하단 전체 공지 */
-    .site-note{margin:6px 32px 40px;padding:16px 20px;background:#eef3f8;border-radius:10px;}
+    .site-note{margin:6px 20px 40px;padding:16px 20px;background:#eef3f8;border-radius:10px;}
     .site-note h4{font-size:14px;color:var(--gd);margin-bottom:9px;}
     .site-note ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px;}
     .site-note li{font-size:12.5px;color:#566;line-height:1.65;}
@@ -183,10 +190,21 @@
 </div>
 
 <main>
-  <div class="summary" id="summary">
-    <div class="sc clk" id="bO" onclick="showStatus('open')"><div class="num" id="cO" style="color:#2e7d32">0</div><div class="lbl">접수중 ▸ 전체보기</div></div>
-    <div class="sc clk" id="bS" onclick="showStatus('soon')"><div class="num" id="cS" style="color:#e65100">0</div><div class="lbl">마감임박 ▸ 전체보기</div></div>
-    <div class="sc clk" id="bC" onclick="showStatus('closed')"><div class="num" id="cC" style="color:#9e9e9e">0</div><div class="lbl">마감 ▸ 위원회별</div></div>
+  <div class="sum-wrap">
+    <div class="sum-group gongmo">
+      <div class="sum-cap">📋 공모</div>
+      <div class="summary">
+        <div class="sc clk" id="bO" onclick="showStatus('open')"><div class="num" id="cO" style="color:#2e7d32">0</div><div class="lbl">접수중 ▸ 전체보기</div></div>
+        <div class="sc clk" id="bS" onclick="showStatus('soon')"><div class="num" id="cS" style="color:#e65100">0</div><div class="lbl">마감임박 ▸ 전체보기</div></div>
+        <div class="sc clk" id="bC" onclick="showStatus('closed')"><div class="num" id="cC" style="color:#9e9e9e">0</div><div class="lbl">마감 ▸ 위원회별</div></div>
+      </div>
+    </div>
+    <div class="sum-group event">
+      <div class="sum-cap evt">🎪 행사</div>
+      <div class="summary">
+        <div class="sc clk" id="bE" onclick="showStatus('event')"><div class="num" id="cE" style="color:#5e35b1">0</div><div class="lbl">진행중 ▸ 전체보기</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- 1단계: 상임위원회 목록 -->
@@ -583,9 +601,10 @@ function closedDaysAgo(p, status){
 
 /* 상단 요약(전체 통계) */
 function computeStats(){
-  let cO=0,cS=0,cC=0;
+  let cO=0,cS=0,cC=0,cE=0;
   SHOWN.forEach(c=>{
     enrich(c).forEach(p=>{
+      if(p.kind==='event'){ if(isUp(p.status)) cE++; return; }  // 행사: 진행중만
       if(p.status==='open')        cO++;
       else if(p.status==='soon')   cS++;
       else if(p.status==='closed') cC++;
@@ -594,6 +613,7 @@ function computeStats(){
   document.getElementById('cO').textContent=cO;
   document.getElementById('cS').textContent=cS;
   document.getElementById('cC').textContent=cC;
+  document.getElementById('cE').textContent=cE;
 }
 
 /* 1단계: 상임위원회 목록 카드 */
@@ -621,10 +641,12 @@ function renderList(){
 
 /* 위원회 카드 HTML (소관기관 + 공모 테이블) — 2단계 상세에서 사용 */
 function committeeCardHtml(c){
-  // 위원회 상세: 마감은 숨기되, 마감된 지 7일 이내인 것은 그대로 노출
+  // 위원회 상세: 공모는 마감 7일 이내까지 노출, 행사는 진행중만
   const enriched=enrich(c)
-    .filter(p=>p.status!=='closed'||p.closedAgo<7)
+    .filter(p=> p.kind==='event' ? isUp(p.status) : (p.status!=='closed'||p.closedAgo<7))
     .slice().sort((a,b)=>(a.status==='closed'?1:0)-(b.status==='closed'?1:0));
+  const gmN=enriched.filter(p=>p.kind!=='event').length;
+  const evN=enriched.filter(p=>p.kind==='event').length;
   const agHtml = agencyGroupHtml(c.agencies, false);
   const togLabel = `소관기관·실국 보기`;
 
@@ -633,12 +655,11 @@ function committeeCardHtml(c){
     rows=`<tr><td colspan="4" class="no-proj">등록된 공모사업이 없습니다.</td></tr>`;
   } else {
     enriched.forEach(p=>{
-      const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
       const tg=p.target?`<div class="tgt">👥 지원대상: ${p.target}</div>`:'';
       const kd=p.kind==='event'?'<span class="kind evt">행사</span>':'<span class="kind gm">공모</span>';
       rows+=`<tr data-status="${p.status}">
-        <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-        <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
+        <td>${stBadge(p)}</td>
+        <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${ddHtml(p)}${tg}</td>
         <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
         <td style="white-space:nowrap;font-size:12px">${p.period||(p.result&&p.posted?('발표 '+p.posted):'<span style="color:#999">공고문 참조</span>')}</td>
       </tr>`;
@@ -648,7 +669,7 @@ function committeeCardHtml(c){
   const agText=c.agencies.map(a=>a.org+' '+a.dept).join(' ');
   return `
     <div class="card" data-id="${c.id}" data-name="${c.name}" data-ag="${agText}">
-      <div class="ch"><h2>${c.name}</h2><span class="cb">공모 ${enriched.length}건</span></div>
+      <div class="ch"><h2>${c.name}</h2><span class="cb">공모 ${gmN}건${evN?` · 행사 ${evN}건`:''}</span></div>
       <div class="ag-wrap">
         <div class="ag-sec">
           <button class="ag-tog" onclick="togAg(this)">
@@ -690,13 +711,23 @@ function manualInlineHtml(c){
 function el(id){return document.getElementById(id);}
 
 /* 공모 한 행 (소관 상임위원회 컬럼 포함) — 같은 창에서 게시글 열기 */
+/* 상태 뱃지: 행사는 '진행중'으로 단일화, 공모는 접수중/마감임박/마감 */
+function stBadge(p){
+  return p.kind==='event'
+    ? `<span class="st ongoing">진행중</span>`
+    : `<span class="st ${SC[p.status]}">${SL[p.status]}</span>`;
+}
+/* D-day: 공모만 표시 (행사는 마감임박 개념 없이 진행중만) */
+function ddHtml(p){
+  return (p.kind!=='event'&&p.dday)
+    ? `<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>` : '';
+}
 function rowHtml(p,committee){
-  const dd=p.dday?`<span class="dday ${p.status==='soon'?'hot':'norm'}">(${p.dday})</span>`:'';
   const tg=p.target?`<div class="tgt">👥 지원대상: ${p.target}</div>`:'';
   const kd=p.kind==='event'?'<span class="kind evt">행사</span>':'<span class="kind gm">공모</span>';
   return `<tr>
-    <td><span class="st ${SC[p.status]}">${SL[p.status]}</span></td>
-    <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${dd}${tg}</td>
+    <td>${stBadge(p)}</td>
+    <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${ddHtml(p)}${tg}</td>
     <td class="ccol">${committee}</td>
     <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
     <td style="white-space:nowrap;font-size:12px">${p.period||(p.result&&p.posted?('발표 '+p.posted):'<span style="color:#999">공고문 참조</span>')}</td>
@@ -721,24 +752,34 @@ function renderStatus(st){
   el('searchInput').value='';
   el('viewList').style.display='none';
   el('viewDetail').style.display='block';
-  let body='', count=0;
-  if(st==='closed'){
+  let body='', count=0, title='';
+  if(st==='event'){
+    // 진행중 행사 — 전체 모아보기 (마감임박·마감 구분 없음)
     SHOWN.forEach(c=>{
-      const rows=enrich(c).filter(p=>p.status==='closed');
+      enrich(c).forEach(p=>{ if(p.kind==='event'&&isUp(p.status)){ body+=rowHtml(p,c.name); count++; } });
+    });
+    title='진행중 행사 — 전체';
+  } else if(st==='closed'){
+    // 마감 공모 (행사 제외) — 상임위원회별
+    SHOWN.forEach(c=>{
+      const rows=enrich(c).filter(p=>p.status==='closed'&&p.kind!=='event');
       if(!rows.length) return;
       count+=rows.length;
       body+=`<tr class="grp"><td colspan="5">${c.name} · ${rows.length}건</td></tr>`;
       rows.forEach(p=>{ body+=rowHtml(p,c.name); });
     });
+    title='마감 공모 (상임위원회별)';
   } else {
+    // 접수중·마감임박 공모 (행사 제외) — 전체
     SHOWN.forEach(c=>{
-      enrich(c).forEach(p=>{ if(p.status===st){ body+=rowHtml(p,c.name); count++; } });
+      enrich(c).forEach(p=>{ if(p.status===st&&p.kind!=='event'){ body+=rowHtml(p,c.name); count++; } });
     });
+    title=SL[st]+' 공모 — 전체';
   }
-  const title=(st==='closed')?'마감 공모 (상임위원회별)':SL[st]+' 공모 — 전체';
+  const emptyMsg=(st==='event')?'현재 진행중인 행사가 없습니다.':`현재 ${SL[st]}인 공모가 없습니다.`;
   el('detailGrid').innerHTML = count
     ? listCardHtml(title,count,body)
-    : `<div class="card"><div class="no-result">현재 ${SL[st]}인 공모가 없습니다.</div></div>`;
+    : `<div class="card"><div class="no-result">${emptyMsg}</div></div>`;
   highlightStatus(st);
   window.scrollTo(0,0);
 }
@@ -767,7 +808,7 @@ function renderHome(){
 }
 
 function highlightStatus(st){
-  [['open','bO'],['soon','bS'],['closed','bC']].forEach(function(x){
+  [['open','bO'],['soon','bS'],['closed','bC'],['event','bE']].forEach(function(x){
     el(x[1]).classList.toggle('active', x[0]===st);
   });
 }
