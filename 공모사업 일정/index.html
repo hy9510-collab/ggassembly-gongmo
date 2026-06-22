@@ -126,6 +126,7 @@
     .mi-label{font-size:12px;font-weight:700;color:#b35900;}
     .mi-link{font-size:12px;color:var(--gd);text-decoration:none;border:1px solid var(--gb);border-radius:14px;padding:3px 10px;background:#fff;transition:all .15s;}
     .mi-link:hover{background:var(--gd);color:#fff;}
+    .npo-note{font-size:11px;color:#999;padding:4px 10px 6px;line-height:1.5;}
     /* 하단 전체 공지 */
     .site-note{margin:6px 20px 40px;padding:16px 20px;background:#eef3f8;border-radius:10px;}
     .site-note h4{font-size:14px;color:var(--gd);margin-bottom:9px;}
@@ -533,6 +534,7 @@ let curStatus=null;
 let curCommittee=null;
 /* 첫 화면 목록·검색·통계에서 의회운영위원회 제외 */
 const SHOWN=DATA.filter(c=>c.id!=='uiwoon');
+let NPO={};   // 위원회별 관련 민간단체 (npo.json)
 
 /* ═══ 소관기관 그룹 렌더링 ═══ */
 function agencyLinks(a){
@@ -693,7 +695,22 @@ function committeeCardHtml(c){
         <tbody>${rows}</tbody>
       </table>
       ${manualInlineHtml(c)}
+      ${npoSectionHtml(c.id)}
     </div>`;
+}
+
+/* 위원회별 관련 민간단체 (참고) — 접이식 */
+function npoSectionHtml(cid){
+  const list = NPO[cid] || [];
+  if(!list.length) return '';
+  const rows = list.map(o=>`<tr><td><strong>${o.name}</strong></td><td style="font-size:11px;color:#888">${o.field||''}</td><td class="tel">${o.tel||''}</td></tr>`).join('');
+  return `<div class="ag-wrap"><div class="ag-sec">
+    <button class="ag-tog" onclick="togAg(this)"><span class="arr">▶</span>&nbsp;관련 민간단체 (${list.length}곳) — 참고</button>
+    <div class="ag-body">
+      <div class="npo-note">※ 행정안전부 비영리민간단체 등록현황 중 경기 소재 단체를 활동분야로 자동 분류한 참고 목록입니다.</div>
+      <table class="ag-tbl"><thead><tr><th>단체명</th><th>활동분야</th><th>연락처</th></tr></thead><tbody>${rows}</tbody></table>
+    </div>
+  </div></div>`;
 }
 
 /* 자동수집 불가 기관 안내 — 위원회 상세 카드 하단 */
@@ -915,22 +932,23 @@ function closeModal(){document.getElementById('ov').classList.remove('open');}
 function ovOut(e){if(e.target===document.getElementById('ov'))closeModal();}
 
 /* ═══ projects.json 동적 로드 ═══ */
-(function loadProjects(){
-  fetch('projects.json?v=' + Date.now())
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(json){
-      if(json && json.projects){
-        DATA.forEach(function(c){
-          if(json.projects[c.id]) c.projects = json.projects[c.id];
-        });
-        if(json.updated){
-          document.getElementById('updateInfo').textContent =
-            '각 상임위원회 소관기관 공모사업 일정 안내 (최종 갱신: ' + json.updated + ')';
-        }
+(function loadAll(){
+  var pj = fetch('projects.json?v=' + Date.now()).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+  var np = fetch('npo.json?v=' + Date.now()).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+  Promise.all([pj, np]).then(function(res){
+    var json = res[0];
+    if(json && json.projects){
+      DATA.forEach(function(c){
+        if(json.projects[c.id]) c.projects = json.projects[c.id];
+      });
+      if(json.updated){
+        document.getElementById('updateInfo').textContent =
+          '각 상임위원회 소관기관 공모사업 일정 안내 (최종 갱신: ' + json.updated + ')';
       }
-      init();
-    })
-    .catch(function(){ init(); });
+    }
+    if(res[1]) NPO = res[1];
+    init();
+  });
 })();
 </script>
 </body>
