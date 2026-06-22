@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21",
+  "updated": "2026-06-22",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -163,14 +163,6 @@
     ],
     "munhwa": [
       {
-        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
-        "period": "2025.10.27 ~ 2025.11.10",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
         "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 최종 선정결과 안내",
         "period": "",
         "org": "경기문화재단",
@@ -244,6 +236,14 @@
         "posted": "2026.06.12"
       },
       {
+        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
+        "period": "2025.10.27 ~ 2025.11.10",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
+        "src": "auto"
+      },
+      {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
         "period": "",
         "org": "경기도체육회",
@@ -313,7 +313,7 @@
         "kind": "event"
       },
       {
-        "name": "NEW「2026년 경기아트센터 SNS 서포터즈」 모집 안내",
+        "name": "「2026년 경기아트센터 SNS 서포터즈」 모집 안내",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
