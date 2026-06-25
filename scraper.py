@@ -362,6 +362,7 @@ def extract_from_page(page, target: dict) -> list[dict]:
         if kind == "event" and any(x in name for x in ("결과", "취소", "연기")):
             continue  # 행사 결과·취소 소식은 제외
 
+        posted = extract_posted(row_text)       # 게시판 목록의 작성일(게시일)
         item = {
             "name": name,
             "period": period,
@@ -371,14 +372,13 @@ def extract_from_page(page, target: dict) -> list[dict]:
             "src": "auto",          # 자동 수집 표시 (매 실행마다 교체)
             "_committee": cid,
         }
+        if posted:
+            item["posted"] = posted
         if kind == "event":
             item["kind"] = "event"
         if is_result(name):
             item["result"] = True
             item["firstSeen"] = TODAY_DOT       # 첫 수집일 (merge에서 보존)
-            posted = extract_posted(row_text)   # 게시판 작성일(있으면 우선)
-            if posted:
-                item["posted"] = posted
         items.append(item)
         if len(items) >= 8:
             break

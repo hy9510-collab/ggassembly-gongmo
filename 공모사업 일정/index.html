@@ -663,7 +663,7 @@ function committeeCardHtml(c){
         <td>${stBadge(p)}</td>
         <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${ddHtml(p)}${tg}</td>
         <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-        <td style="white-space:nowrap;font-size:12px">${p.period||(p.result&&p.posted?('발표 '+p.posted):'<span style="color:#999">공고문 참조</span>')}</td>
+        <td style="white-space:nowrap;font-size:12px">${p.period||(p.posted?(p.result?'발표 ':'게시 ')+p.posted:'<span style="color:#999">공고문 참조</span>')}</td>
       </tr>`;
     });
   }
@@ -747,7 +747,7 @@ function rowHtml(p,committee){
     <td>${kd}<a class="pl" href="${p.boardUrl}">${p.name}</a>${ddHtml(p)}${tg}</td>
     <td class="ccol">${committee}</td>
     <td>${p.org}<br><span style="font-size:11px;color:#888">${p.dept}</span></td>
-    <td style="white-space:nowrap;font-size:12px">${p.period||(p.result&&p.posted?('발표 '+p.posted):'<span style="color:#999">공고문 참조</span>')}</td>
+    <td style="white-space:nowrap;font-size:12px">${p.period||(p.posted?(p.result?'발표 ':'게시 ')+p.posted:'<span style="color:#999">공고문 참조</span>')}</td>
   </tr>`;
 }
 function listCardHtml(title,count,bodyRows){
