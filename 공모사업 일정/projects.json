@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24",
+  "updated": "2026-06-25",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -9,7 +9,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110895461&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.05.03"
       }
     ],
     "gihoek": [
@@ -19,7 +20,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892439&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2025.11.27"
       },
       {
         "name": "「2026년 평택시의회 정책 아이디어 공모전」 공고문",
@@ -27,7 +29,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110896425&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2025.12.07"
       },
       {
         "name": "2026 성남시 공공데이터 활용 시각화 경진대회",
@@ -35,7 +38,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110894724&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.05.13"
       },
       {
         "name": "「2026년 연천군 테마형 아이디어」 공모전",
@@ -43,7 +47,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110893647&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.01.23"
       },
       {
         "name": "「제1회 모두의 아이디어 」 공모전",
@@ -51,7 +56,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110893646&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.04.15"
       }
     ],
     "gyeongje": [
@@ -61,7 +67,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894179&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.03.13"
       },
       {
         "name": "2025년 「경기도 반려동물 창업 공모전」 참가자 모집",
@@ -69,7 +76,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110890948&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2025.09.12"
       },
       {
         "name": "노인일자리 사진 및 수기 공모 (불어라, 청춘바람)",
@@ -77,7 +85,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110890944&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2025.09.22"
       },
       {
         "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
@@ -86,6 +95,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
         "src": "auto",
+        "posted": "2026.05.13",
         "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
       },
       {
@@ -94,7 +104,8 @@
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.05.08"
       },
       {
         "name": "경기도 공고 제2026-1029호  2026년 사회적가치 창출 활성화 사업 선정결과 수정공고 ｢사회적기업 육성법｣ 제14조,",
@@ -103,9 +114,9 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffea4ea7d3e5af9432c851f3acc50f72c5a&act=detail",
         "src": "auto",
+        "posted": "2026.04.27",
         "result": true,
-        "firstSeen": "2026.06.16",
-        "posted": "2026.04.27"
+        "firstSeen": "2026.06.16"
       },
       {
         "name": "사회혁신공간 입주기업 (추가) 모집공고",
@@ -113,7 +124,8 @@
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeb61c3df30677d65c059222c519fa2d74&act=detail",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.04.20"
       },
       {
         "name": "민생에 플러스,「고유가 피해지원금」 지원사업 안내",
@@ -121,7 +133,8 @@
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5d0d4c02abed661cdb4e6383a0bf214d&act=detail",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.04.17"
       },
       {
         "name": "「2026년 사회적경제 도약패키지(사회적경제 투자연계 G-Impact)」 참여기업 모집",
@@ -130,6 +143,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe4e0ef26310606dc6763de6b789d3b51c",
         "src": "auto",
+        "posted": "2026.05.07",
         "target": "사회적경제조직 신청유형 기업"
       },
       {
@@ -139,6 +153,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffec20e16997cba507e8edf668bea0d7be9",
         "src": "auto",
+        "posted": "2026.04.10",
         "target": "마을기업 신청유형 공통"
       },
       {
@@ -148,6 +163,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1fe0ece6c82ef0e9382bfd31b2abcbd5",
         "src": "auto",
+        "posted": "2026.03.30",
         "target": "사회적경제조직 신청유형 기업"
       }
     ],
@@ -158,87 +174,11 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110888862&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2024.03.04"
       }
     ],
     "munhwa": [
-      {
-        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
-        "period": "2025.10.27 ~ 2025.11.10",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189871",
-        "src": "auto"
-      },
-      {
-        "name": "[국민체육진흥공단] 2025년도 원로 체육인 지원 신청 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189712",
-        "src": "auto"
-      },
-      {
-        "name": "2025년 학교운동부 지원사업[동계훈련 및 훈련용품구입비] 공고 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
-        "src": "auto",
-        "target": "초·중·고등학교 학교운동부"
-      },
-      {
-        "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189439",
-        "src": "auto"
-      },
-      {
-        "name": "[2025 경기체육아카데미] 스포츠트렌드교육 상세 교육 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189423",
-        "src": "auto",
-        "kind": "event"
-      },
-      {
-        "name": "2025년도 경기도동계체육대회 참가요강 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189312",
-        "src": "auto",
-        "kind": "event"
-      },
-      {
-        "name": "2025년도 [도서벽지 유소년 대상 선수촌 체험] 사업 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189303",
-        "src": "auto",
-        "kind": "event"
-      },
-      {
-        "name": "[의정부시체육회] 2025 경기북부 도민과 함께하는 U-시티 힐링걷기 대회",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189295",
-        "src": "auto",
-        "kind": "event"
-      },
       {
         "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
         "period": "",
@@ -313,12 +253,99 @@
         "src": "auto"
       },
       {
+        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
+        "period": "2025.10.27 ~ 2025.11.10",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2025.11.10"
+      },
+      {
+        "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189871",
+        "src": "auto",
+        "posted": "2026.06.09"
+      },
+      {
+        "name": "[국민체육진흥공단] 2025년도 원로 체육인 지원 신청 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189712",
+        "src": "auto",
+        "posted": "2025.10.13"
+      },
+      {
+        "name": "2025년 학교운동부 지원사업[동계훈련 및 훈련용품구입비] 공고 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
+        "src": "auto",
+        "posted": "2025.09.30",
+        "target": "초·중·고등학교 학교운동부"
+      },
+      {
+        "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189439",
+        "src": "auto",
+        "posted": "2025.09.11"
+      },
+      {
+        "name": "[2025 경기체육아카데미] 스포츠트렌드교육 상세 교육 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189423",
+        "src": "auto",
+        "posted": "2025.09.10",
+        "kind": "event"
+      },
+      {
+        "name": "2025년도 경기도동계체육대회 참가요강 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189312",
+        "src": "auto",
+        "posted": "2025.09.02",
+        "kind": "event"
+      },
+      {
+        "name": "2025년도 [도서벽지 유소년 대상 선수촌 체험] 사업 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189303",
+        "src": "auto",
+        "posted": "2025.09.01",
+        "kind": "event"
+      },
+      {
+        "name": "[의정부시체육회] 2025 경기북부 도민과 함께하는 U-시티 힐링걷기 대회",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189295",
+        "src": "auto",
+        "posted": "2025.09.01",
+        "kind": "event"
+      },
+      {
         "name": "NEW경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63435&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.23"
       },
       {
         "name": "「2026년 경기아트센터 SNS 서포터즈」 모집 안내",
@@ -326,7 +353,8 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63432&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.19"
       },
       {
         "name": "<2026 경기 청년예술 기회무대> 참여자 모집 공고",
@@ -334,7 +362,8 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63430&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.18"
       },
       {
         "name": "2026년 경기예술성장학교 영재선발 공개 모집",
@@ -342,7 +371,8 @@
         "org": "경기아트센터",
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55596&pageIndex=1&category=",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.12"
       },
       {
         "name": "2026 GPAM(경기 공연예술 미팅) 예술인 및 예술단체 참가 신청 안내",
@@ -351,6 +381,7 @@
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55578&pageIndex=1&category=",
         "src": "auto",
+        "posted": "2026.06.09",
         "kind": "event"
       },
       {
@@ -360,9 +391,9 @@
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55561&pageIndex=1&category=",
         "src": "auto",
+        "posted": "2026.05.26",
         "result": true,
-        "firstSeen": "2026.06.16",
-        "posted": "2026.05.26"
+        "firstSeen": "2026.06.16"
       },
       {
         "name": "「2026년 거리로 나온 예술」예술인(단체) 선정 공모 결과 알림",
@@ -371,9 +402,9 @@
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55532&pageIndex=1&category=",
         "src": "auto",
+        "posted": "2026.05.08",
         "result": true,
-        "firstSeen": "2026.06.16",
-        "posted": "2026.05.08"
+        "firstSeen": "2026.06.16"
       },
       {
         "name": "「2026년 예술인 기회소득 확산사업」 예술인(단체) 선정 공모 결과 알림",
@@ -382,9 +413,9 @@
         "dept": "공연기획팀",
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55521&pageIndex=1&category=",
         "src": "auto",
+        "posted": "2026.05.04",
         "result": true,
-        "firstSeen": "2026.06.16",
-        "posted": "2026.05.04"
+        "firstSeen": "2026.06.16"
       }
     ],
     "nonghae": [],
@@ -395,7 +426,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110895478&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.05.04"
       },
       {
         "name": "2025 경기도 장애인 인권정책 공모전",
@@ -403,7 +435,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110891671&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2025.10.29"
       }
     ],
     "gunseol": [],
@@ -448,7 +481,8 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172292",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.19"
       },
       {
         "name": "『2026년 경기경제자유구역 혁신생태계 조성사업』산업안전관리감독자 교육(무료) 참가자 모집 공고경기도(경기경제자유구역청)와 경기테크노파크",
@@ -456,7 +490,8 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172291",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.19"
       },
       {
         "name": "[GTP공고 제2026-147호] 2026년 안산시 BI 입주기업 브랜드 강화사업 참여기업 모집(재)경기테크노파크",
@@ -464,7 +499,8 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172289",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.06.18"
       },
       {
         "name": "GTP공고 제2026-102호 2026년 이천시 도·공예기업 맞춤형 온라인 마케팅 지원사업 참여기업 모집 연장공고 이천시와 경기테크노파크",
@@ -473,6 +509,7 @@
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172246",
         "src": "auto",
+        "posted": "2026.06.23",
         "target": "공고일 기준 이천시 관내 도·공예기업 사업자"
       }
     ],
@@ -483,7 +520,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894742&page=1&menuId=4433&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2026.04.30"
       },
       {
         "name": "여성활동 플랫폼 홍보 영상 공모전",
@@ -491,7 +529,8 @@
         "org": "경기도청",
         "dept": "통합공모",
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110888924&page=1&menuId=4434&bcIdx=0",
-        "src": "auto"
+        "src": "auto",
+        "posted": "2025.05.16"
       }
     ],
     "gyoyuk1": [],
