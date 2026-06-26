@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25",
+  "updated": "2026-06-26",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -180,79 +180,6 @@
     ],
     "munhwa": [
       {
-        "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21375",
-        "src": "auto",
-        "result": true,
-        "firstSeen": "2026.06.23",
-        "posted": "2026.06.19"
-      },
-      {
-        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21337",
-        "src": "auto"
-      },
-      {
-        "name": "경기문화재단 공모 제 2026-47호 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21306",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 경기상상캠퍼스 신규 입주단체 모집 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21305",
-        "src": "auto"
-      },
-      {
-        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
-        "src": "auto"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto",
-        "result": true,
-        "firstSeen": "2026.06.16",
-        "posted": "2026.02.27"
-      },
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 최종 선정결과 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21365",
-        "src": "auto",
-        "result": true,
-        "firstSeen": "2026.06.17",
-        "posted": "2026.06.17"
-      },
-      {
-        "name": "2026년 경기예술활동지원 ‘모든예술31’ 도민 모니터링단 모집 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21364",
-        "src": "auto"
-      },
-      {
         "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
         "period": "2025.10.27 ~ 2025.11.10",
         "org": "경기도청",
@@ -339,7 +266,87 @@
         "kind": "event"
       },
       {
-        "name": "NEW경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
+        "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21375",
+        "src": "auto",
+        "posted": "2026.06.19",
+        "result": true,
+        "firstSeen": "2026.06.23"
+      },
+      {
+        "name": "경기문화재단 공모 제 2026-47호 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21306",
+        "src": "auto",
+        "posted": "2026.05.27"
+      },
+      {
+        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
+        "src": "auto",
+        "posted": "2026.05.13"
+      },
+      {
+        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
+        "src": "auto",
+        "posted": "2026.02.27",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 최종 선정결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21365",
+        "src": "auto",
+        "posted": "2026.06.17",
+        "result": true,
+        "firstSeen": "2026.06.17"
+      },
+      {
+        "name": "2026년 경기예술활동지원 ‘모든예술31’ 도민 모니터링단 모집 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21364",
+        "src": "auto",
+        "posted": "2026.06.17"
+      },
+      {
+        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 예비트랙 서류심의 결과 및 인터뷰심의 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21353",
+        "src": "auto",
+        "posted": "2026.06.12",
+        "result": true,
+        "firstSeen": "2026.06.26"
+      },
+      {
+        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21337",
+        "src": "auto",
+        "posted": "2026.06.10"
+      },
+      {
+        "name": "경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
@@ -456,14 +463,6 @@
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64941&article.offset=0&articleLimit=10",
         "src": "auto"
-      },
-      {
-        "name": "2026년 GH 민간협력기술개발사업 과제 공모",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64877&article.offset=0&articleLimit=10",
-        "src": "auto"
       }
     ],
     "mirae": [
@@ -501,8 +500,7 @@
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172246",
         "src": "auto",
-        "posted": "2026.06.23",
-        "target": "공고일 기준 이천시 관내 도·공예기업 사업자"
+        "posted": "2026.06.23"
       }
     ],
     "yeoseong": [
