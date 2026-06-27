@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26",
+  "updated": "2026-06-27",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -500,7 +500,8 @@
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172246",
         "src": "auto",
-        "posted": "2026.06.23"
+        "posted": "2026.06.23",
+        "target": "공고일 기준 이천시 관내 도·공예기업 사업자"
       }
     ],
     "yeoseong": [
