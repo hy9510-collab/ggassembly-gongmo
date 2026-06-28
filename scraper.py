@@ -420,6 +420,13 @@ TARGET_PAT = re.compile(
 # 접수/공모/행사 기간·일시가 적힌 줄 탐지 (공모기간 + 행사일)
 PERIOD_LINE_PAT = re.compile(
     r"(?:접수|신청|공모|모집|응모|참가|행사|운영|대회|개최|교육|훈련)\s*(?:기간|일시)")
+
+# 경기도체육회는 깃허브 러너 IP를 자주 차단 → 본문을 못 읽음.
+# 로컬(_sports_periods.py)에서 확인한 기간을 글ID로 보충한다.
+SPORTS_PERIOD_FALLBACK = {
+    "189871": "2026.06.08 ~ 2026.07.09",  # 직장운동경기부 창단지원 2차 공모
+    "189312": "2025.10.31 ~ 2025.11.01",  # 경기도동계체육대회(대회기간)
+}
 # 지원대상으로 부적합한 텍스트 (표 머리글·문장 조각·안내문)
 BAD_TARGET = re.compile(r"(기간|마감|발표|제출|바랍니다|주시기|첨부|양식|클릭|"
                         r"홈페이지|페이지|아래|참조|참고)")
@@ -500,6 +507,15 @@ def scrape_all() -> list[dict]:
             results = enrich_details(page, results)
         except Exception as e:
             print(f"  [상세보충 오류] {e}", file=sys.stderr)
+
+        # 체육회(ggsports)는 러너 차단으로 본문을 못 읽을 때가 많음
+        # → 로컬에서 확인한 기간을 보충(차단 시에도 표시 유지)
+        for item in results:
+            if item.get("period"):
+                continue
+            m = re.search(r"ggsports\.gg\.go\.kr/archives/(\d+)", item.get("boardUrl", ""))
+            if m and m.group(1) in SPORTS_PERIOD_FALLBACK:
+                item["period"] = SPORTS_PERIOD_FALLBACK[m.group(1)]
 
         browser.close()
     return results
