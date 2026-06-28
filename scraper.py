@@ -192,6 +192,31 @@ def normalize_period(raw: str) -> str:
     return ""
 
 
+# 본문 기간 범위: 시작은 'YYYY.M.D', 끝은 연도 생략 가능('~ M.D')
+_SEP = r"[~∼〜～\-–—]"
+RANGE_PAT = re.compile(
+    rf"(\d{{4}})\.(\d{{1,2}})\.(\d{{1,2}})\.?\s*{_SEP}\s*(?:(\d{{4}})\.)?(\d{{1,2}})\.(\d{{1,2}})")
+
+
+def parse_body_period(line: str) -> str:
+    """게시글 본문의 기간 줄에서 'YYYY.MM.DD ~ YYYY.MM.DD'를 추출한다.
+    끝 날짜의 연도가 생략된 표기('2025.10.31 ~ 11.1')는 시작 연도로 보완하고,
+    요일(금)·시간(18:00)·한글 날짜(2026년 6월 1일)도 처리한다."""
+    s = re.sub(r"\([월화수목금토일]\)", " ", line)        # (금) 요일 제거
+    s = re.sub(r"\d{1,2}\s*:\s*\d{2}", " ", s)             # 18:00 시간 제거
+    s = re.sub(r"(\d{4})\s*년", r"\1.", s)                 # 2026년 → 2026.
+    s = re.sub(r"(\d{1,2})\s*월\s*(\d{1,2})\s*일", r"\1.\2", s)  # 6월 1일 → 6.1
+    s = re.sub(r"(?<=\d)\s*\.\s*(?=\d)", ".", s)            # '2025. 10. 31' → '2025.10.31'
+    m = RANGE_PAT.search(s)
+    if not m:
+        return ""
+    sy, sm, sd, ey, em, ed = m.groups()
+    sy, sm, sd, em, ed = int(sy), int(sm), int(sd), int(em), int(ed)
+    ey = int(ey) if ey else (sy if em >= sm else sy + 1)   # 끝 월이 작아지면 다음 해
+    start, end = f"{sy:04d}.{sm:02d}.{sd:02d}", f"{ey:04d}.{em:02d}.{ed:02d}"
+    return f"{start} ~ {end}" if start <= end else ""
+
+
 def classify_portal(text: str) -> str:
     """통합공모 게시글을 제목 키워드로 상임위 분류."""
     for cid, kws in PORTAL_CLASSIFY.items():
@@ -392,8 +417,9 @@ def extract_from_page(page, target: dict) -> list[dict]:
 # 지원대상/자격 줄 추출 패턴
 TARGET_PAT = re.compile(
     r"(?:지원|신청|모집|응모|참가|참여|공모)\s*(?:대상|자격)\s*[:：]?\s*([^\n]{2,70})")
-# 접수/공모/행사 기간이 적힌 줄 탐지
-PERIOD_LINE_PAT = re.compile(r"(?:접수|신청|공모|모집|응모|참가|행사|운영)\s*기간")
+# 접수/공모/행사 기간·일시가 적힌 줄 탐지 (공모기간 + 행사일)
+PERIOD_LINE_PAT = re.compile(
+    r"(?:접수|신청|공모|모집|응모|참가|행사|운영|대회|개최|교육|훈련)\s*(?:기간|일시)")
 # 지원대상으로 부적합한 텍스트 (표 머리글·문장 조각·안내문)
 BAD_TARGET = re.compile(r"(기간|마감|발표|제출|바랍니다|주시기|첨부|양식|클릭|"
                         r"홈페이지|페이지|아래|참조|참고)")
@@ -419,9 +445,7 @@ def enrich_details(page, items: list[dict]) -> list[dict]:
         if not item.get("period"):
             for ln in lines:
                 if PERIOD_LINE_PAT.search(ln):
-                    # '2026. 6. 1.' 처럼 점 뒤 공백이 있는 표기도 인식되게 정리
-                    ln2 = re.sub(r"(?<=\d)\.\s+(?=\d)", ".", ln)
-                    p = normalize_period(ln2)
+                    p = parse_body_period(ln)
                     if p:
                         item["period"] = p
                         n_p += 1
