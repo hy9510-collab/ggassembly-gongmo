@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28",
+  "updated": "2026-06-29",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -180,15 +180,6 @@
     ],
     "munhwa": [
       {
-        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
-        "period": "2025.10.27 ~ 2025.11.10",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2025.11.10"
-      },
-      {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
         "period": "2026.06.08 ~ 2026.07.09",
         "org": "경기도체육회",
@@ -264,6 +255,94 @@
         "src": "auto",
         "posted": "2025.09.01",
         "kind": "event"
+      },
+      {
+        "name": "경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63435&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.06.23"
+      },
+      {
+        "name": "「2026년 경기아트센터 SNS 서포터즈」 모집 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63432&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.06.19"
+      },
+      {
+        "name": "<2026 경기 청년예술 기회무대> 참여자 모집 공고",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63430&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.06.18"
+      },
+      {
+        "name": "2026년 경기예술성장학교 영재선발 공개 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55596&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.06.12"
+      },
+      {
+        "name": "2026 GPAM(경기 공연예술 미팅) 예술인 및 예술단체 참가 신청 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55578&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.06.09",
+        "kind": "event"
+      },
+      {
+        "name": "2026년 제9기 고객자문단 선정 결과 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55561&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.05.26",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "「2026년 거리로 나온 예술」예술인(단체) 선정 공모 결과 알림",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55532&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.05.08",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "「2026년 예술인 기회소득 확산사업」 예술인(단체) 선정 공모 결과 알림",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55521&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.05.04",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
+        "period": "2025.10.27 ~ 2025.11.10",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2025.11.10"
       },
       {
         "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
@@ -344,85 +423,6 @@
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21337",
         "src": "auto",
         "posted": "2026.06.10"
-      },
-      {
-        "name": "경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63435&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.06.23"
-      },
-      {
-        "name": "「2026년 경기아트센터 SNS 서포터즈」 모집 안내",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63432&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.06.19"
-      },
-      {
-        "name": "<2026 경기 청년예술 기회무대> 참여자 모집 공고",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63430&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.06.18"
-      },
-      {
-        "name": "2026년 경기예술성장학교 영재선발 공개 모집",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55596&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.06.12"
-      },
-      {
-        "name": "2026 GPAM(경기 공연예술 미팅) 예술인 및 예술단체 참가 신청 안내",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55578&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.06.09",
-        "kind": "event"
-      },
-      {
-        "name": "2026년 제9기 고객자문단 선정 결과 안내",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55561&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.05.26",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "「2026년 거리로 나온 예술」예술인(단체) 선정 공모 결과 알림",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55532&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.05.08",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "「2026년 예술인 기회소득 확산사업」 예술인(단체) 선정 공모 결과 알림",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55521&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.05.04",
-        "result": true,
-        "firstSeen": "2026.06.16"
       }
     ],
     "nonghae": [],
@@ -449,6 +449,14 @@
     "gunseol": [],
     "dosi": [
       {
+        "name": "「GH 홍보관 기획 설계 및 콘텐츠 제작 설치 용역」 제안서 평가위원 모집 안내",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64964&article.offset=0&articleLimit=10",
+        "src": "auto"
+      },
+      {
         "name": "「GH ESG경영보고서 작성 용역」 제안서 평가위원 모집 안내",
         "period": "",
         "org": "경기주택도시공사(GH)",
@@ -466,6 +474,25 @@
       }
     ],
     "mirae": [
+      {
+        "name": "2026 제조로봇 도입지원 해외진출지원 사업 참여기업(자) 모집 연장 공고 계획",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172293",
+        "src": "auto",
+        "posted": "2026.06.29"
+      },
+      {
+        "name": "GTP공고 제2026-102호 2026년 이천시 도·공예기업 맞춤형 온라인 마케팅 지원사업 참여기업 모집 연장공고 이천시와 경기테크노파크",
+        "period": "2026.04.23 ~ 2026.07.03",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172246",
+        "src": "auto",
+        "posted": "2026.06.23",
+        "target": "공고일 기준 이천시 관내 도·공예기업 사업자"
+      },
       {
         "name": "「2026 제조로봇 도입지원 해외진출지원 사업」 참가 기업(자) 추가 모집 공고",
         "period": "",
@@ -485,23 +512,13 @@
         "posted": "2026.06.19"
       },
       {
-        "name": "[GTP공고 제2026-147호] 2026년 안산시 BI 입주기업 브랜드 강화사업 참여기업 모집(재)경기테크노파크",
+        "name": "[GTP공고 제2026-153호] 2026 특화역량 BI 육성지원사업 「 ICT·SW 창업 컨설팅 지원」참",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172289",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172294",
         "src": "auto",
-        "posted": "2026.06.18"
-      },
-      {
-        "name": "GTP공고 제2026-102호 2026년 이천시 도·공예기업 맞춤형 온라인 마케팅 지원사업 참여기업 모집 연장공고 이천시와 경기테크노파크",
-        "period": "2026.04.23 ~ 2026.07.03",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172246",
-        "src": "auto",
-        "posted": "2026.06.23",
-        "target": "공고일 기준 이천시 관내 도·공예기업 사업자"
+        "posted": "2026.06.29"
       }
     ],
     "yeoseong": [
