@@ -262,6 +262,14 @@ function calcSt(period){
 }
 function isUp(st){return st==='open'||st==='soon';}
 function endYr(p){const t=(p||'').split('~')[1];return t?+t.trim().split('.')[0]:THIS_YEAR;}
+// 접수기간이 없는 항목: 게시 후 이 일수가 지나면 마감으로 간주(오래된 글 정리)
+const STALE_DAYS=90;
+// 마감연도: 접수기간 끝 연도, 없으면 게시연도 — 작년 마감건 제외용
+function effEndYear(p){
+  if(p.period && p.period.indexOf('~')>=0) return +p.period.split('~')[1].trim().split('.')[0];
+  const base=p.posted||p.firstSeen;
+  return base ? +String(base).split('.')[0] : THIS_YEAR;
+}
 
 /* 날짜 표시 */
 (()=>{const d=TODAY,w=['일','월','화','수','목','금','토'];
@@ -573,6 +581,11 @@ function enrich(c){
       const r=calcSt(p.period);
       // 기간이 없어도 제목에 '마감' 표기가 있으면 마감 처리
       if(!p.period && p.name.indexOf('마감')>=0) r.status='closed';
+      // 접수기간이 없는 항목(공모·행사): 게시일이 오래(STALE_DAYS) 지났으면 마감
+      if((!p.period||p.period.indexOf('~')<0) && !p.result){
+        const base=p.posted||p.firstSeen, bd=base?pd(base):null;
+        if(bd&&!isNaN(+bd) && (TODAY-bd)/86400000 > STALE_DAYS){ r.status='closed'; r.dday=null; }
+      }
       // 결과 공고: 게시일(없으면 첫 수집일) 기준 7일 지나면 마감, 그 전엔 '결과 공고'
       if(p.result){
         const base=p.posted||p.firstSeen;
@@ -584,7 +597,7 @@ function enrich(c){
       r.closedAgo = closedDaysAgo(p, r.status);   // 마감 후 경과일(마감 아니면 null)
       return{...p,...r};
     })
-    .filter(p=>p.status!=='closed'||endYr(p.period)===THIS_YEAR);
+    .filter(p=>p.status!=='closed'||effEndYear(p)===THIS_YEAR);
 }
 
 /* 마감된 지 며칠 지났는지 — 위원회 상세에서 최근(7일 이내) 마감만 보이게 */
@@ -643,9 +656,9 @@ function renderList(){
 
 /* 위원회 카드 HTML (소관기관 + 공모 테이블) — 2단계 상세에서 사용 */
 function committeeCardHtml(c){
-  // 위원회 상세: 공모는 마감 7일 이내까지 노출, 행사는 진행중만
+  // 위원회 상세: 공모·행사 모두 마감 7일 이내까지 노출(지난 행사일은 마감)
   const enriched=enrich(c)
-    .filter(p=> p.kind==='event' ? isUp(p.status) : (p.status!=='closed'||p.closedAgo<7))
+    .filter(p=> p.status!=='closed'||p.closedAgo<7)
     .slice().sort((a,b)=>(a.status==='closed'?1:0)-(b.status==='closed'?1:0));
   const gmN=enriched.filter(p=>p.kind!=='event').length;
   const evN=enriched.filter(p=>p.kind==='event').length;
@@ -728,10 +741,12 @@ function manualInlineHtml(c){
 function el(id){return document.getElementById(id);}
 
 /* 공모 한 행 (소관 상임위원회 컬럼 포함) — 같은 창에서 게시글 열기 */
-/* 상태 뱃지: 행사는 '진행중'으로 단일화, 공모는 접수중/마감임박/마감 */
+/* 상태 뱃지: 행사는 진행중→마감(행사일 지나면), 공모는 접수중/마감임박/마감 */
 function stBadge(p){
   return p.kind==='event'
-    ? `<span class="st ongoing">진행중</span>`
+    ? (isUp(p.status)
+        ? `<span class="st ongoing">진행중</span>`
+        : `<span class="st closed">마감</span>`)
     : `<span class="st ${SC[p.status]}">${SL[p.status]}</span>`;
 }
 /* D-day: 공모만 표시 (행사는 마감임박 개념 없이 진행중만) */
