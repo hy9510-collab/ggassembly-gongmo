@@ -5,3 +5,6 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+
+# 발언카드·보도자료 비서 — 별도 저장소(ggassembly-speechcard)로 분리함
+회의 발언카드 보도자료 비서/
