@@ -1,0 +1,6 @@
+# 회의 발언카드 · 보도자료 비서 - 파이썬 의존성
+# 설치: .venv\Scripts\python.exe -m pip install -r requirements.txt
+yt-dlp
+opencv-python
+numpy>=2
+Pillow
