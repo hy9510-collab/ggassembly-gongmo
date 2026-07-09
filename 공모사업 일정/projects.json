@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07",
+  "updated": "2026-07-09",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -189,86 +189,6 @@
         "posted": "2025.11.10"
       },
       {
-        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
-        "src": "auto",
-        "posted": "2026.07.07"
-      },
-      {
-        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 인터뷰 심의 대상 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21400",
-        "src": "auto",
-        "posted": "2026.07.06"
-      },
-      {
-        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 최종 선정 결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21384",
-        "src": "auto",
-        "posted": "2026.07.01",
-        "result": true,
-        "firstSeen": "2026.07.02"
-      },
-      {
-        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
-        "src": "auto",
-        "posted": "2026.05.13"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto",
-        "posted": "2026.02.27",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21375",
-        "src": "auto",
-        "posted": "2026.06.19",
-        "result": true,
-        "firstSeen": "2026.06.23"
-      },
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 갤러리스트 모집 공모 최종 선정결과 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21365",
-        "src": "auto",
-        "posted": "2026.06.17",
-        "result": true,
-        "firstSeen": "2026.06.17"
-      },
-      {
-        "name": "2026년 경기예술활동지원 ‘모든예술31’ 도민 모니터링단 모집 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21364",
-        "src": "auto",
-        "posted": "2026.06.17"
-      },
-      {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
         "period": "2026.06.08 ~ 2026.07.09",
         "org": "경기도체육회",
@@ -344,6 +264,86 @@
         "src": "auto",
         "posted": "2025.09.01",
         "kind": "event"
+      },
+      {
+        "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21408",
+        "src": "auto",
+        "posted": "2026.07.08"
+      },
+      {
+        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
+        "src": "auto",
+        "posted": "2026.07.07"
+      },
+      {
+        "name": "2026년 지붕없는 박물관 후보거점 발굴 공모 선정 결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21405",
+        "src": "auto",
+        "posted": "2026.07.07",
+        "result": true,
+        "firstSeen": "2026.07.09"
+      },
+      {
+        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 인터뷰 심의 대상 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21400",
+        "src": "auto",
+        "posted": "2026.07.06"
+      },
+      {
+        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 최종 선정 결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21384",
+        "src": "auto",
+        "posted": "2026.07.01",
+        "result": true,
+        "firstSeen": "2026.07.02"
+      },
+      {
+        "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21220",
+        "src": "auto",
+        "posted": "2026.05.13"
+      },
+      {
+        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
+        "src": "auto",
+        "posted": "2026.02.27",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21375",
+        "src": "auto",
+        "posted": "2026.06.19",
+        "result": true,
+        "firstSeen": "2026.06.23"
       },
       {
         "name": "경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
@@ -448,6 +448,14 @@
     ],
     "gunseol": [],
     "dosi": [
+      {
+        "name": "「경기 서부권역 공공주택지구 자족거점 구축방안 수립 용역」제안서 평가위원(후보자) 모집 공고",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64982&article.offset=0&articleLimit=10",
+        "src": "auto"
+      },
       {
         "name": "「GH 홍보관 기획 설계 및 콘텐츠 제작 설치 용역」 제안서 평가위원 모집 안내",
         "period": "",
