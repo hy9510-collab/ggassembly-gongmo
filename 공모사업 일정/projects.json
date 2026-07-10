@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09",
+  "updated": "2026-07-10",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -137,6 +137,26 @@
         "posted": "2026.04.20"
       },
       {
+        "name": "2026년 ESG선도대학(북부/남부) 수강생 모집",
+        "period": "2026.04.29 ~ 2026.05.28",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe68b3666d768c0bb04fd44105d482e202",
+        "src": "auto",
+        "posted": "2026.05.28",
+        "target": "제한없음 신청유형 개인"
+      },
+      {
+        "name": "2026년 사회적경제조직 컨설팅 지원사업 참여기업 모집",
+        "period": "2026.04.30 ~ 2026.05.18",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffed85cdde0aed3c523c66f1e4f770fd618",
+        "src": "auto",
+        "posted": "2026.05.18",
+        "target": "사회적경제조직 신청유형 기업"
+      },
+      {
         "name": "2026년 사회환경 문제해결 지원사업 개방형혁신 분야 프로젝트 실행지원 참여기업 2차 모집 공고",
         "period": "2026.04.29 ~ 2026.05.13",
         "org": "경기도사회적경제원",
@@ -145,26 +165,6 @@
         "src": "auto",
         "posted": "2026.05.13",
         "target": "제한없음 신청유형 기업"
-      },
-      {
-        "name": "「2026년 사회적경제 도약패키지(사회적경제 투자연계 G-Impact)」 참여기업 모집",
-        "period": "2026.04.13 ~ 2026.05.07",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe4e0ef26310606dc6763de6b789d3b51c",
-        "src": "auto",
-        "posted": "2026.05.07",
-        "target": "사회적경제조직 신청유형 기업"
-      },
-      {
-        "name": "2026년 마을기업 도약지원 사업 참여기업 모집 공고(연장)",
-        "period": "2026.03.30 ~ 2026.04.10",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffec20e16997cba507e8edf668bea0d7be9",
-        "src": "auto",
-        "posted": "2026.04.10",
-        "target": "마을기업 신청유형 공통"
       }
     ],
     "anjeun": [
@@ -304,17 +304,6 @@
         "posted": "2026.07.06"
       },
       {
-        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 최종 선정 결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21384",
-        "src": "auto",
-        "posted": "2026.07.01",
-        "result": true,
-        "firstSeen": "2026.07.02"
-      },
-      {
         "name": "「그대만 있다면」- 2026년 경기창작캠퍼스 창작발표 지원사업",
         "period": "",
         "org": "경기문화재단",
@@ -333,6 +322,17 @@
         "posted": "2026.02.27",
         "result": true,
         "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 최종 선정 결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21384",
+        "src": "auto",
+        "posted": "2026.07.01",
+        "result": true,
+        "firstSeen": "2026.07.02"
       },
       {
         "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
@@ -449,6 +449,15 @@
     "gunseol": [],
     "dosi": [
       {
+        "name": "2026 GH 베이스캠프 참여기업 모집공고",
+        "period": "2026.07.09 ~ 2026.08.03",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64988&article.offset=0&articleLimit=10",
+        "src": "auto",
+        "target": "제 1, 2판교에 소재지를 두고 있는 기업 5개사"
+      },
+      {
         "name": "「경기 서부권역 공공주택지구 자족거점 구축방안 수립 용역」제안서 평가위원(후보자) 모집 공고",
         "period": "",
         "org": "경기주택도시공사(GH)",
@@ -470,14 +479,6 @@
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64951&article.offset=0&articleLimit=10",
-        "src": "auto"
-      },
-      {
-        "name": "「노후계획도시 정비사업 GH사전컨설팅」선정 구역 공고",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64941&article.offset=0&articleLimit=10",
         "src": "auto"
       }
     ],
