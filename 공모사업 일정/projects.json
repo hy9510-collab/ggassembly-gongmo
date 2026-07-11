@@ -346,13 +346,22 @@
         "firstSeen": "2026.06.23"
       },
       {
-        "name": "경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
+        "name": "NEW2026 경기예술성장학교 영재선발 국악분야(거문고, 아쟁, 피리) 추가 공개 모집",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63435&pageIndex=1&category=",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63487&pageIndex=1&category=",
         "src": "auto",
-        "posted": "2026.06.23"
+        "posted": "2026.07.10"
+      },
+      {
+        "name": "NEW<2026 경기 청년예술 기회무대> 참여자 추가 모집 공고(한국무용, 한국음악)",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63485&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.07.10"
       },
       {
         "name": "<2026 경기 청년예술 기회무대> 참여자 모집 공고",
@@ -364,13 +373,13 @@
         "posted": "2026.06.18"
       },
       {
-        "name": "2026년 경기예술성장학교 영재선발 공개 모집",
+        "name": "경기아트센터 예술아카데미 여름특강 <특별한 오늘수업> 아이디어 공모",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55596&pageIndex=1&category=",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63435&pageIndex=1&category=",
         "src": "auto",
-        "posted": "2026.06.12"
+        "posted": "2026.06.23"
       },
       {
         "name": "「2026년 경기아트센터 SNS 서포터즈」 모집 안내",
@@ -380,6 +389,15 @@
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63432&pageIndex=1&category=",
         "src": "auto",
         "posted": "2026.06.19"
+      },
+      {
+        "name": "2026년 경기예술성장학교 영재선발 공개 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55596&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.06.12"
       },
       {
         "name": "2026 GPAM(경기 공연예술 미팅) 예술인 및 예술단체 참가 신청 안내",
@@ -399,28 +417,6 @@
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55561&pageIndex=1&category=",
         "src": "auto",
         "posted": "2026.05.26",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "「2026년 거리로 나온 예술」예술인(단체) 선정 공모 결과 알림",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55532&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.05.08",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "「2026년 예술인 기회소득 확산사업」 예술인(단체) 선정 공모 결과 알림",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=55521&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.05.04",
         "result": true,
         "firstSeen": "2026.06.16"
       }
