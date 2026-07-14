@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12",
+  "updated": "2026-07-13",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -99,15 +99,6 @@
         "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
       },
       {
-        "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
-        "period": "2026.05.08 ~ 2026.05.20",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
-        "src": "auto",
-        "posted": "2026.05.08"
-      },
-      {
         "name": "2026년 사회적경제 도약패키지 「G-임팩트 펀드 캐쥬얼 IR 데이」 참가기업 모집   경기도사회적경제원",
         "period": "",
         "org": "경기도사회적경제원",
@@ -135,6 +126,15 @@
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeb61c3df30677d65c059222c519fa2d74&act=detail",
         "src": "auto",
         "posted": "2026.04.20"
+      },
+      {
+        "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
+        "period": "2026.05.08 ~ 2026.05.20",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
+        "src": "auto",
+        "posted": "2026.05.08"
       },
       {
         "name": "2026년 ESG선도대학(북부/남부) 수강생 모집",
@@ -266,6 +266,15 @@
         "kind": "event"
       },
       {
+        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
+        "src": "auto",
+        "posted": "2026.07.13"
+      },
+      {
         "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
         "period": "",
         "org": "경기문화재단",
@@ -333,17 +342,6 @@
         "posted": "2026.07.01",
         "result": true,
         "firstSeen": "2026.07.02"
-      },
-      {
-        "name": "2026「예술로 가로지르기 Season2: 세계로」선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21375",
-        "src": "auto",
-        "posted": "2026.06.19",
-        "result": true,
-        "firstSeen": "2026.06.23"
       },
       {
         "name": "2026 경기예술성장학교 영재선발 국악분야(거문고, 아쟁, 피리) 추가 공개 모집",
@@ -467,14 +465,6 @@
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64964&article.offset=0&articleLimit=10",
-        "src": "auto"
-      },
-      {
-        "name": "「GH ESG경영보고서 작성 용역」 제안서 평가위원 모집 안내",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64951&article.offset=0&articleLimit=10",
         "src": "auto"
       }
     ],
