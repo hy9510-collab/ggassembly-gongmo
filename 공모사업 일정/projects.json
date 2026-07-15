@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-13",
+  "updated": "2026-07-14",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -89,16 +89,6 @@
         "posted": "2025.09.22"
       },
       {
-        "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
-        "src": "auto",
-        "posted": "2026.05.13",
-        "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
-      },
-      {
         "name": "2026년 사회적경제 도약패키지 「G-임팩트 펀드 캐쥬얼 IR 데이」 참가기업 모집   경기도사회적경제원",
         "period": "",
         "org": "경기도사회적경제원",
@@ -126,6 +116,16 @@
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeb61c3df30677d65c059222c519fa2d74&act=detail",
         "src": "auto",
         "posted": "2026.04.20"
+      },
+      {
+        "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
+        "src": "auto",
+        "posted": "2026.05.13",
+        "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
       },
       {
         "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
@@ -266,6 +266,17 @@
         "kind": "event"
       },
       {
+        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 선정 결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21424",
+        "src": "auto",
+        "posted": "2026.07.14",
+        "result": true,
+        "firstSeen": "2026.07.14"
+      },
+      {
         "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
         "period": "",
         "org": "경기문화재단",
@@ -331,17 +342,6 @@
         "posted": "2026.02.27",
         "result": true,
         "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "2026년 경기문화예술교육 기반구축 판로지원 <노는예술> 2차 공모 최종 선정 결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21384",
-        "src": "auto",
-        "posted": "2026.07.01",
-        "result": true,
-        "firstSeen": "2026.07.02"
       },
       {
         "name": "2026 경기예술성장학교 영재선발 국악분야(거문고, 아쟁, 피리) 추가 공개 모집",
