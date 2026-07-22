@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-20",
+  "updated": "2026-07-21",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -14,6 +14,15 @@
       }
     ],
     "gihoek": [
+      {
+        "name": "경기도 1인가구 지원 사업 명칭(네이밍) 공모",
+        "period": "2026.07.23 ~ 2026.08.22",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110903650&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.08.22"
+      },
       {
         "name": "2027년 신규사업 발굴 아이디어 공모전",
         "period": "2026.07.01 ~ 2026.07.31",
@@ -109,15 +118,6 @@
         "firstSeen": "2026.06.16"
       },
       {
-        "name": "사회혁신공간 입주기업 (추가) 모집공고",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffeb61c3df30677d65c059222c519fa2d74&act=detail",
-        "src": "auto",
-        "posted": "2026.04.20"
-      },
-      {
         "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
         "period": "",
         "org": "경기도사회적경제원",
@@ -165,6 +165,16 @@
         "src": "auto",
         "posted": "2026.05.18",
         "target": "사회적경제조직 신청유형 기업"
+      },
+      {
+        "name": "2026년 사회환경 문제해결 지원사업 개방형혁신 분야 프로젝트 실행지원 참여기업 2차 모집 공고",
+        "period": "2026.04.29 ~ 2026.05.13",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeda37600d1ea941d66cebcac21848ea0c",
+        "src": "auto",
+        "posted": "2026.05.13",
+        "target": "제한없음 신청유형 기업"
       }
     ],
     "anjeun": [
@@ -179,15 +189,6 @@
       }
     ],
     "munhwa": [
-      {
-        "name": "실학박물관 ‘세상을 바꾸는 실학’ 콘텐츠 공모전",
-        "period": "2025.10.27 ~ 2025.11.10",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892121&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2025.11.10"
-      },
       {
         "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
         "period": "",
