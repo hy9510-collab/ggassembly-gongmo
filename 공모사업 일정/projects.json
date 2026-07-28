@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -107,15 +107,13 @@
         "posted": "2026.06.30"
       },
       {
-        "name": "경기도 공고 제2026-1029호  2026년 사회적가치 창출 활성화 사업 선정결과 수정공고 ｢사회적기업 육성법｣ 제14조,",
-        "period": "",
+        "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
+        "period": "2026.05.08 ~ 2026.05.20",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffea4ea7d3e5af9432c851f3acc50f72c5a&act=detail",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
         "src": "auto",
-        "posted": "2026.04.27",
-        "result": true,
-        "firstSeen": "2026.06.16"
+        "posted": "2026.05.08"
       },
       {
         "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
@@ -126,15 +124,6 @@
         "src": "auto",
         "posted": "2026.05.13",
         "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
-      },
-      {
-        "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
-        "period": "2026.05.08 ~ 2026.05.20",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
-        "src": "auto",
-        "posted": "2026.05.08"
       },
       {
         "name": "「2026년 경기도 협약매장 신규 입점 연계 품평회」 참여기업 모집공고",
@@ -174,6 +163,16 @@
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeda37600d1ea941d66cebcac21848ea0c",
         "src": "auto",
         "posted": "2026.05.13",
+        "target": "제한없음 신청유형 기업"
+      },
+      {
+        "name": "2026년 개방형혁신 지원사업 참여 파트너사 모집 공고",
+        "period": "2026.02.09 ~ 2026.12.31",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe548a4c60cc438d9eb2623a48cca95328",
+        "src": "auto",
+        "posted": "2026.12.31",
         "target": "제한없음 신청유형 기업"
       }
     ],
@@ -267,15 +266,6 @@
         "kind": "event"
       },
       {
-        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
-        "src": "auto",
-        "posted": "2026.07.13"
-      },
-      {
         "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
         "period": "",
         "org": "경기문화재단",
@@ -325,6 +315,15 @@
         "posted": "2026.07.14",
         "result": true,
         "firstSeen": "2026.07.14"
+      },
+      {
+        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
+        "src": "auto",
+        "posted": "2026.07.13"
       },
       {
         "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 인터뷰 심의 대상 안내",
