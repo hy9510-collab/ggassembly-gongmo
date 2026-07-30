@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28",
+  "updated": "2026-07-30",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -462,6 +462,15 @@
     ],
     "mirae": [
       {
+        "name": "2026년 군포시 지식재산 긴급지원 사업(국내특허출원) 모집공고(3차) ※ 본 사업은 군포시와 지식재산처가 예산을 매칭하여 지원하는 사업입니다.",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172300",
+        "src": "auto",
+        "posted": "2026.07.06"
+      },
+      {
         "name": "2026년 시흥시 지식재산 긴급지원 사업(국내특허출원) 모집공고(3차) ※ 본 사업은 시흥시와 지식재산처가 예산을 매칭하여 지원하는 사업입니다.",
         "period": "",
         "org": "경기테크노파크",
@@ -485,15 +494,6 @@
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172297",
-        "src": "auto",
-        "posted": "2026.07.06"
-      },
-      {
-        "name": "2026년 군포시 지식재산 긴급지원 사업(국내특허출원) 모집공고(3차) ※ 본 사업은 군포시와 지식재산처가 예산을 매칭하여 지원하는 사업입니다.",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172296",
         "src": "auto",
         "posted": "2026.07.06"
       }
