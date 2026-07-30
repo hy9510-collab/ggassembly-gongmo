@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사진 용량 줄이기</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#fff; --line:#e3e6ea; --text:#1f2328; --sub:#6b7280;
+    --accent:#1a5fb4; --accent-soft:#e8f0fb; --good:#1a7f4b; --warn:#b45309;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16181d; --card:#1e2128; --line:#31353d; --text:#e8eaed; --sub:#9aa1ac;
+           --accent:#6ea8fe; --accent-soft:#22304a; --good:#5ed39a; --warn:#f0b45e; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 16px 60px;background:var(--bg);color:var(--text);
+       font-family:"Malgun Gothic","맑은 고딕",-apple-system,system-ui,sans-serif;line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 6px}
+  .lead{color:var(--sub);margin:0 0 22px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+
+  #drop{border:2px dashed var(--line);border-radius:12px;padding:44px 20px;text-align:center;
+        cursor:pointer;transition:.15s;background:var(--card)}
+  #drop:hover,#drop.on{border-color:var(--accent);background:var(--accent-soft)}
+  #drop .big{font-size:17px;font-weight:600}
+  #drop .small{color:var(--sub);font-size:13px;margin-top:6px}
+
+  .row{display:flex;flex-wrap:wrap;gap:20px}
+  .field{flex:1 1 220px;min-width:200px}
+  label.t{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+  select,input[type=number]{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
+       background:var(--bg);color:var(--text);font-size:14px;font-family:inherit}
+  input[type=range]{width:100%;accent-color:var(--accent)}
+  .hint{font-size:12px;color:var(--sub);margin-top:4px}
+  .val{float:right;font-weight:700;color:var(--accent)}
+
+  button{font-family:inherit;font-size:14px;border-radius:8px;cursor:pointer;border:1px solid var(--line);
+         background:var(--card);color:var(--text);padding:8px 14px}
+  button:hover{border-color:var(--accent)}
+  button.main{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700;padding:11px 22px}
+  button.main:disabled{opacity:.45;cursor:default}
+
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+  th{font-size:12px;color:var(--sub);font-weight:600}
+  td.num{text-align:right;white-space:nowrap}
+  .thumb{width:48px;height:48px;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
+  .name{max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cut{color:var(--good);font-weight:700}
+  .fail{color:var(--warn);font-size:13px}
+  .scroll{overflow-x:auto}
+  .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}
+  .sum{color:var(--sub);font-size:13px}
+  .note{font-size:13px;color:var(--sub);border-left:3px solid var(--line);padding-left:12px;margin-top:20px}
+
+  /* 탭 */
+  nav.tabs{display:flex;gap:6px;margin:0 0 20px}
+  nav.tabs button{flex:0 0 auto;font-size:15px;font-weight:700;padding:9px 18px;border-radius:9px;
+    border:1px solid var(--line);background:var(--card);color:var(--sub)}
+  nav.tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  section.tab{display:none}
+  section.tab.active{display:block}
+
+  /* 누끼 편집기 */
+  .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .tools .grp{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:4px}
+  .tool{font-size:13px;font-weight:600;padding:7px 12px;border:1px solid transparent;border-radius:6px;
+    background:transparent;color:var(--text);white-space:nowrap}
+  .tool.on{background:var(--accent);color:#fff}
+  .slider{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub);white-space:nowrap}
+  .slider input[type=range]{width:120px}
+  .chkbox{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text);white-space:nowrap;cursor:pointer}
+  .stage{position:relative;max-height:62vh;overflow:auto;border:1px solid var(--line);border-radius:10px;
+    /* 투명(체크무늬) 배경 */
+    background-color:#fff;
+    background-image:
+      linear-gradient(45deg,#e0e3e8 25%,transparent 25%,transparent 75%,#e0e3e8 75%),
+      linear-gradient(45deg,#e0e3e8 25%,transparent 25%,transparent 75%,#e0e3e8 75%);
+    background-size:22px 22px;background-position:0 0,11px 11px}
+  @media (prefers-color-scheme: dark){
+    .stage{background-color:#2a2d34;background-image:
+      linear-gradient(45deg,#3a3e46 25%,transparent 25%,transparent 75%,#3a3e46 75%),
+      linear-gradient(45deg,#3a3e46 25%,transparent 25%,transparent 75%,#3a3e46 75%)}
+  }
+  .stage-inner{position:relative;line-height:0;width:max-content;margin:0 auto}
+  #cutCanvas{display:block;max-width:100%;height:auto;image-rendering:auto}
+  #cutOverlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  #cutCanvas.wand{cursor:crosshair}
+  #cutCanvas.select{cursor:crosshair}
+  #cutCanvas.brush{cursor:cell}
+  .cut-empty{padding:60px 20px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>사진 도구</h1>
+  <p class="lead">사진은 <b>내 컴퓨터 안에서만</b> 처리됩니다. 인터넷으로 전송되지 않습니다.</p>
+
+  <nav class="tabs">
+    <button id="tabBtnCompress" class="active" onclick="showTab('compress')">📉 용량 줄이기</button>
+    <button id="tabBtnCut" onclick="showTab('cut')">✂️ 배경 지우기(누끼)</button>
+  </nav>
+
+  <section class="tab active" id="tab-compress">
+
+  <div id="drop">
+    <div class="big">여기로 사진을 끌어다 놓으세요</div>
+    <div class="small">또는 클릭해서 선택 · 여러 장 한꺼번에 가능 (JPG, PNG, WebP)</div>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="row">
+      <div class="field">
+        <label class="t" for="mode">줄이는 방식</label>
+        <select id="mode">
+          <option value="quality">화질로 조절 (빠름)</option>
+          <option value="target">목표 용량에 맞추기</option>
+        </select>
+        <div class="hint">홈페이지 첨부 용량 제한이 있으면 두 번째를 쓰세요.</div>
+      </div>
+
+      <div class="field" id="qBox">
+        <label class="t" for="quality">화질 <span class="val" id="qVal">80%</span></label>
+        <input type="range" id="quality" min="30" max="95" value="80" step="5">
+        <div class="hint">80% 정도면 눈으로 차이를 느끼기 어렵습니다.</div>
+      </div>
+
+      <div class="field" id="tBox" style="display:none">
+        <label class="t" for="target">목표 용량 (KB)</label>
+        <input type="number" id="target" value="300" min="30" max="10000" step="10">
+        <div class="hint">한 장당 이 용량 이하로 맞춥니다.</div>
+      </div>
+
+      <div class="field">
+        <label class="t" for="maxside">긴 쪽 최대 크기</label>
+        <select id="maxside">
+          <option value="0">원본 크기 유지</option>
+          <option value="3000">3000px</option>
+          <option value="1920" selected>1920px (문서·홈페이지용)</option>
+          <option value="1280">1280px</option>
+          <option value="800">800px (작게)</option>
+        </select>
+        <div class="hint">크기를 줄이면 용량이 가장 많이 줄어듭니다.</div>
+      </div>
+
+      <div class="field">
+        <label class="t" for="format">저장 형식</label>
+        <select id="format">
+          <option value="image/jpeg" selected>JPG (가장 무난)</option>
+          <option value="image/webp">WebP (더 작게)</option>
+        </select>
+        <div class="hint">투명 배경 PNG는 JPG로 바꾸면 배경이 흰색이 됩니다.</div>
+      </div>
+    </div>
+
+    <div class="bar">
+      <button class="main" id="go" disabled>용량 줄이기</button>
+      <button id="saveAll" disabled>전체 저장</button>
+      <button id="clear" disabled>목록 비우기</button>
+      <span class="sum" id="sum"></span>
+    </div>
+  </div>
+
+  <div class="card scroll" id="resultCard" style="display:none">
+    <table>
+      <thead>
+        <tr><th></th><th>파일 이름</th><th class="num">원본</th><th class="num">줄인 뒤</th>
+            <th class="num">절감</th><th class="num">크기(px)</th><th></th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <p class="note">
+    아이폰 사진(HEIC)은 브라우저가 못 읽습니다. 아이폰 → 설정 → 카메라 → 포맷 → <b>호환성 우선</b>으로 바꾸거나,
+    카카오톡·메일로 한 번 보낸 사진(JPG로 변환됨)을 사용하세요.<br>
+    저장한 파일은 이름 뒤에 <b>_작게</b>가 붙어 원본과 구분됩니다. 원본은 그대로 남습니다.
+  </p>
+
+  </section>
+
+  <!-- ===== 배경 지우기(누끼) ===== -->
+  <section class="tab" id="tab-cut">
+
+    <div id="cutDrop" style="border:2px dashed var(--line);border-radius:12px;padding:44px 20px;text-align:center;cursor:pointer;background:var(--card)">
+      <div class="big" style="font-size:17px;font-weight:600">배경을 지울 사진을 여기로 끌어다 놓으세요</div>
+      <div class="small" style="color:var(--sub);font-size:13px;margin-top:6px">또는 클릭해서 선택 · 한 장씩 (JPG, PNG, WebP)</div>
+      <input type="file" id="cutFile" accept="image/*" hidden>
+    </div>
+
+    <div class="card" id="cutEditor" style="display:none;margin-top:16px">
+      <div class="tools">
+        <div class="grp">
+          <button class="tool on" id="tlWand"    onclick="setTool('wand')">🪄 색으로 지우기</button>
+          <button class="tool"    id="tlSelect"  onclick="setTool('select')">▭ 영역 선택</button>
+          <button class="tool"    id="tlErase"   onclick="setTool('erase')">🧽 지우개</button>
+          <button class="tool"    id="tlRestore" onclick="setTool('restore')">↩ 되살리기</button>
+        </div>
+
+        <div class="slider" id="rowTol">
+          허용범위 <input type="range" id="cutTol" min="5" max="100" value="35">
+          <b id="cutTolVal" style="color:var(--accent)">35</b>
+        </div>
+        <label class="chkbox" id="rowContig"><input type="checkbox" id="cutContig" checked> 연결된 부분만</label>
+
+        <div class="slider" id="rowBrush" style="display:none">
+          붓 굵기 <input type="range" id="cutBrush" min="5" max="120" value="34">
+          <b id="cutBrushVal" style="color:var(--accent)">34</b>
+        </div>
+      </div>
+
+      <div class="tools" style="margin-bottom:12px">
+        <button class="tool" onclick="cutUndo()"       style="border-color:var(--line)">⟲ 되돌리기</button>
+        <button class="tool" onclick="clearSelection()" id="btnClearSel" style="border-color:var(--line);display:none">선택 해제</button>
+        <button class="tool" onclick="keepInsideSelection()" id="btnKeepSel" style="border-color:var(--line);display:none">선택 밖 지우기</button>
+        <button class="tool" onclick="cutReset()"      style="border-color:var(--line)">원본으로 되돌리기</button>
+        <div style="flex:1 1 auto"></div>
+        <button class="main" onclick="cutSave()">투명 PNG로 저장</button>
+      </div>
+
+      <div class="stage" id="cutStage">
+        <div class="stage-inner" id="cutInner">
+          <canvas id="cutCanvas" class="wand"></canvas>
+          <canvas id="cutOverlay"></canvas>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px">
+        <b>색으로 지우기</b>: 없앨 배경을 클릭하세요. 한 번에 안 지워지면 <b>허용범위</b>를 올려 다시 클릭합니다.
+        머리카락 경계 등은 <b>지우개</b>로 다듬고, 실수로 지운 곳은 <b>되살리기</b>로 되돌립니다.<br>
+        일부분만 지우려면 <b>영역 선택</b>으로 네모를 그린 뒤 그 안에서 작업하세요. 배경이 여러 색이면 여러 번 클릭하면 됩니다.
+      </p>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const drop=$('drop'), fileInput=$('file'), tbody=$('tbody');
+let items = [];   // {file, url, out, outName, w, h}
+
+/* ---------- 파일 받기 ---------- */
+drop.onclick = () => fileInput.click();
+fileInput.onchange = e => addFiles(e.target.files);
+['dragenter','dragover'].forEach(t => drop.addEventListener(t, e=>{e.preventDefault();drop.classList.add('on')}));
+['dragleave','drop'].forEach(t => drop.addEventListener(t, e=>{e.preventDefault();drop.classList.remove('on')}));
+drop.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+
+function addFiles(list){
+  for (const f of list){
+    if (!f.type.startsWith('image/')) continue;
+    items.push({file:f, url:URL.createObjectURL(f), out:null, err:null});
+  }
+  fileInput.value = '';
+  render();
+}
+
+/* ---------- 옵션 UI ---------- */
+$('quality').oninput = e => $('qVal').textContent = e.target.value + '%';
+$('mode').onchange = e => {
+  const t = e.target.value === 'target';
+  $('tBox').style.display = t ? '' : 'none';
+  $('qBox').style.display = t ? 'none' : '';
+};
+$('clear').onclick = () => { items.forEach(i=>URL.revokeObjectURL(i.url)); items=[]; render(); };
+
+/* ---------- 압축 ---------- */
+$('go').onclick = async () => {
+  const btn=$('go'); btn.disabled=true; btn.textContent='줄이는 중...';
+  const opt = {
+    mode: $('mode').value,
+    quality: +$('quality').value / 100,
+    target: +$('target').value * 1024,
+    maxside: +$('maxside').value,
+    format: $('format').value
+  };
+  for (const it of items){
+    if (it.out) continue;
+    try { await compress(it, opt); }
+    catch(err){ it.err = '이 파일은 읽을 수 없습니다'; }
+    render();
+    await new Promise(r => setTimeout(r, 0));   // 화면 갱신
+  }
+  btn.textContent='용량 줄이기'; render();
+};
+
+function loadImage(url){
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => res(img);
+    img.onerror = () => rej();
+    img.src = url;
+  });
+}
+
+const toBlob = (canvas, type, q) => new Promise(r => canvas.toBlob(r, type, q));
+
+const QMIN = 0.3, QMAX = 0.95;
+
+// 캔버스에 지정한 크기로 그리기 (투명 배경은 흰색으로)
+function draw(cv, img, w, h){
+  cv.width = w; cv.height = h;
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0,0,w,h);
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, w, h);
+}
+
+async function compress(it, opt){
+  const img = await loadImage(it.url);
+  let w = img.naturalWidth, h = img.naturalHeight;
+  if (opt.maxside && Math.max(w,h) > opt.maxside){
+    const s = opt.maxside / Math.max(w,h);
+    w = Math.round(w*s); h = Math.round(h*s);
+  }
+  const cv = document.createElement('canvas');
+  let blob, over = false;
+
+  if (opt.mode === 'quality'){
+    draw(cv, img, w, h);
+    blob = await toBlob(cv, opt.format, opt.quality);
+  } else {
+    // 목표 용량: 최저 화질로도 안 되면 크기를 줄여가며 재시도
+    for (let attempt = 0; ; attempt++){
+      draw(cv, img, w, h);
+      const floor = await toBlob(cv, opt.format, QMIN);
+      if (floor.size > opt.target){
+        if (attempt < 4 && Math.max(w,h) > 500){
+          w = Math.round(w*0.75); h = Math.round(h*0.75);
+          continue;                       // 더 작게 해서 다시
+        }
+        blob = floor; over = true; break;  // 더는 못 줄임
+      }
+      let lo = QMIN, hi = QMAX, best = floor;
+      for (let i=0; i<7; i++){
+        const q = (lo+hi)/2, b = await toBlob(cv, opt.format, q);
+        if (b.size <= opt.target){ best = b; lo = q; } else { hi = q; }
+      }
+      blob = best; break;
+    }
+  }
+
+  it.out = blob; it.w = w; it.h = h; it.over = over;
+  const ext = opt.format === 'image/webp' ? 'webp' : 'jpg';
+  it.outName = it.file.name.replace(/\.[^.]+$/, '') + '_작게.' + ext;
+}
+
+/* ---------- 저장 ---------- */
+function save(it){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(it.out);
+  a.download = it.outName;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+$('saveAll').onclick = async () => {
+  for (const it of items.filter(i=>i.out)){ save(it); await new Promise(r=>setTimeout(r,350)); }
+};
+
+/* ---------- 화면 ---------- */
+const kb = b => b >= 1048576 ? (b/1048576).toFixed(2)+' MB' : Math.round(b/1024)+' KB';
+
+function render(){
+  $('resultCard').style.display = items.length ? '' : 'none';
+  tbody.innerHTML = '';
+  items.forEach((it, idx) => {
+    const tr = document.createElement('tr');
+    const cut = it.out ? Math.round((1 - it.out.size/it.file.size)*100) : null;
+    tr.innerHTML =
+      `<td><img class="thumb" src="${it.url}" alt=""></td>` +
+      `<td class="name" title="${it.file.name}">${it.file.name}</td>` +
+      `<td class="num">${kb(it.file.size)}</td>` +
+      `<td class="num">${it.out ? kb(it.out.size) + (it.over ? ' <span class="fail">(더 못 줄임)</span>' : '')
+                              : (it.err ? '<span class="fail">'+it.err+'</span>' : '-')}</td>` +
+      `<td class="num">${cut !== null ? '<span class="cut">'+cut+'% ↓</span>' : '-'}</td>` +
+      `<td class="num">${it.out ? it.w+'×'+it.h : '-'}</td>` +
+      `<td class="num"></td>`;
+    if (it.out){
+      const b = document.createElement('button');
+      b.textContent = '저장';
+      b.onclick = () => save(it);
+      tr.lastElementChild.appendChild(b);
+    }
+    tbody.appendChild(tr);
+  });
+
+  const done = items.filter(i=>i.out);
+  $('go').disabled = !items.some(i => !i.out && !i.err);
+  $('saveAll').disabled = !done.length;
+  $('clear').disabled = !items.length;
+  $('sum').textContent = done.length
+    ? `${done.length}장 완료 · 합계 ${kb(done.reduce((s,i)=>s+i.file.size,0))} → ${kb(done.reduce((s,i)=>s+i.out.size,0))}`
+    : (items.length ? `${items.length}장 대기 중` : '');
+}
+
+/* ================= 탭 전환 ================= */
+function showTab(name){
+  document.querySelectorAll('section.tab').forEach(s=>s.classList.remove('active'));
+  $('tab-'+name).classList.add('active');
+  $('tabBtnCompress').classList.toggle('active', name==='compress');
+  $('tabBtnCut').classList.toggle('active', name==='cut');
+}
+
+/* ================= 배경 지우기(누끼) ================= */
+const cutDrop=$('cutDrop'), cutFile=$('cutFile');
+const cutCanvas=$('cutCanvas'), cutOverlay=$('cutOverlay');
+const cutCtx=cutCanvas.getContext('2d'), ovCtx=cutOverlay.getContext('2d');
+
+const C = {
+  W:0, H:0,
+  orig:null,      // 원본 픽셀 (되살리기용)
+  cur:null,       // 현재 픽셀
+  tool:'wand',
+  tol:35,
+  contig:true,
+  brush:34,
+  name:'사진',
+  sel:null,       // {x,y,w,h} 이미지 좌표, 없으면 전체
+  undo:[],        // 최근 상태 스냅샷
+  painting:false, dragging:false, dragStart:null
+};
+
+/* --- 파일 받기 --- */
+cutDrop.onclick = () => cutFile.click();
+cutFile.onchange = e => { if(e.target.files[0]) loadCut(e.target.files[0]); cutFile.value=''; };
+['dragenter','dragover'].forEach(t=>cutDrop.addEventListener(t,e=>{e.preventDefault();cutDrop.classList.add('on')}));
+['dragleave','drop'].forEach(t=>cutDrop.addEventListener(t,e=>{e.preventDefault();cutDrop.classList.remove('on')}));
+cutDrop.addEventListener('drop', e=>{ const f=e.dataTransfer.files[0]; if(f&&f.type.startsWith('image/')) loadCut(f); });
+
+async function loadCut(file){
+  let img;
+  try{ img = await loadImage(URL.createObjectURL(file)); }
+  catch(e){ alert('이 사진은 읽을 수 없습니다. (아이폰 HEIC 사진은 지원되지 않습니다)'); return; }
+  // 편집 성능을 위해 긴 쪽 1600px로 제한
+  let w=img.naturalWidth, h=img.naturalHeight;
+  const s=Math.min(1, 1600/Math.max(w,h));
+  w=Math.round(w*s); h=Math.round(h*s);
+  cutCanvas.width=w; cutCanvas.height=h; cutOverlay.width=w; cutOverlay.height=h;
+  cutCtx.clearRect(0,0,w,h); cutCtx.drawImage(img,0,0,w,h);
+  C.W=w; C.H=h;
+  C.orig=cutCtx.getImageData(0,0,w,h);
+  C.cur =cutCtx.getImageData(0,0,w,h);
+  C.name=(file.name||'사진').replace(/\.[^.]+$/,'');
+  C.sel=null; C.undo=[];
+  cutDrop.style.display='none';
+  $('cutEditor').style.display='';
+  paintCur(); drawOverlay(); updateSelButtons();
+}
+
+/* --- 도구 선택 --- */
+function setTool(t){
+  C.tool=t;
+  [['wand','tlWand'],['select','tlSelect'],['erase','tlErase'],['restore','tlRestore']]
+    .forEach(([k,id])=>$(id).classList.toggle('on', k===t));
+  const isWand=t==='wand', isBrush=(t==='erase'||t==='restore');
+  $('rowTol').style.display    = isWand ? '' : 'none';
+  $('rowContig').style.display = isWand ? '' : 'none';
+  $('rowBrush').style.display  = isBrush ? '' : 'none';
+  cutCanvas.className = isWand ? 'wand' : (t==='select' ? 'select' : 'brush');
+}
+$('cutTol').oninput   = e => { C.tol=+e.target.value; $('cutTolVal').textContent=e.target.value; };
+$('cutContig').onchange = e => C.contig=e.target.checked;
+$('cutBrush').oninput = e => { C.brush=+e.target.value; $('cutBrushVal').textContent=e.target.value; };
+
+/* --- 좌표 변환 (화면 → 이미지 픽셀) --- */
+function xy(e){
+  const r=cutCanvas.getBoundingClientRect();
+  return { x:Math.round((e.clientX-r.left)/r.width*C.W),
+           y:Math.round((e.clientY-r.top )/r.height*C.H) };
+}
+/* 작업 범위: 선택영역이 있으면 그 안, 없으면 전체 */
+function bounds(){
+  if(!C.sel) return {x0:0,y0:0,x1:C.W,y1:C.H};
+  const x0=Math.max(0,C.sel.x), y0=Math.max(0,C.sel.y);
+  return {x0,y0, x1:Math.min(C.W,C.sel.x+C.sel.w), y1:Math.min(C.H,C.sel.y+C.sel.h)};
+}
+
+/* --- 되돌리기용 스냅샷 --- */
+function pushUndo(){
+  C.undo.push(C.cur.data.slice());
+  if(C.undo.length>15) C.undo.shift();
+}
+function cutUndo(){
+  if(!C.undo.length){ return; }
+  C.cur.data.set(C.undo.pop());
+  paintCur();
+}
+function cutReset(){
+  if(!C.orig) return;
+  if(!confirm('처음 불러온 사진 상태로 되돌릴까요? 지운 내용이 모두 사라집니다.')) return;
+  C.cur=new ImageData(C.orig.data.slice(),C.W,C.H);
+  C.sel=null; C.undo=[]; paintCur(); drawOverlay(); updateSelButtons();
+}
+
+/* --- 색으로 지우기(마술봉) --- */
+function wandAt(px,py){
+  if(px<0||py<0||px>=C.W||py>=C.H) return;
+  const d=C.cur.data, i0=(py*C.W+px)*4;
+  if(d[i0+3]===0) return;                 // 이미 투명한 곳
+  const tr=d[i0],tg=d[i0+1],tb=d[i0+2];
+  const D=C.tol*2.4, thr=3*D*D;           // 색 거리 제곱 임계값
+  const {x0,y0,x1,y1}=bounds();
+  pushUndo();
+  if(C.contig){
+    const seen=new Uint8Array(C.W*C.H), st=[px,py];
+    while(st.length){
+      const cy=st.pop(), cx=st.pop();
+      if(cx<x0||cx>=x1||cy<y0||cy>=y1) continue;
+      const p=cy*C.W+cx; if(seen[p]) continue; seen[p]=1;
+      const i=p*4; if(d[i+3]===0) continue;
+      const dr=d[i]-tr,dg=d[i+1]-tg,db=d[i+2]-tb;
+      if(dr*dr+dg*dg+db*db>thr) continue;
+      d[i+3]=0;
+      st.push(cx+1,cy, cx-1,cy, cx,cy+1, cx,cy-1);
+    }
+  }else{
+    for(let y=y0;y<y1;y++) for(let x=x0;x<x1;x++){
+      const i=(y*C.W+x)*4; if(d[i+3]===0) continue;
+      const dr=d[i]-tr,dg=d[i+1]-tg,db=d[i+2]-tb;
+      if(dr*dr+dg*dg+db*db<=thr) d[i+3]=0;
+    }
+  }
+  paintCur();
+}
+
+/* --- 붓(지우개/되살리기) --- */
+function paintAt(px,py,restore){
+  const r=C.brush/2, rr=r*r, d=C.cur.data, o=C.orig.data;
+  const {x0,y0,x1,y1}=bounds();
+  const ax0=Math.max(x0,Math.floor(px-r)), ax1=Math.min(x1,Math.ceil(px+r));
+  const ay0=Math.max(y0,Math.floor(py-r)), ay1=Math.min(y1,Math.ceil(py+r));
+  for(let y=ay0;y<ay1;y++) for(let x=ax0;x<ax1;x++){
+    if((x-px)*(x-px)+(y-py)*(y-py)>rr) continue;
+    const i=(y*C.W+x)*4;
+    if(restore){ d[i]=o[i]; d[i+1]=o[i+1]; d[i+2]=o[i+2]; d[i+3]=o[i+3]; }
+    else d[i+3]=0;
+  }
+  paintCur();
+}
+
+/* --- 선택영역 --- */
+function clearSelection(){ C.sel=null; drawOverlay(); updateSelButtons(); }
+function keepInsideSelection(){
+  if(!C.sel) return;
+  pushUndo();
+  const d=C.cur.data, {x0,y0,x1,y1}=bounds();
+  for(let y=0;y<C.H;y++) for(let x=0;x<C.W;x++){
+    if(x>=x0&&x<x1&&y>=y0&&y<y1) continue;
+    d[(y*C.W+x)*4+3]=0;               // 선택 밖을 투명하게
+  }
+  paintCur();
+}
+function updateSelButtons(){
+  const on=!!C.sel;
+  $('btnClearSel').style.display = on ? '' : 'none';
+  $('btnKeepSel').style.display  = on ? '' : 'none';
+}
+
+/* --- 그리기 --- */
+function paintCur(){ cutCtx.putImageData(C.cur,0,0); }
+function drawOverlay(cur){
+  ovCtx.clearRect(0,0,C.W,C.H);
+  const s = cur || C.sel; if(!s) return;
+  ovCtx.lineWidth=Math.max(2, C.W/400);
+  ovCtx.setLineDash([ovCtx.lineWidth*3, ovCtx.lineWidth*3]);
+  ovCtx.strokeStyle='#1a5fb4';
+  ovCtx.strokeRect(s.x+.5, s.y+.5, s.w, s.h);
+  ovCtx.setLineDash([]); ovCtx.strokeStyle='rgba(255,255,255,.8)';
+  ovCtx.strokeRect(s.x+.5, s.y+.5, s.w, s.h);
+}
+
+/* --- 포인터 이벤트 --- */
+cutCanvas.addEventListener('pointerdown', e=>{
+  e.preventDefault(); cutCanvas.setPointerCapture(e.pointerId);
+  const p=xy(e);
+  if(C.tool==='wand'){ wandAt(p.x,p.y); }
+  else if(C.tool==='select'){ C.dragging=true; C.dragStart=p; }
+  else { C.painting=true; pushUndo(); paintAt(p.x,p.y,C.tool==='restore'); }
+});
+cutCanvas.addEventListener('pointermove', e=>{
+  const p=xy(e);
+  if(C.dragging){
+    const a=C.dragStart;
+    drawOverlay({x:Math.min(a.x,p.x),y:Math.min(a.y,p.y),w:Math.abs(p.x-a.x),h:Math.abs(p.y-a.y)});
+  }else if(C.painting){
+    paintAt(p.x,p.y,C.tool==='restore');
+  }
+});
+function endPointer(e){
+  if(C.dragging){
+    const a=C.dragStart, p=xy(e);
+    const w=Math.abs(p.x-a.x), h=Math.abs(p.y-a.y);
+    C.sel = (w>4&&h>4) ? {x:Math.min(a.x,p.x),y:Math.min(a.y,p.y),w,h} : null;
+    C.dragging=false; drawOverlay(); updateSelButtons();
+  }
+  C.painting=false;
+}
+cutCanvas.addEventListener('pointerup', endPointer);
+cutCanvas.addEventListener('pointercancel', ()=>{C.dragging=false;C.painting=false;});
+
+/* --- 저장 --- */
+function cutSave(){
+  if(!C.cur) return;
+  const out=document.createElement('canvas'); out.width=C.W; out.height=C.H;
+  out.getContext('2d').putImageData(C.cur,0,0);
+  out.toBlob(b=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(b); a.download=C.name+'_누끼.png'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  },'image/png');
+}
+</script>
+</body>
+</html>
