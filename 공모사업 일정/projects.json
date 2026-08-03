@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01",
+  "updated": "2026-08-02",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -488,13 +488,13 @@
         "posted": "2026.07.06"
       },
       {
-        "name": "2026년 평택시 지식재산 긴급지원 사업(국내특허출원) 모집공고(3차) ※ 본 사업은 평택시와 지식재산처가 예산을 매칭하여 지원하는 사업입니다.",
+        "name": "2026년 바이오매스관련 기업애로기술 해결지원사업 참여기업 모집 공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172297",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172302",
         "src": "auto",
-        "posted": "2026.07.06"
+        "posted": "2026.07.31"
       }
     ],
     "yeoseong": [
