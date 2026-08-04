@@ -1,18 +1,8 @@
 {
-  "updated": "2026-08-02",
+  "updated": "2026-08-04",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
-    "uiwoon": [
-      {
-        "name": "국민이 참여하는「현장형 국민대화 의제발굴」공모 홍보",
-        "period": "2026.04.08 ~ 2026.05.03",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110895461&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.05.03"
-      }
-    ],
+    "uiwoon": [],
     "gihoek": [
       {
         "name": "경기도 1인가구 지원 사업 명칭(네이밍) 공모",
@@ -40,51 +30,6 @@
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110892439&page=1&menuId=4433&bcIdx=0",
         "src": "auto",
         "posted": "2025.11.27"
-      },
-      {
-        "name": "2026년 화성시 생활밀착형 아이디어 공모",
-        "period": "2026.07.27 ~ 2026.08.25",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110904084&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.08.25"
-      },
-      {
-        "name": "「2026년 평택시의회 정책 아이디어 공모전」 공고문",
-        "period": "2026.05.13 ~ 2026.07.16",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110896425&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.07.16"
-      },
-      {
-        "name": "2026 성남시 공공데이터 활용 시각화 경진대회",
-        "period": "2026.04.20 ~ 2026.05.13",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110894724&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.05.13"
-      },
-      {
-        "name": "「2026년 연천군 테마형 아이디어」 공모전",
-        "period": "2026.01.05 ~ 2026.01.23",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110893647&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.01.23"
-      },
-      {
-        "name": "「제1회 모두의 아이디어 」 공모전",
-        "period": "2026.01.08 ~ 2026.04.15",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110893646&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.04.15"
       }
     ],
     "gyeongje": [
@@ -96,15 +41,6 @@
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894179&page=1&menuId=4433&bcIdx=0",
         "src": "auto",
         "posted": "2026.03.13"
-      },
-      {
-        "name": "노인일자리 사진 및 수기 공모 (불어라, 청춘바람)",
-        "period": "2025.09.01 ~ 2025.09.22",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110890944&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2025.09.22"
       },
       {
         "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
@@ -133,6 +69,16 @@
         "src": "auto",
         "posted": "2026.05.13",
         "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
+      },
+      {
+        "name": "2026년 G-임팩트 펀드 캐쥬얼 IR 데이 참여기업 모집",
+        "period": "2026.06.30 ~ 2026.07.09",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeea130af716cace848eaab92e02f99903",
+        "src": "auto",
+        "posted": "2026.07.09",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "「2026년 경기도 협약매장 신규 입점 연계 품평회」 참여기업 모집공고",
@@ -165,108 +111,18 @@
         "target": "사회적경제조직 신청유형 기업"
       },
       {
-        "name": "2026년 사회환경 문제해결 지원사업 개방형혁신 분야 프로젝트 실행지원 참여기업 2차 모집 공고",
-        "period": "2026.04.29 ~ 2026.05.13",
+        "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고",
+        "period": "2026.08.04 ~ 2026.08.06",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeda37600d1ea941d66cebcac21848ea0c",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffef58d820cc8df756b79fc9fe8299df0e0",
         "src": "auto",
-        "posted": "2026.05.13",
-        "target": "제한없음 신청유형 기업"
-      },
-      {
-        "name": "2026년 개방형혁신 지원사업 참여 파트너사 모집 공고",
-        "period": "2026.02.09 ~ 2026.12.31",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe548a4c60cc438d9eb2623a48cca95328",
-        "src": "auto",
-        "posted": "2026.12.31",
-        "target": "제한없음 신청유형 기업"
+        "posted": "2026.08.06",
+        "target": "사회적경제조직 신청유형 기업"
       }
     ],
     "anjeun": [],
     "munhwa": [
-      {
-        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 선정 결과",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21482",
-        "src": "auto",
-        "posted": "2026.07.31",
-        "result": true,
-        "firstSeen": "2026.08.01"
-      },
-      {
-        "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21408",
-        "src": "auto",
-        "posted": "2026.07.08"
-      },
-      {
-        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
-        "src": "auto",
-        "posted": "2026.07.07"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto",
-        "posted": "2026.02.27",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 선정 결과 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21424",
-        "src": "auto",
-        "posted": "2026.07.14",
-        "result": true,
-        "firstSeen": "2026.07.14"
-      },
-      {
-        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
-        "src": "auto",
-        "posted": "2026.07.13"
-      },
-      {
-        "name": "2026년 지붕없는 박물관 후보거점 발굴 공모 선정 결과 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21405",
-        "src": "auto",
-        "posted": "2026.07.07",
-        "result": true,
-        "firstSeen": "2026.07.09"
-      },
-      {
-        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 인터뷰 심의 대상 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21400",
-        "src": "auto",
-        "posted": "2026.07.06"
-      },
       {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
         "period": "2026.06.08 ~ 2026.07.09",
@@ -416,6 +272,86 @@
         "src": "auto",
         "posted": "2026.06.09",
         "kind": "event"
+      },
+      {
+        "name": "제6회 경기문화재단 문화상품 공모 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21501",
+        "src": "auto",
+        "posted": "2026.08.03"
+      },
+      {
+        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 선정 결과",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21482",
+        "src": "auto",
+        "posted": "2026.07.31",
+        "result": true,
+        "firstSeen": "2026.08.01"
+      },
+      {
+        "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21408",
+        "src": "auto",
+        "posted": "2026.07.08"
+      },
+      {
+        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
+        "src": "auto",
+        "posted": "2026.07.07"
+      },
+      {
+        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
+        "src": "auto",
+        "posted": "2026.02.27",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 선정 결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21424",
+        "src": "auto",
+        "posted": "2026.07.14",
+        "result": true,
+        "firstSeen": "2026.07.14"
+      },
+      {
+        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
+        "src": "auto",
+        "posted": "2026.07.13"
+      },
+      {
+        "name": "2026년 지붕없는 박물관 후보거점 발굴 공모 선정 결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21405",
+        "src": "auto",
+        "posted": "2026.07.07",
+        "result": true,
+        "firstSeen": "2026.07.09"
       }
     ],
     "nonghae": [],
@@ -461,6 +397,15 @@
     ],
     "mirae": [
       {
+        "name": "2026년 바이오매스관련 기업애로기술 해결지원사업 참여기업 모집 공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172302",
+        "src": "auto",
+        "posted": "2026.07.31"
+      },
+      {
         "name": "2026년 군포시 지식재산 긴급지원 사업(국내특허출원) 모집공고(3차) ※ 본 사업은 군포시와 지식재산처가 예산을 매칭하여 지원하는 사업입니다.",
         "period": "",
         "org": "경기테크노파크",
@@ -477,24 +422,6 @@
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172299",
         "src": "auto",
         "posted": "2026.07.06"
-      },
-      {
-        "name": "2026년 의왕시 지식재산 긴급지원 사업(국내특허출원) 모집공고(3차) ※ 본 사업은 의왕시와 지식재산처가 예산을 매칭하여 지원하는 사업입니다.",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172298",
-        "src": "auto",
-        "posted": "2026.07.06"
-      },
-      {
-        "name": "2026년 바이오매스관련 기업애로기술 해결지원사업 참여기업 모집 공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172302",
-        "src": "auto",
-        "posted": "2026.07.31"
       }
     ],
     "yeoseong": [
@@ -506,15 +433,6 @@
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894742&page=1&menuId=4433&bcIdx=0",
         "src": "auto",
         "posted": "2026.04.30"
-      },
-      {
-        "name": "여성활동 플랫폼 홍보 영상 공모전",
-        "period": "2025.04.14 ~ 2025.05.16",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110888924&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2025.05.16"
       }
     ],
     "gyoyuk1": [],
