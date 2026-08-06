@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-05",
+  "updated": "2026-08-06",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -31,6 +31,15 @@
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110902940&page=1&menuId=4433&bcIdx=0",
         "src": "auto",
         "posted": "2026.07.31"
+      },
+      {
+        "name": "2026년 진도혁신 정책 제안 공모전 공고",
+        "period": "2026.08.03 ~ 2026.08.28",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110904579&page=1&menuId=4434&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.08.28"
       },
       {
         "name": "2026년 화성시 생활밀착형 아이디어 공모",
@@ -208,15 +217,6 @@
         "firstSeen": "2026.08.01"
       },
       {
-        "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21408",
-        "src": "auto",
-        "posted": "2026.07.08"
-      },
-      {
         "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
         "period": "",
         "org": "경기문화재단",
@@ -255,6 +255,15 @@
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
         "src": "auto",
         "posted": "2026.07.13"
+      },
+      {
+        "name": "2026 경기지역문화기획학교: 문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 참여 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21408",
+        "src": "auto",
+        "posted": "2026.07.08"
       },
       {
         "name": "2026년 지붕없는 박물관 후보거점 발굴 공모 선정 결과 안내",
@@ -345,7 +354,7 @@
         "kind": "event"
       },
       {
-        "name": "NEW2026 경기청년예술기회무대 발레 배역별 참가자 모집",
+        "name": "2026 경기청년예술기회무대 발레 배역별 참가자 모집",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
@@ -441,6 +450,14 @@
     "gunseol": [],
     "dosi": [
       {
+        "name": "세무신고 및 자문 등 세무 종합용역 제안서 평가위원(후보자) 공개모집",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65065&article.offset=0&articleLimit=10",
+        "src": "auto"
+      },
+      {
         "name": "2026 GH 베이스캠프 참여기업 모집공고",
         "period": "2026.07.09 ~ 2026.08.03",
         "org": "경기주택도시공사(GH)",
@@ -448,14 +465,6 @@
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64988&article.offset=0&articleLimit=10",
         "src": "auto",
         "target": "제 1, 2판교에 소재지를 두고 있는 기업 5개사"
-      },
-      {
-        "name": "「경기 서부권역 공공주택지구 자족거점 구축방안 수립 용역」제안서 평가위원(후보자) 모집 공고",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=64982&article.offset=0&articleLimit=10",
-        "src": "auto"
       }
     ],
     "mirae": [
@@ -496,15 +505,6 @@
         "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894742&page=1&menuId=4433&bcIdx=0",
         "src": "auto",
         "posted": "2026.04.30"
-      },
-      {
-        "name": "여성활동 플랫폼 홍보 영상 공모전",
-        "period": "2025.04.14 ~ 2025.05.16",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=924&bIdx=110888924&page=1&menuId=4434&bcIdx=0",
-        "src": "auto",
-        "posted": "2025.05.16"
       }
     ],
     "gyoyuk1": [],
