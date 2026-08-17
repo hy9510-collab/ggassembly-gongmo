@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -196,83 +196,6 @@
     "anjeun": [],
     "munhwa": [
       {
-        "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
-        "period": "2026.06.08 ~ 2026.07.09",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189871",
-        "src": "auto",
-        "posted": "2026.06.09"
-      },
-      {
-        "name": "[국민체육진흥공단] 2025년도 원로 체육인 지원 신청 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189712",
-        "src": "auto",
-        "posted": "2025.10.13"
-      },
-      {
-        "name": "2025년 학교운동부 지원사업[동계훈련 및 훈련용품구입비] 공고 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
-        "src": "auto",
-        "posted": "2025.09.30",
-        "target": "초·중·고등학교 학교운동부"
-      },
-      {
-        "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189439",
-        "src": "auto",
-        "posted": "2025.09.11"
-      },
-      {
-        "name": "[2025 경기체육아카데미] 스포츠트렌드교육 상세 교육 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189423",
-        "src": "auto",
-        "posted": "2025.09.10",
-        "kind": "event"
-      },
-      {
-        "name": "2025년도 경기도동계체육대회 참가요강 안내",
-        "period": "2025.10.31 ~ 2025.11.01",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189312",
-        "src": "auto",
-        "posted": "2025.09.02",
-        "kind": "event"
-      },
-      {
-        "name": "2025년도 [도서벽지 유소년 대상 선수촌 체험] 사업 안내",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189303",
-        "src": "auto",
-        "posted": "2025.09.01",
-        "kind": "event"
-      },
-      {
-        "name": "[의정부시체육회] 2025 경기북부 도민과 함께하는 U-시티 힐링걷기 대회",
-        "period": "",
-        "org": "경기도체육회",
-        "dept": "사무처",
-        "boardUrl": "https://ggsports.gg.go.kr/archives/189295",
-        "src": "auto",
-        "posted": "2025.09.01",
-        "kind": "event"
-      },
-      {
         "name": "소규모 창작실험 선정 결과 발표",
         "period": "",
         "org": "경기문화재단",
@@ -351,6 +274,83 @@
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
         "src": "auto",
         "posted": "2026.07.13"
+      },
+      {
+        "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
+        "period": "2026.06.08 ~ 2026.07.09",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189871",
+        "src": "auto",
+        "posted": "2026.06.09"
+      },
+      {
+        "name": "[국민체육진흥공단] 2025년도 원로 체육인 지원 신청 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189712",
+        "src": "auto",
+        "posted": "2025.10.13"
+      },
+      {
+        "name": "2025년 학교운동부 지원사업[동계훈련 및 훈련용품구입비] 공고 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
+        "src": "auto",
+        "posted": "2025.09.30",
+        "target": "초·중·고등학교 학교운동부"
+      },
+      {
+        "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189439",
+        "src": "auto",
+        "posted": "2025.09.11"
+      },
+      {
+        "name": "[2025 경기체육아카데미] 스포츠트렌드교육 상세 교육 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189423",
+        "src": "auto",
+        "posted": "2025.09.10",
+        "kind": "event"
+      },
+      {
+        "name": "2025년도 경기도동계체육대회 참가요강 안내",
+        "period": "2025.10.31 ~ 2025.11.01",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189312",
+        "src": "auto",
+        "posted": "2025.09.02",
+        "kind": "event"
+      },
+      {
+        "name": "2025년도 [도서벽지 유소년 대상 선수촌 체험] 사업 안내",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189303",
+        "src": "auto",
+        "posted": "2025.09.01",
+        "kind": "event"
+      },
+      {
+        "name": "[의정부시체육회] 2025 경기북부 도민과 함께하는 U-시티 힐링걷기 대회",
+        "period": "",
+        "org": "경기도체육회",
+        "dept": "사무처",
+        "boardUrl": "https://ggsports.gg.go.kr/archives/189295",
+        "src": "auto",
+        "posted": "2025.09.01",
+        "kind": "event"
       },
       {
         "name": "2026 경기청년예술기회무대 발레 배역별 참가자 모집 결과공고",
