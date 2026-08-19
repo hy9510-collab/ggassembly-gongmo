@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -470,15 +470,6 @@
     ],
     "mirae": [
       {
-        "name": "2026년 군포시 지식재산 긴급지원 사업 (국내출원지원) 모집공고(4차)",
-        "period": "2026.08.14 ~ 2026.08.14",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172309",
-        "src": "auto",
-        "posted": "2026.08.14"
-      },
-      {
         "name": "2026년 경기도형 스마트공장 디지털전환 견학공장 운영사업 견학 참가자 모집 공고(2차)",
         "period": "",
         "org": "경기테크노파크",
@@ -488,22 +479,13 @@
         "posted": "2026.08.12"
       },
       {
-        "name": "『우리 공장은 AI 시대를 어떻게 준비해야 하는가 (제조기업 CEO의 AX 전략)』 교육 참가자 모집 공고",
+        "name": "2026년 하남시 소상공인 마케팅 판로 지원사업(경영환경개선 지원사업) 소상공인 모집공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172305",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172313",
         "src": "auto",
-        "posted": "2026.08.12"
-      },
-      {
-        "name": "‘26년 구리시 중소기업 온라인 플랫폼 마케팅 지원사업 참가 기업 모집공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172304",
-        "src": "auto",
-        "posted": "2026.08.07"
+        "posted": "2026.08.19"
       }
     ],
     "yeoseong": [
