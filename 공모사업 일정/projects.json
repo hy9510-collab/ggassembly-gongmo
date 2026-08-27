@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-25",
+  "updated": "2026-08-27",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -140,11 +140,12 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
         "src": "auto",
-        "posted": "2026.05.13"
+        "posted": "2026.05.13",
+        "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
       },
       {
         "name": "[모집마감]제안서평가위원 모집공고 <2026 경기도 사회적경제조직 실태조사 및 DB관리시스템 구축 용역>",
-        "period": "",
+        "period": "2026.05.08 ~ 2026.05.20",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5c7820d02ba58eb7f40ef197dcc52d5e&act=detail",
@@ -158,7 +159,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1f4308cd7f42b2a678441499b0080354",
         "src": "auto",
-        "posted": "2026.07.13"
+        "posted": "2026.07.13",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "2026년 G-임팩트 펀드 캐쥬얼 IR 데이 참여기업 모집",
@@ -167,7 +169,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeea130af716cace848eaab92e02f99903",
         "src": "auto",
-        "posted": "2026.07.09"
+        "posted": "2026.07.09",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "「2026년 경기도 협약매장 신규 입점 연계 품평회」 참여기업 모집공고",
@@ -176,7 +179,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe725c09f0348cfd1621d62ef71f8d0e50",
         "src": "auto",
-        "posted": "2026.06.02"
+        "posted": "2026.06.02",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "2026년 ESG선도대학(북부/남부) 수강생 모집",
@@ -185,7 +189,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe68b3666d768c0bb04fd44105d482e202",
         "src": "auto",
-        "posted": "2026.05.28"
+        "posted": "2026.05.28",
+        "target": "제한없음 신청유형 개인"
       }
     ],
     "anjeun": [],
@@ -295,7 +300,8 @@
         "dept": "사무처",
         "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
         "src": "auto",
-        "posted": "2025.09.30"
+        "posted": "2025.09.30",
+        "target": "초·중·고등학교 학교운동부"
       },
       {
         "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
@@ -444,6 +450,15 @@
     ],
     "gunseol": [],
     "dosi": [
+      {
+        "name": "2026년 하반기 전세사기피해주택 긴급 관리 지원사업 시행 공고",
+        "period": "2026.08.26 ~ 2026.09.30",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65117&article.offset=0&articleLimit=10",
+        "src": "auto",
+        "target": "「전세사기피해자법」에 따른 전세사기피해자 등"
+      },
       {
         "name": "시흥대야역 도심 공공주택 복합사업 주민설명회 개최 안내",
         "period": "",
