@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -497,13 +497,13 @@
         "posted": "2026.08.24"
       },
       {
-        "name": "‘26년 구리시 중소기업 온라인 플랫폼 마케팅 기업 모집 연장공고",
+        "name": "2026년 안산정보산업진흥센터(경기TP안산창업보육센터) 제3차 신규 입주자 모집 공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172316",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172324",
         "src": "auto",
-        "posted": "2026.08.24"
+        "posted": "2026.09.03"
       }
     ],
     "yeoseong": [
