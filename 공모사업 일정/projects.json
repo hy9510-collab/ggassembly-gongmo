@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09",
+  "updated": "2026-09-10",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -108,6 +108,15 @@
     ],
     "gyeongje": [
       {
+        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
+        "period": "2026.08.03 ~ 2026.08.31",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.08.31"
+      },
+      {
         "name": "경기도 사회혁신공간 입주기업 지원기관 모집 공고",
         "period": "",
         "org": "경기도사회적경제원",
@@ -141,8 +150,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
         "src": "auto",
-        "posted": "2026.05.13",
-        "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
+        "posted": "2026.05.13"
       },
       {
         "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고(지원가능 시·군 수정)",
@@ -151,8 +159,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1f4308cd7f42b2a678441499b0080354",
         "src": "auto",
-        "posted": "2026.07.13",
-        "target": "사회적경제조직 신청유형 기업"
+        "posted": "2026.07.13"
       },
       {
         "name": "2026년 G-임팩트 펀드 캐쥬얼 IR 데이 참여기업 모집",
@@ -161,8 +168,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeea130af716cace848eaab92e02f99903",
         "src": "auto",
-        "posted": "2026.07.09",
-        "target": "사회적경제조직 신청유형 기업"
+        "posted": "2026.07.09"
       },
       {
         "name": "「2026년 경기도 협약매장 신규 입점 연계 품평회」 참여기업 모집공고",
@@ -171,8 +177,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe725c09f0348cfd1621d62ef71f8d0e50",
         "src": "auto",
-        "posted": "2026.06.02",
-        "target": "사회적경제조직 신청유형 기업"
+        "posted": "2026.06.02"
       },
       {
         "name": "2026년 ESG선도대학(북부/남부) 수강생 모집",
@@ -181,17 +186,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe68b3666d768c0bb04fd44105d482e202",
         "src": "auto",
-        "posted": "2026.05.28",
-        "target": "제한없음 신청유형 개인"
-      },
-      {
-        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
-        "period": "2026.08.03 ~ 2026.08.31",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.08.31"
+        "posted": "2026.05.28"
       }
     ],
     "anjeun": [],
@@ -362,7 +357,7 @@
         "posted": "2026.09.08"
       },
       {
-        "name": "NEW2026 대한민국 피아노페스티벌 공모 선정 결과 발표 일정 연기 안내",
+        "name": "2026 대한민국 피아노페스티벌 공모 선정 결과 발표 일정 연기 안내",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
@@ -454,7 +449,7 @@
     "dosi": [
       {
         "name": "GH 제6기 제안서 평가위원 후보자 모집 안내",
-        "period": "2026.08.27 ~ 2026.09.30",
+        "period": "",
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65147&article.offset=0&articleLimit=10",
@@ -462,7 +457,7 @@
       },
       {
         "name": "GH 제15기 기술자문위원 후보자 모집 안내",
-        "period": "2026.08.31 ~ 2026.09.30",
+        "period": "",
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65153&article.offset=0&articleLimit=10",
@@ -470,12 +465,11 @@
       },
       {
         "name": "2026년 하반기 전세사기피해주택 긴급 관리 지원사업 시행 공고",
-        "period": "2026.08.26 ~ 2026.09.30",
+        "period": "",
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65117&article.offset=0&articleLimit=10",
-        "src": "auto",
-        "target": "「전세사기피해자법」에 따른 전세사기피해자 등"
+        "src": "auto"
       },
       {
         "name": "시흥대야역 도심 공공주택 복합사업 주민설명회 개최 안내",
@@ -488,15 +482,6 @@
       }
     ],
     "mirae": [
-      {
-        "name": "2026년 바이오매스관련 기업애로기술 해결지원사업 참여기업 모집 공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172319",
-        "src": "auto",
-        "posted": "2026.08.24"
-      },
       {
         "name": "2026년 안산정보산업진흥센터(경기TP안산창업보육센터) 제3차 신규 입주자 모집 공고",
         "period": "",
