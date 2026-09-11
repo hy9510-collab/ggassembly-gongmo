@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -108,15 +108,6 @@
     ],
     "gyeongje": [
       {
-        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
-        "period": "2026.08.03 ~ 2026.08.31",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.08.31"
-      },
-      {
         "name": "경기도 사회혁신공간 입주기업 지원기관 모집 공고",
         "period": "",
         "org": "경기도사회적경제원",
@@ -187,19 +178,19 @@
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe68b3666d768c0bb04fd44105d482e202",
         "src": "auto",
         "posted": "2026.05.28"
+      },
+      {
+        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
+        "period": "2026.08.03 ~ 2026.08.31",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.08.31"
       }
     ],
     "anjeun": [],
     "munhwa": [
-      {
-        "name": "제6회 경기문화재단 문화상품 공모 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21501",
-        "src": "auto",
-        "posted": "2026.08.03"
-      },
       {
         "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
         "period": "",
@@ -239,6 +230,15 @@
         "posted": "2026.08.14",
         "result": true,
         "firstSeen": "2026.08.14"
+      },
+      {
+        "name": "제6회 경기문화재단 문화상품 공모 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21501",
+        "src": "auto",
+        "posted": "2026.08.03"
       },
       {
         "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 선정 결과",
@@ -348,7 +348,7 @@
         "kind": "event"
       },
       {
-        "name": "NEW2026 대한민국 피아노페스티벌 「아마추어 피아니스트 연주회」최종선정자 안내",
+        "name": "2026 대한민국 피아노페스티벌 「아마추어 피아니스트 연주회」최종선정자 안내",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
