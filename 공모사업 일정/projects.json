@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -81,24 +81,6 @@
     ],
     "gyeongje": [
       {
-        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
-        "period": "2026.08.03 ~ 2026.08.31",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.08.31"
-      },
-      {
-        "name": "2026 경기도 신규 및 우수 노인일자리 아이디어 공모...",
-        "period": "2026.02.23 ~ 2026.03.13",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894179&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.03.13"
-      },
-      {
         "name": "2026년 사회환경 문제해결 권역별 라운드테이블 참여자 모집(의제 제안) 안내(9/1~9/30)",
         "period": "",
         "org": "경기도사회적경제원",
@@ -174,6 +156,24 @@
         "src": "auto",
         "posted": "2026.05.28",
         "target": "제한없음 신청유형 개인"
+      },
+      {
+        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
+        "period": "2026.08.03 ~ 2026.08.31",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.08.31"
+      },
+      {
+        "name": "2026 경기도 신규 및 우수 노인일자리 아이디어 공모...",
+        "period": "2026.02.23 ~ 2026.03.13",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110894179&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.03.13"
       }
     ],
     "anjeun": [],
@@ -283,8 +283,7 @@
         "dept": "사무처",
         "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
         "src": "auto",
-        "posted": "2025.09.30",
-        "target": "초·중·고등학교 학교운동부"
+        "posted": "2025.09.30"
       },
       {
         "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
