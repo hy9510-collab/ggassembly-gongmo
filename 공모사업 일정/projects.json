@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23",
+  "updated": "2026-09-24",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -108,23 +108,14 @@
         "posted": "2026.09.01"
       },
       {
-        "name": "2026년 사회적경제 도약패키지 「G-임팩트 펀드 캐쥬얼 IR 데이」 참가기업 모집   경기도사회적경제원",
+        "name": "2026년 경기도사회적경제원 4분기 성평등 캠페인 슬로건은 “포용적 조직문화_서로 다른 우리가 함께 일하기” 입니다.    이",
         "period": "",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffee008e6a81df205908e7cb11c11ff7368&act=detail",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5902afdc816c96016c4e52f9c17dfff3&act=detail",
         "src": "auto",
-        "posted": "2026.06.30"
-      },
-      {
-        "name": "2026 경기도 사회적경제 연구자 네트워크(POOL) 모집 공고",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5ea8785070dfd16baf845a1cc34835f5&act=detail",
-        "src": "auto",
-        "posted": "2026.05.13",
-        "target": "사회적경제 분야에 전문성을 보유한 학계 및 현장 연구자"
+        "posted": "2026.09.23",
+        "kind": "event"
       },
       {
         "name": "경기도 사회혁신공간 입주기업 지원기관 모집 공고",
@@ -134,6 +125,15 @@
         "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe46b7b1d1571946a28846fa96f96ac141&act=detail",
         "src": "auto",
         "posted": "2026.08.10"
+      },
+      {
+        "name": "2026년 사회적경제 도약패키지 「G-임팩트 펀드 캐쥬얼 IR 데이」 참가기업 모집   경기도사회적경제원",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffee008e6a81df205908e7cb11c11ff7368&act=detail",
+        "src": "auto",
+        "posted": "2026.06.30"
       },
       {
         "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고(지원가능 시·군 수정)",
