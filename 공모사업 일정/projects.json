@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -179,86 +179,6 @@
     "anjeun": [],
     "munhwa": [
       {
-        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
-        "src": "auto",
-        "posted": "2026.07.07"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto",
-        "posted": "2026.02.27",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "2026년 경기지역문화기획학교: 지역문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 최종 선정 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21508",
-        "src": "auto",
-        "posted": "2026.08.14"
-      },
-      {
-        "name": "소규모 창작실험 선정 결과 발표",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21509",
-        "src": "auto",
-        "posted": "2026.08.14",
-        "result": true,
-        "firstSeen": "2026.08.14"
-      },
-      {
-        "name": "제6회 경기문화재단 문화상품 공모 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21501",
-        "src": "auto",
-        "posted": "2026.08.03"
-      },
-      {
-        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 선정 결과",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21482",
-        "src": "auto",
-        "posted": "2026.07.31",
-        "result": true,
-        "firstSeen": "2026.08.01"
-      },
-      {
-        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 선정 결과 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21424",
-        "src": "auto",
-        "posted": "2026.07.14",
-        "result": true,
-        "firstSeen": "2026.07.14"
-      },
-      {
-        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
-        "src": "auto",
-        "posted": "2026.07.13"
-      },
-      {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
         "period": "2026.06.08 ~ 2026.07.09",
         "org": "경기도체육회",
@@ -401,6 +321,86 @@
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63520&pageIndex=1&category=",
         "src": "auto",
         "posted": "2026.07.22"
+      },
+      {
+        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
+        "src": "auto",
+        "posted": "2026.07.07"
+      },
+      {
+        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
+        "src": "auto",
+        "posted": "2026.02.27",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "2026년 경기지역문화기획학교: 지역문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 최종 선정 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21508",
+        "src": "auto",
+        "posted": "2026.08.14"
+      },
+      {
+        "name": "소규모 창작실험 선정 결과 발표",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21509",
+        "src": "auto",
+        "posted": "2026.08.14",
+        "result": true,
+        "firstSeen": "2026.08.14"
+      },
+      {
+        "name": "제6회 경기문화재단 문화상품 공모 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21501",
+        "src": "auto",
+        "posted": "2026.08.03"
+      },
+      {
+        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 선정 결과",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21482",
+        "src": "auto",
+        "posted": "2026.07.31",
+        "result": true,
+        "firstSeen": "2026.08.01"
+      },
+      {
+        "name": "2026 실학박물관 작은 실험 지원사업 <실·실·실 프로젝트> 선정 결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21424",
+        "src": "auto",
+        "posted": "2026.07.14",
+        "result": true,
+        "firstSeen": "2026.07.14"
+      },
+      {
+        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
+        "src": "auto",
+        "posted": "2026.07.13"
       }
     ],
     "nonghae": [],
