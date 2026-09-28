@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-09-28",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -127,15 +127,6 @@
         "posted": "2026.08.10"
       },
       {
-        "name": "2026년 사회적경제 도약패키지 「G-임팩트 펀드 캐쥬얼 IR 데이」 참가기업 모집   경기도사회적경제원",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffee008e6a81df205908e7cb11c11ff7368&act=detail",
-        "src": "auto",
-        "posted": "2026.06.30"
-      },
-      {
         "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고(지원가능 시·군 수정)",
         "period": "2026.07.09 ~ 2026.07.13",
         "org": "경기도사회적경제원",
@@ -174,6 +165,16 @@
         "src": "auto",
         "posted": "2026.05.28",
         "target": "제한없음 신청유형 개인"
+      },
+      {
+        "name": "2026년 개방형혁신 지원사업 참여 파트너사 모집 공고",
+        "period": "2026.02.09 ~ 2026.12.31",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe548a4c60cc438d9eb2623a48cca95328",
+        "src": "auto",
+        "posted": "2026.12.31",
+        "target": "제한없음 신청유형 기업"
       }
     ],
     "anjeun": [],
@@ -461,31 +462,22 @@
     ],
     "mirae": [
       {
-        "name": "「2026년 경기도 무역위기대응 K-Food 비관세장벽 해소지원사업」농식품기업 해외 인증 검사 지원 수요기업 모집공고(재공고)",
+        "name": "파주청년창업지원센터 「청년창업 멘토링 지원」참여기업/팀 모집 공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172330",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172334",
         "src": "auto",
-        "posted": "2026.09.14"
+        "posted": "2026.09.21"
       },
       {
-        "name": "「2026년 경기도 무역위기대응 K-Food 비관세장벽 해소지원사업」농식품기업 해외 인증 검사 지원 수요기업 모집공고",
+        "name": "「2026년 경기도 무역위기대응 K-Food 비관세장벽 해소지원사업」농식품기업 해외 인증 검사 지원 수요기업 모집공고(재공고)",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172315",
         "src": "auto",
-        "posted": "2026.09.14"
-      },
-      {
-        "name": "『구축은 했는데… 그 다음이 문제다(스마트공장 구축 이후 활용 전략)』교육 참가자 모집 공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172327",
-        "src": "auto",
-        "posted": "2026.09.10"
+        "posted": "2026.09.15"
       }
     ],
     "yeoseong": [
