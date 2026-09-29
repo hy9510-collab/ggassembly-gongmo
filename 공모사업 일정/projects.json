@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -436,6 +436,24 @@
         "src": "auto"
       },
       {
+        "name": "GH biz& 경기광주역 소유권보존등기 법무사 선정결과 공고",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65249&article.offset=0&articleLimit=10",
+        "src": "auto",
+        "result": true,
+        "firstSeen": "2026.09.29"
+      },
+      {
+        "name": "「의왕 복합산단 도시개발사업 산업용지 특화전략 수립 용역」 제안서 평가위원 모집 안내",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65235&article.offset=0&articleLimit=10",
+        "src": "auto"
+      },
+      {
         "name": "감정평가법인 사전등록 신청안내",
         "period": "",
         "org": "경기주택도시공사(GH)",
@@ -449,14 +467,6 @@
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65225&article.offset=0&articleLimit=10",
-        "src": "auto"
-      },
-      {
-        "name": "경기주택도시공사 인권센터 운영대행 용역 제안서 평가위원(후보자) 공개모집",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65177&article.offset=0&articleLimit=10",
         "src": "auto"
       }
     ],
