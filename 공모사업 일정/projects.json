@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-01",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -191,6 +191,17 @@
         "firstSeen": "2026.06.16"
       },
       {
+        "name": "AI 연계 예술교육 프로그램 개발 및 확산 <내 수업에 AI가 들어온다면> 지원사업 선정 결과",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21590",
+        "src": "auto",
+        "posted": "2026.09.30",
+        "result": true,
+        "firstSeen": "2026.10.01"
+      },
+      {
         "name": "2026년 경기지역문화기획학교: 지역문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 최종 선정 안내",
         "period": "",
         "org": "경기문화재단",
@@ -240,15 +251,6 @@
         "posted": "2026.07.14",
         "result": true,
         "firstSeen": "2026.07.14"
-      },
-      {
-        "name": "문화예술교육 매개자 대상 <내 수업에 AI가 들어온다면> 참여자 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21419",
-        "src": "auto",
-        "posted": "2026.07.13"
       },
       {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
@@ -418,14 +420,6 @@
     ],
     "gunseol": [],
     "dosi": [
-      {
-        "name": "GH 제6기 제안서 평가위원 후보자 모집 안내",
-        "period": "2026.08.27 ~ 2026.09.30",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65147&article.offset=0&articleLimit=10",
-        "src": "auto"
-      },
       {
         "name": "GH biz& 경기광주역 소유권보존등기 법무사 선정결과 공고",
         "period": "",
