@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -420,6 +420,14 @@
     ],
     "gunseol": [],
     "dosi": [
+      {
+        "name": "GH 제3기 설계VE리더 후보자 모집 안내",
+        "period": "2026.10.06 ~ 2026.10.30",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65255&article.offset=0&articleLimit=10",
+        "src": "auto"
+      },
       {
         "name": "GH biz& 경기광주역 소유권보존등기 법무사 선정결과 공고",
         "period": "",
