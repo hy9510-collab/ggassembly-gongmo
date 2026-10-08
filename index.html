@@ -1,22 +1,240 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>경기도의회 상임위원회별 공모사업 일정</title>
-  <meta http-equiv="refresh" content="0; url=공모사업%20일정/">
-  <script>location.replace("공모사업%20일정/");</script>
-  <style>
-    body{font-family:'Malgun Gothic','맑은 고딕',sans-serif;background:#f5f6fa;
-         display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#333;}
-    .box{text-align:center;}
-    a{color:#5e35b1;font-weight:bold;}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정책지원관 업무자동화 시스템</title>
+<style>
+  :root{
+    --gd:#185FA5;--gm:#2e8fbf;--gl:#e9f3f9;--gb:#bcd8e8;
+    --navy:#0b3a63;--wh:#fff;--tx:#2b3542;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;
+    color:var(--tx);
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+      radial-gradient(1100px 600px at 12% -10%, #2d84c9 0%, transparent 55%),
+      radial-gradient(900px 700px at 105% 10%, #5e9fd4 0%, transparent 50%),
+      linear-gradient(160deg,#0b3a63 0%,#124b7d 38%,#1b6398 72%,#1c7aa8 100%);
+    perspective:1400px;
+    position:relative;
+  }
+
+  /* ── 떠다니는 배경 도형(입체감) ── */
+  .bg-shape{position:fixed;border-radius:50%;filter:blur(2px);opacity:.35;pointer-events:none;z-index:0;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 70%);
+    animation:float 14s ease-in-out infinite;}
+  .bg-shape.s1{width:220px;height:220px;top:8%;left:6%;animation-delay:0s;}
+  .bg-shape.s2{width:140px;height:140px;top:65%;left:2%;animation-delay:-4s;opacity:.22;}
+  .bg-shape.s3{width:300px;height:300px;top:-6%;right:-4%;animation-delay:-8s;opacity:.18;}
+  .bg-shape.s4{width:110px;height:110px;bottom:6%;right:14%;animation-delay:-2s;}
+  @keyframes float{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-26px) translateX(14px);}}
+
+  header{position:relative;z-index:2;padding:56px 24px 34px;text-align:center;}
+  .crest{
+    width:64px;height:64px;margin:0 auto 16px;border-radius:18px;
+    display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;
+    background:linear-gradient(145deg,#3f9cdc,#0e5c99);
+    box-shadow:0 14px 26px -8px rgba(4,30,55,.65), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -6px 10px rgba(0,0,0,.2);
+    transform:rotateX(8deg);
+  }
+  header h1{
+    font-size:clamp(26px,4vw,38px);font-weight:800;color:#fff;letter-spacing:-.5px;
+    text-shadow:0 3px 0 rgba(6,28,48,.35), 0 12px 24px rgba(0,0,0,.35);
+  }
+  header p{margin-top:10px;font-size:14.5px;color:#d9ecfb;opacity:.9;}
+  .sub-badge{
+    display:inline-block;margin-top:16px;padding:6px 16px;border-radius:999px;font-size:12.5px;font-weight:700;
+    color:#0b3a63;background:linear-gradient(145deg,#fff,#cfe8fb);
+    box-shadow:0 8px 16px -6px rgba(0,0,0,.35);
+  }
+
+  main{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:10px 24px 70px;}
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px;
+  }
+
+  /* ── 3D 틸트 카드 ── */
+  .card{
+    position:relative;border-radius:20px;padding:2px;
+    background:linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.08));
+    transform-style:preserve-3d;
+    transition:transform .12s ease-out, box-shadow .25s ease;
+    box-shadow:0 20px 40px -14px rgba(3,20,38,.55);
+    will-change:transform;
+  }
+  .card:hover{box-shadow:0 30px 55px -12px rgba(3,20,38,.7);}
+  .card-inner{
+    position:relative;border-radius:19px;overflow:hidden;height:100%;
+    background:linear-gradient(155deg,#ffffff 0%,#f3f8fc 60%,#e9f2f9 100%);
+    padding:26px 24px 24px;display:flex;flex-direction:column;gap:10px;min-height:210px;
+    transform:translateZ(0);
+  }
+  .card-inner::before{
+    content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,0%), rgba(46,143,191,.22), transparent 55%);
+    opacity:0;transition:opacity .25s;pointer-events:none;
+  }
+  .card:hover .card-inner::before{opacity:1;}
+  .card.disabled .card-inner{filter:grayscale(.15);}
+  .icon-tile{
+    width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    font-size:24px;color:#fff;flex-shrink:0;
+    background:linear-gradient(145deg,var(--c1,#3f9cdc),var(--c2,#0e5c99));
+    box-shadow:0 10px 18px -6px rgba(10,60,95,.55), inset 0 1px 0 rgba(255,255,255,.4);
+    transform:translateZ(30px);
+  }
+  .card h2{font-size:18px;font-weight:800;color:var(--navy);transform:translateZ(24px);letter-spacing:-.3px;}
+  .card p.desc{font-size:13px;color:#5b6b7a;line-height:1.55;flex:1;transform:translateZ(18px);}
+  .status-row{display:flex;align-items:center;gap:8px;transform:translateZ(20px);}
+  .status{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;}
+  .status.live{background:#e5f6ea;color:#1e8e3e;}
+  .status.wip{background:#fdf1e0;color:#b06a11;}
+  .go{
+    margin-top:4px;align-self:flex-start;font-size:13px;font-weight:700;color:var(--gd);
+    display:inline-flex;align-items:center;gap:6px;transform:translateZ(22px);
+    transition:gap .15s;
+  }
+  .card:hover .go{gap:10px;}
+  a.card-link{text-decoration:none;display:block;height:100%;}
+  .card.disabled a.card-link{pointer-events:none;cursor:default;}
+
+  footer{position:relative;z-index:2;text-align:center;padding:20px 20px 40px;font-size:12px;color:#cfe4f5;opacity:.75;}
+</style>
 </head>
 <body>
-  <div class="box">
-    <p>공모사업 일정 대시보드로 이동 중…</p>
-    <p>자동으로 넘어가지 않으면 <a href="공모사업%20일정/">여기를 클릭</a>하세요.</p>
-  </div>
+  <div class="bg-shape s1"></div>
+  <div class="bg-shape s2"></div>
+  <div class="bg-shape s3"></div>
+  <div class="bg-shape s4"></div>
+
+  <header>
+    <div class="crest">道</div>
+    <h1>정책지원관 업무자동화 시스템</h1>
+    <p>경기도의회 정책지원관 의정활동 지원 도구 모음</p>
+    <span class="sub-badge" id="todayBadge"></span>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <div class="card" data-tilt>
+        <a class="card-link" href="문화체육관광위원회/" data-remote="https://hy9510-collab.github.io/ggassembly-munche/">
+          <div class="card-inner">
+            <div class="icon-tile" style="--c1:#3f9cdc;--c2:#0e5c99;">🏛</div>
+            <h2>문화체육관광위원회 의정지원</h2>
+            <p class="desc">위원 명단·소관 조례 131건·2026년 본예산(안)·행정사무감사 준비자료를 한 곳에서 확인합니다.</p>
+            <div class="status-row"><span class="status live">운영 중</span></div>
+            <span class="go">바로가기 →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card" data-tilt>
+        <a class="card-link" href="공모사업%20일정/">
+          <div class="card-inner">
+            <div class="icon-tile" style="--c1:#3aa66f;--c2:#0f6b3e;">📋</div>
+            <h2>공모사업 일정 대시보드</h2>
+            <p class="desc">경기도의회 상임위원회별 공모사업·행사 일정과 소관기관 현황을 한눈에 확인합니다.</p>
+            <div class="status-row"><span class="status live">운영 중</span></div>
+            <span class="go">바로가기 →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card" data-tilt>
+        <a class="card-link" href="회의%20발언카드%20보도자료%20비서/">
+          <div class="card-inner">
+            <div class="icon-tile" style="--c1:#5e75d6;--c2:#2c3d9c;">🎬</div>
+            <h2>발언카드 · 보도자료 비서</h2>
+            <p class="desc">회의 영상·회의록을 기반으로 발언카드, 보도자료, 발언요약보고서를 자동 생성합니다.</p>
+            <div class="status-row"><span class="status live">운영 중</span></div>
+            <span class="go">바로가기 →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card" data-tilt>
+        <a class="card-link" href="의원%20활동관리/">
+          <div class="card-inner">
+            <div class="icon-tile" style="--c1:#2fa3a0;--c2:#0e6b68;">📊</div>
+            <h2>의원 활동관리</h2>
+            <p class="desc">담당 의원별 활동기록·조례·공약을 기록하고 자동 집계 대시보드로 확인합니다.</p>
+            <div class="status-row"><span class="status live">운영 중</span></div>
+            <span class="go">바로가기 →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card" data-tilt>
+        <a class="card-link" href="신임의원%20지원자료/">
+          <div class="card-inner">
+            <div class="icon-tile" style="--c1:#8a6fd6;--c2:#4a2f9c;">🤝</div>
+            <h2>신임의원 브리핑</h2>
+            <p class="desc">문화체육관광위원회 신임 의원께 드리는 의정활동 안내 페이지와 자료 다운로드입니다.</p>
+            <div class="status-row"><span class="status live">운영 중</span></div>
+            <span class="go">바로가기 →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card disabled" data-tilt>
+        <div class="card-inner">
+          <div class="icon-tile" style="--c1:#c98a3f;--c2:#8a5311;">📝</div>
+          <h2>질의서 작성 비서</h2>
+          <p class="desc">상임위·행정사무감사 질의서 초안을 자동으로 작성하는 도구입니다.</p>
+          <div class="status-row"><span class="status wip">준비 중</span></div>
+          <span class="go">개발 예정</span>
+        </div>
+      </div>
+
+      <div class="card disabled" data-tilt>
+        <div class="card-inner">
+          <div class="icon-tile" style="--c1:#c9506e;--c2:#8a1e3c;">⚖️</div>
+          <h2>조례 제·개정 자동화 시스템</h2>
+          <p class="desc">조례 제·개정안 검토와 작성 과정을 자동화하는 시스템입니다.</p>
+          <div class="status-row"><span class="status wip">준비 중</span></div>
+          <span class="go">개발 예정</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>ⓒ 경기도의회 정책지원관 업무자동화 시스템</footer>
+
+<script>
+  const today = new Date();
+  document.getElementById('todayBadge').textContent =
+    today.getFullYear()+'.'+String(today.getMonth()+1).padStart(2,'0')+'.'+String(today.getDate()).padStart(2,'0')+' 기준';
+
+  // 별도 저장소로 배포된 도구는 공개 주소에서 깃허브 주소로 연결
+  if (location.protocol.startsWith('http') &&
+      !/^(localhost|127\.|\[?::1|0\.0\.0\.0)/.test(location.hostname)) {
+    document.querySelectorAll('[data-remote]').forEach(a => a.href = a.dataset.remote);
+  }
+
+  // 3D 틸트 인터랙션
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    const inner = card.querySelector('.card-inner');
+    const strength = 10;
+    card.addEventListener('mousemove', e=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rx = (0.5 - py) * strength;
+      const ry = (px - 0.5) * strength;
+      card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+      inner.style.setProperty('--mx', (px*100)+'%');
+      inner.style.setProperty('--my', (py*100)+'%');
+    });
+    card.addEventListener('mouseleave', ()=>{
+      card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0)';
+    });
+  });
+</script>
 </body>
 </html>
