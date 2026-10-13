@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -490,7 +490,7 @@
         "dept": "기업지원팀",
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172334",
         "src": "auto",
-        "posted": "2026.09.21"
+        "posted": "2026.10.06"
       }
     ],
     "yeoseong": [
