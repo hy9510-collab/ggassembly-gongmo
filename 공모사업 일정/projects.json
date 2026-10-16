@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -472,14 +472,6 @@
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65229&article.offset=0&articleLimit=10",
         "src": "auto"
-      },
-      {
-        "name": "GH 주민공동시설 현황조사 및 운영기준 검토 용역 제안서 평가위원 모집 공고",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65225&article.offset=0&articleLimit=10",
-        "src": "auto"
       }
     ],
     "mirae": [
@@ -491,6 +483,15 @@
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172334",
         "src": "auto",
         "posted": "2026.10.06"
+      },
+      {
+        "name": "2026년 바이오매스 관련 혁신제품 컨설팅 참여기업 모집 공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172339",
+        "src": "auto",
+        "posted": "2026.10.15"
       }
     ],
     "yeoseong": [
