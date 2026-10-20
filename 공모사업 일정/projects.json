@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -133,7 +133,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1f4308cd7f42b2a678441499b0080354",
         "src": "auto",
-        "posted": "2026.07.13"
+        "posted": "2026.07.13",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "2026년 G-임팩트 펀드 캐쥬얼 IR 데이 참여기업 모집",
@@ -142,7 +143,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeea130af716cace848eaab92e02f99903",
         "src": "auto",
-        "posted": "2026.07.09"
+        "posted": "2026.07.09",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "「2026년 경기도 협약매장 신규 입점 연계 품평회」 참여기업 모집공고",
@@ -151,7 +153,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe725c09f0348cfd1621d62ef71f8d0e50",
         "src": "auto",
-        "posted": "2026.06.02"
+        "posted": "2026.06.02",
+        "target": "사회적경제조직 신청유형 기업"
       },
       {
         "name": "2026년 ESG선도대학(북부/남부) 수강생 모집",
@@ -160,7 +163,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe68b3666d768c0bb04fd44105d482e202",
         "src": "auto",
-        "posted": "2026.05.28"
+        "posted": "2026.05.28",
+        "target": "제한없음 신청유형 개인"
       },
       {
         "name": "2026년 개방형혁신 지원사업 참여 파트너사 모집 공고",
@@ -169,7 +173,8 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe548a4c60cc438d9eb2623a48cca95328",
         "src": "auto",
-        "posted": "2026.12.31"
+        "posted": "2026.12.31",
+        "target": "제한없음 신청유형 기업"
       }
     ],
     "anjeun": [],
@@ -281,7 +286,8 @@
         "dept": "사무처",
         "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
         "src": "auto",
-        "posted": "2025.09.30"
+        "posted": "2025.09.30",
+        "target": "초·중·고등학교 학교운동부"
       },
       {
         "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
@@ -435,7 +441,7 @@
       },
       {
         "name": "GH 제3기 설계VE리더 후보자 모집 안내",
-        "period": "",
+        "period": "2026.10.06 ~ 2026.10.30",
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65255&article.offset=0&articleLimit=10",
