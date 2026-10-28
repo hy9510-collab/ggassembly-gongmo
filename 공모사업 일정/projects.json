@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -455,14 +455,6 @@
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65235&article.offset=0&articleLimit=10",
-        "src": "auto"
-      },
-      {
-        "name": "감정평가법인 사전등록 신청안내",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65229&article.offset=0&articleLimit=10",
         "src": "auto"
       }
     ],
