@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [
@@ -99,13 +99,14 @@
         "posted": "2026.08.31"
       },
       {
-        "name": "2026년 사회환경 문제해결 권역별 라운드테이블 참여자 모집(의제 제안) 안내(9/1~10/16)",
+        "name": "2026년 경기도사회적경제원 4분기 성평등 캠페인 슬로건은 “포용적 조직문화_서로 다른 우리가 함께 일하기” 입니다.    이",
         "period": "",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe8b0f767f8b33b8107ca0838d410c40ad&act=detail",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5902afdc816c96016c4e52f9c17dfff3&act=detail",
         "src": "auto",
-        "posted": "2026.09.01"
+        "posted": "2026.09.23",
+        "kind": "event"
       },
       {
         "name": "「제8회 대한민국 사회연대경제박람회 및 국제컨퍼런스」 전시체험부스 참여기업 및 소셜다잇소 입점기업 모집에 많은 관심 가져주셔서",
@@ -117,16 +118,6 @@
         "posted": "2026.10.20"
       },
       {
-        "name": "2026년 경기도사회적경제원 4분기 성평등 캠페인 슬로건은 “포용적 조직문화_서로 다른 우리가 함께 일하기” 입니다.    이",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe5902afdc816c96016c4e52f9c17dfff3&act=detail",
-        "src": "auto",
-        "posted": "2026.09.23",
-        "kind": "event"
-      },
-      {
         "name": "경기도 사회혁신공간 입주기업 지원기관 모집 공고",
         "period": "",
         "org": "경기도사회적경제원",
@@ -136,14 +127,31 @@
         "posted": "2026.08.10"
       },
       {
+        "name": "2026년 사회환경 문제해결 권역별 라운드테이블 참여자 모집(의제 제안) 안내(9/1~10/16)",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe8b0f767f8b33b8107ca0838d410c40ad&act=detail",
+        "src": "auto",
+        "posted": "2026.09.01"
+      },
+      {
+        "name": "「2026년 현대백화점 사회적경제조직 팝업행사」참여기업 모집공고",
+        "period": "2026.07.09 ~ 2026.07.24",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe92247f6b30150b162085b8bdf307588b",
+        "src": "auto",
+        "posted": "2026.07.24"
+      },
+      {
         "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고(지원가능 시·군 수정)",
         "period": "2026.07.09 ~ 2026.07.13",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1f4308cd7f42b2a678441499b0080354",
         "src": "auto",
-        "posted": "2026.07.13",
-        "target": "사회적경제조직 신청유형 기업"
+        "posted": "2026.07.13"
       },
       {
         "name": "2026년 G-임팩트 펀드 캐쥬얼 IR 데이 참여기업 모집",
@@ -152,8 +160,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeea130af716cace848eaab92e02f99903",
         "src": "auto",
-        "posted": "2026.07.09",
-        "target": "사회적경제조직 신청유형 기업"
+        "posted": "2026.07.09"
       },
       {
         "name": "「2026년 경기도 협약매장 신규 입점 연계 품평회」 참여기업 모집공고",
@@ -162,18 +169,7 @@
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe725c09f0348cfd1621d62ef71f8d0e50",
         "src": "auto",
-        "posted": "2026.06.02",
-        "target": "사회적경제조직 신청유형 기업"
-      },
-      {
-        "name": "2026년 ESG선도대학(북부/남부) 수강생 모집",
-        "period": "2026.04.29 ~ 2026.05.28",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe68b3666d768c0bb04fd44105d482e202",
-        "src": "auto",
-        "posted": "2026.05.28",
-        "target": "제한없음 신청유형 개인"
+        "posted": "2026.06.02"
       }
     ],
     "anjeun": [],
@@ -283,8 +279,7 @@
         "dept": "사무처",
         "boardUrl": "https://ggsports.gg.go.kr/archives/189607",
         "src": "auto",
-        "posted": "2025.09.30",
-        "target": "초·중·고등학교 학교운동부"
+        "posted": "2025.09.30"
       },
       {
         "name": "[국민체육진흥공단] 2025년 체육관련 규제개선 아이디어 공모전",
@@ -427,6 +422,14 @@
     "gunseol": [],
     "dosi": [
       {
+        "name": "GH 공공주택 복리시설 실태조사 및 활성화 용역 제안서 평가위원(후보자) 모집 공고",
+        "period": "",
+        "org": "경기주택도시공사(GH)",
+        "dept": "주거복지본부",
+        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65315&article.offset=0&articleLimit=10",
+        "src": "auto"
+      },
+      {
         "name": "2026년 GH 민간협력기술개발사업 과제 공모 결과 게시",
         "period": "",
         "org": "경기주택도시공사(GH)",
@@ -438,28 +441,10 @@
       },
       {
         "name": "GH 제3기 설계VE리더 후보자 모집 안내",
-        "period": "2026.10.06 ~ 2026.10.30",
+        "period": "",
         "org": "경기주택도시공사(GH)",
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65255&article.offset=0&articleLimit=10",
-        "src": "auto"
-      },
-      {
-        "name": "GH biz& 경기광주역 소유권보존등기 법무사 선정결과 공고",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65249&article.offset=0&articleLimit=10",
-        "src": "auto",
-        "result": true,
-        "firstSeen": "2026.09.29"
-      },
-      {
-        "name": "「의왕 복합산단 도시개발사업 산업용지 특화전략 수립 용역」 제안서 평가위원 모집 안내",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65235&article.offset=0&articleLimit=10",
         "src": "auto"
       }
     ],
@@ -481,6 +466,15 @@
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172341",
         "src": "auto",
         "posted": "2026.10.22"
+      },
+      {
+        "name": "2027 로봇지원 사업 통합설명회 및기술세미나·우수기업 현장견학 참가자 모집 공고 안산시와 (재)경기테크노파크",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172346",
+        "src": "auto",
+        "posted": "2026.11.03"
       }
     ],
     "yeoseong": [
