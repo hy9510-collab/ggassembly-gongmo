@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -89,6 +89,15 @@
         "posted": "2026.08.31"
       },
       {
+        "name": "「제8회 대한민국 사회연대경제박람회 및 국제컨퍼런스」 전시체험부스 참여기업 및 소셜다잇소 입점기업 모집에 많은 관심 가져주셔서",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe6e81e4a4a8fe359c7815b8bbac322f11&act=detail",
+        "src": "auto",
+        "posted": "2026.10.20"
+      },
+      {
         "name": "2026년 경기도사회적경제원 4분기 성평등 캠페인 슬로건은 “포용적 조직문화_서로 다른 우리가 함께 일하기” 입니다.    이",
         "period": "",
         "org": "경기도사회적경제원",
@@ -97,6 +106,15 @@
         "src": "auto",
         "posted": "2026.09.23",
         "kind": "event"
+      },
+      {
+        "name": "2026년 사회혁신공간 공유재산(무인매점) 사업자 공개모집",
+        "period": "",
+        "org": "경기도사회적경제원",
+        "dept": "사회적경제지원팀",
+        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffed496229a073b196f441a81703dfe9fd1&act=detail",
+        "src": "auto",
+        "posted": "2026.11.10"
       },
       {
         "name": "경기도 사회혁신공간 입주기업 추가모집 공고",
@@ -108,15 +126,6 @@
         "posted": "2026.11.09"
       },
       {
-        "name": "「제8회 대한민국 사회연대경제박람회 및 국제컨퍼런스」 전시체험부스 참여기업 및 소셜다잇소 입점기업 모집에 많은 관심 가져주셔서",
-        "period": "",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe6e81e4a4a8fe359c7815b8bbac322f11&act=detail",
-        "src": "auto",
-        "posted": "2026.10.20"
-      },
-      {
         "name": "2026년 사회환경 문제해결 권역별 라운드테이블 참여자 모집(의제 제안) 안내(9/1~10/16)",
         "period": "",
         "org": "경기도사회적경제원",
@@ -126,13 +135,14 @@
         "posted": "2026.09.01"
       },
       {
-        "name": "경기도 사회혁신공간 입주기업 지원기관 모집 공고",
-        "period": "",
+        "name": "경기도 사회연대경제 청년 일경험 시범사업 참여청년 모집 공고",
+        "period": "2026.07.17 ~ 2026.07.27",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M678040483/board.do?idx=cb00d1a0008a85e71a41b8741facbffe46b7b1d1571946a28846fa96f96ac141&act=detail",
+        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffed7f025bbea3337e4e9c0819cea04edb8",
         "src": "auto",
-        "posted": "2026.08.10"
+        "posted": "2026.07.27",
+        "target": "청년 신청유형 개인"
       },
       {
         "name": "「2026년 현대백화점 사회적경제조직 팝업행사」참여기업 모집공고",
@@ -145,23 +155,13 @@
         "target": "사회적경제조직 신청유형 기업"
       },
       {
-        "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고(지원가능 시·군 수정)",
+        "name": "경기도 사회연대경제 청년 일경험 시범사업 참여기업 모집 공고",
         "period": "2026.07.09 ~ 2026.07.13",
         "org": "경기도사회적경제원",
         "dept": "사회적경제지원팀",
         "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffe1f4308cd7f42b2a678441499b0080354",
         "src": "auto",
         "posted": "2026.07.13",
-        "target": "사회적경제조직 신청유형 기업"
-      },
-      {
-        "name": "2026년 G-임팩트 펀드 캐쥬얼 IR 데이 참여기업 모집",
-        "period": "2026.06.30 ~ 2026.07.09",
-        "org": "경기도사회적경제원",
-        "dept": "사회적경제지원팀",
-        "boardUrl": "https://gsic.or.kr/home/kor/M232113179/business/apply/view.do?idx=cb00d1a0008a85e71a41b8741facbffeea130af716cace848eaab92e02f99903",
-        "src": "auto",
-        "posted": "2026.07.09",
         "target": "사회적경제조직 신청유형 기업"
       }
     ],
@@ -245,6 +245,73 @@
         "kind": "event"
       },
       {
+        "name": "2026 대한민국 피아노페스티벌 「아마추어 피아니스트 연주회」 최종선정자 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63603&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.09.08"
+      },
+      {
+        "name": "2026 대한민국 피아노페스티벌 공모 선정 결과 발표 일정 연기 안내",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63606&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.09.07",
+        "result": true,
+        "firstSeen": "2026.09.08"
+      },
+      {
+        "name": "2026 대한민국 피아노페스티벌 「아마추어 피아니스트 연주회 」참가자 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63572&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.08.18"
+      },
+      {
+        "name": "2026 대한민국 피아노페스티벌 <피아노페스티벌 영 아티스트 콘서트> 참가자 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63571&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.08.18"
+      },
+      {
+        "name": "2026 경기청년예술기회무대 발레 배역별 참가자 모집 결과 공고",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63565&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.08.13",
+        "result": true,
+        "firstSeen": "2026.08.13"
+      },
+      {
+        "name": "2026 경기청년예술기회무대 발레 배역별 참가자 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63538&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.08.03"
+      },
+      {
+        "name": "경기시나위오케스트라 <젊은 명인 : Young Virtuoso> 협연자 모집",
+        "period": "",
+        "org": "경기아트센터",
+        "dept": "공연기획팀",
+        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63520&pageIndex=1&category=",
+        "src": "auto",
+        "posted": "2026.07.22"
+      },
+      {
         "name": "2026 경기창작캠퍼스 공공갤러리 전시공간 지원 공모",
         "period": "",
         "org": "경기문화재단",
@@ -323,73 +390,6 @@
         "posted": "2026.08.14",
         "result": true,
         "firstSeen": "2026.08.14"
-      },
-      {
-        "name": "2026 대한민국 피아노페스티벌 「아마추어 피아니스트 연주회」 최종선정자 안내",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63603&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.09.08"
-      },
-      {
-        "name": "2026 대한민국 피아노페스티벌 공모 선정 결과 발표 일정 연기 안내",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63606&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.09.07",
-        "result": true,
-        "firstSeen": "2026.09.08"
-      },
-      {
-        "name": "2026 대한민국 피아노페스티벌 「아마추어 피아니스트 연주회 」참가자 모집",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63572&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.08.18"
-      },
-      {
-        "name": "2026 대한민국 피아노페스티벌 <피아노페스티벌 영 아티스트 콘서트> 참가자 모집",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63571&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.08.18"
-      },
-      {
-        "name": "2026 경기청년예술기회무대 발레 배역별 참가자 모집 결과 공고",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63565&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.08.13",
-        "result": true,
-        "firstSeen": "2026.08.13"
-      },
-      {
-        "name": "2026 경기청년예술기회무대 발레 배역별 참가자 모집",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63538&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.08.03"
-      },
-      {
-        "name": "경기시나위오케스트라 <젊은 명인 : Young Virtuoso> 협연자 모집",
-        "period": "",
-        "org": "경기아트센터",
-        "dept": "공연기획팀",
-        "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63520&pageIndex=1&category=",
-        "src": "auto",
-        "posted": "2026.07.22"
       }
     ],
     "nonghae": [],
@@ -451,15 +451,6 @@
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172346",
         "src": "auto",
         "posted": "2026.11.03"
-      },
-      {
-        "name": "『AI를 위한 데이터, 어떻게 준비해야 하는가』 교육 참가자 모집 공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172342",
-        "src": "auto",
-        "posted": "2026.10.29"
       }
     ],
     "yeoseong": [
