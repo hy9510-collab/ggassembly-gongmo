@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -436,13 +436,31 @@
     ],
     "mirae": [
       {
-        "name": "2027 로봇지원 사업 통합설명회 및기술세미나·우수기업 현장견학 참가자 모집 공고 안산시와 (재)경기테크노파크",
+        "name": "「2026년 안산시 국가기술거래플랫폼」 기술코칭 참여기업 추가모집 공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172346",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172352",
         "src": "auto",
-        "posted": "2026.11.03"
+        "posted": "2026.11.11"
+      },
+      {
+        "name": "2026년 하남시 소상공인 마케팅 판로지원사업(경영환경개선) 추가 모집공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172351",
+        "src": "auto",
+        "posted": "2026.11.11"
+      },
+      {
+        "name": "「광명상생플랫폼 로고 공모」공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172353",
+        "src": "auto",
+        "posted": "2026.11.11"
       }
     ],
     "yeoseong": [
