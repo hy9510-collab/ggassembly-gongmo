@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -422,16 +422,6 @@
         "dept": "주거복지본부",
         "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65315&article.offset=0&articleLimit=10",
         "src": "auto"
-      },
-      {
-        "name": "2026년 GH 민간협력기술개발사업 과제 공모 결과 게시",
-        "period": "",
-        "org": "경기주택도시공사(GH)",
-        "dept": "주거복지본부",
-        "boardUrl": "https://www.gh.or.kr/gh/notice.do?mode=view&articleNo=65264&article.offset=0&articleLimit=10",
-        "src": "auto",
-        "result": true,
-        "firstSeen": "2026.10.07"
       }
     ],
     "mirae": [
