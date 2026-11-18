@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17",
+  "updated": "2026-11-18",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -198,6 +198,15 @@
         "firstSeen": "2026.06.16"
       },
       {
+        "name": "2027 경기상상캠퍼스 단기 입주단체 모집 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21727",
+        "src": "auto",
+        "posted": "2026.11.18"
+      },
+      {
         "name": "AI 연계 예술교육 프로그램 개발 및 확산 <내 수업에 AI가 들어온다면> 지원사업 선정 결과",
         "period": "",
         "org": "경기문화재단",
@@ -234,17 +243,6 @@
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21654",
         "src": "auto",
         "posted": "2026.10.20"
-      },
-      {
-        "name": "제6회 경기문화재단 문화상품 공모 선정 결과 발표",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21592",
-        "src": "auto",
-        "posted": "2026.10.02",
-        "result": true,
-        "firstSeen": "2026.10.04"
       },
       {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
@@ -433,6 +431,24 @@
     ],
     "mirae": [
       {
+        "name": "2026년 구리시 중소기업 온라인 플랫폼 마케팅 지원사업 참가 기업 모집 공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172354",
+        "src": "auto",
+        "posted": "2026.11.17"
+      },
+      {
+        "name": "「광명상생플랫폼 로고 공모」공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172353",
+        "src": "auto",
+        "posted": "2026.11.11"
+      },
+      {
         "name": "「2026년 안산시 국가기술거래플랫폼」 기술코칭 참여기업 추가모집 공고",
         "period": "",
         "org": "경기테크노파크",
@@ -451,13 +467,13 @@
         "posted": "2026.11.11"
       },
       {
-        "name": "「광명상생플랫폼 로고 공모」공고",
+        "name": "2026년 양평군 중소기업 온라인 플랫폼 마케팅 지원사업 추가 모집 공고",
         "period": "",
         "org": "경기테크노파크",
         "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172353",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172355",
         "src": "auto",
-        "posted": "2026.11.11"
+        "posted": "2026.11.17"
       }
     ],
     "yeoseong": [
