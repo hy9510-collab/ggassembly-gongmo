@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -168,83 +168,6 @@
     "anjeun": [],
     "munhwa": [
       {
-        "name": "[공고문] 경기 예술인의 집 영한전시 참여작가 모집",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21707",
-        "src": "auto",
-        "posted": "2026.11.16",
-        "kind": "event"
-      },
-      {
-        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
-        "src": "auto",
-        "posted": "2026.07.07"
-      },
-      {
-        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
-        "src": "auto",
-        "posted": "2026.02.27",
-        "result": true,
-        "firstSeen": "2026.06.16"
-      },
-      {
-        "name": "2027 경기상상캠퍼스 단기 입주단체 모집 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21727",
-        "src": "auto",
-        "posted": "2026.11.18"
-      },
-      {
-        "name": "AI 연계 예술교육 프로그램 개발 및 확산 <내 수업에 AI가 들어온다면> 지원사업 선정 결과",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21590",
-        "src": "auto",
-        "posted": "2026.09.30",
-        "result": true,
-        "firstSeen": "2026.10.01"
-      },
-      {
-        "name": "2026년 경기지역문화기획학교: 지역문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 최종 선정 안내",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21508",
-        "src": "auto",
-        "posted": "2026.08.14"
-      },
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 전시공간 지원 공모",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21664",
-        "src": "auto",
-        "posted": "2026.10.28"
-      },
-      {
-        "name": "경기문화재단 경기젊은작가(New Blood) 2026년 작품구입 공모 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21654",
-        "src": "auto",
-        "posted": "2026.10.20"
-      },
-      {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
         "period": "2026.06.08 ~ 2026.07.09",
         "org": "경기도체육회",
@@ -387,6 +310,83 @@
         "boardUrl": "https://www.ggac.or.kr/ggac/M0000217/board/view.do?atcSn=63520&pageIndex=1&category=",
         "src": "auto",
         "posted": "2026.07.22"
+      },
+      {
+        "name": "[공고문] 경기 예술인의 집 영한전시 참여작가 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21707",
+        "src": "auto",
+        "posted": "2026.11.16",
+        "kind": "event"
+      },
+      {
+        "name": "2026 경기상상캠퍼스 신규 입주단체 모집 최종 선정 알림",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21406",
+        "src": "auto",
+        "posted": "2026.07.07"
+      },
+      {
+        "name": "2026년 경기지역학 연구 활성화 공모 지원 선정결과 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/20974",
+        "src": "auto",
+        "posted": "2026.02.27",
+        "result": true,
+        "firstSeen": "2026.06.16"
+      },
+      {
+        "name": "2027 경기상상캠퍼스 단기 입주단체 모집 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21727",
+        "src": "auto",
+        "posted": "2026.11.18"
+      },
+      {
+        "name": "AI 연계 예술교육 프로그램 개발 및 확산 <내 수업에 AI가 들어온다면> 지원사업 선정 결과",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21590",
+        "src": "auto",
+        "posted": "2026.09.30",
+        "result": true,
+        "firstSeen": "2026.10.01"
+      },
+      {
+        "name": "2026년 경기지역문화기획학교: 지역문화기획자 인턴십 과정 2기 <어느새 [ ] 기획자> 최종 선정 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21508",
+        "src": "auto",
+        "posted": "2026.08.14"
+      },
+      {
+        "name": "2026 경기창작캠퍼스 공공갤러리 전시공간 지원 공모",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21664",
+        "src": "auto",
+        "posted": "2026.10.28"
+      },
+      {
+        "name": "경기문화재단 경기젊은작가(New Blood) 2026년 작품구입 공모 공고",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21654",
+        "src": "auto",
+        "posted": "2026.10.20"
       }
     ],
     "nonghae": [],
@@ -431,6 +431,15 @@
     ],
     "mirae": [
       {
+        "name": "2026년 양평군 중소기업 온라인 플랫폼 마케팅 지원사업 추가 모집 공고",
+        "period": "",
+        "org": "경기테크노파크",
+        "dept": "기업지원팀",
+        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172355",
+        "src": "auto",
+        "posted": "2026.11.17"
+      },
+      {
         "name": "2026년 구리시 중소기업 온라인 플랫폼 마케팅 지원사업 참가 기업 모집 공고",
         "period": "",
         "org": "경기테크노파크",
@@ -456,24 +465,6 @@
         "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172352",
         "src": "auto",
         "posted": "2026.11.11"
-      },
-      {
-        "name": "2026년 하남시 소상공인 마케팅 판로지원사업(경영환경개선) 추가 모집공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172351",
-        "src": "auto",
-        "posted": "2026.11.11"
-      },
-      {
-        "name": "2026년 양평군 중소기업 온라인 플랫폼 마케팅 지원사업 추가 모집 공고",
-        "period": "",
-        "org": "경기테크노파크",
-        "dept": "기업지원팀",
-        "boardUrl": "https://pms.gtp.or.kr/web/business/webBusinessView.do?b_idx=172355",
-        "src": "auto",
-        "posted": "2026.11.17"
       }
     ],
     "yeoseong": [
