@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -70,24 +70,6 @@
       }
     ],
     "gyeongje": [
-      {
-        "name": "사회연대경제 사진공모전 「일상 속 가치있는 순간을 PI...",
-        "period": "2026.09.15 ~ 2026.10.25",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110906123&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.10.25"
-      },
-      {
-        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
-        "period": "2026.08.03 ~ 2026.08.31",
-        "org": "경기도청",
-        "dept": "통합공모",
-        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
-        "src": "auto",
-        "posted": "2026.08.31"
-      },
       {
         "name": "「제8회 대한민국 사회연대경제박람회 및 국제컨퍼런스」 전시체험부스 참여기업 및 소셜다잇소 입점기업 모집에 많은 관심 가져주셔서",
         "period": "",
@@ -163,10 +145,39 @@
         "src": "auto",
         "posted": "2026.07.13",
         "target": "사회적경제조직 신청유형 기업"
+      },
+      {
+        "name": "사회연대경제 사진공모전 「일상 속 가치있는 순간을 PI...",
+        "period": "2026.09.15 ~ 2026.10.25",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110906123&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.10.25"
+      },
+      {
+        "name": "2026년 노동안전보건 사진·숏폼 동영상 공모전",
+        "period": "2026.08.03 ~ 2026.08.31",
+        "org": "경기도청",
+        "dept": "통합공모",
+        "boardUrl": "https://www.gg.go.kr/gongmo/bbs/boardView.do?bsIdx=923&bIdx=110904445&page=1&menuId=4433&bcIdx=0",
+        "src": "auto",
+        "posted": "2026.08.31"
       }
     ],
     "anjeun": [],
     "munhwa": [
+      {
+        "name": "2026 경기창작캠퍼스 공공갤러리 전시공간 지원 공모 선정 결과 안내",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21742",
+        "src": "auto",
+        "posted": "2026.11.24",
+        "result": true,
+        "firstSeen": "2026.11.25"
+      },
       {
         "name": "[공고문] 경기 예술인의 집 영한전시 참여작가 모집",
         "period": "",
@@ -234,15 +245,6 @@
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21664",
         "src": "auto",
         "posted": "2026.10.28"
-      },
-      {
-        "name": "경기문화재단 경기젊은작가(New Blood) 2026년 작품구입 공모 공고",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21654",
-        "src": "auto",
-        "posted": "2026.10.20"
       },
       {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
