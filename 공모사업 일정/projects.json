@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "source": "각 기관 공모 게시판 자동 수집 (Playwright)",
   "projects": {
     "uiwoon": [],
@@ -168,6 +168,15 @@
     "anjeun": [],
     "munhwa": [
       {
+        "name": "2027 경기창작캠퍼스 선감생활문화센터 문화예술 활동가 통합 모집",
+        "period": "",
+        "org": "경기문화재단",
+        "dept": "문화예술본부",
+        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21744",
+        "src": "auto",
+        "posted": "2026.11.25"
+      },
+      {
         "name": "2026 경기창작캠퍼스 공공갤러리 전시공간 지원 공모 선정 결과 안내",
         "period": "",
         "org": "경기문화재단",
@@ -236,15 +245,6 @@
         "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21508",
         "src": "auto",
         "posted": "2026.08.14"
-      },
-      {
-        "name": "2026 경기창작캠퍼스 공공갤러리 전시공간 지원 공모",
-        "period": "",
-        "org": "경기문화재단",
-        "dept": "문화예술본부",
-        "boardUrl": "https://www.ggcf.kr/boards/businessNotices/articles/21664",
-        "src": "auto",
-        "posted": "2026.10.28"
       },
       {
         "name": "2026년 직장운동경기부 창단지원 2차 공모 공고",
@@ -324,7 +324,7 @@
         "kind": "event"
       },
       {
-        "name": "NEW2027년 경기아트센터 법률자문 변호사 공개모집 공고",
+        "name": "2027년 경기아트센터 법률자문 변호사 공개모집 공고",
         "period": "",
         "org": "경기아트센터",
         "dept": "공연기획팀",
